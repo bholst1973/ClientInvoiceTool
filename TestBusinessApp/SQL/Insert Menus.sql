@@ -1,0 +1,9 @@
+USE HCS
+BEGIN TRAN
+
+INSERT INTO Menus(Menu_Name, Menu_Detail)
+VALUES ('INV-Qty-CmbBx','1')
+
+
+--COMMIT
+--ROLLBACK

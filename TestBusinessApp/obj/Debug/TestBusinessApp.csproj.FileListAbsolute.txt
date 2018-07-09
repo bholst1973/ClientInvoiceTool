@@ -1,0 +1,40 @@
+C:\C#Projects\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe.config
+C:\C#Projects\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe
+C:\C#Projects\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.pdb
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csprojResolveAssemblyReference.cache
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.HCS.resources
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.Properties.Resources.resources
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.GenerateResource.Cache
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.exe
+C:\C#Projects\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.pdb
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\bin\Debug\TestBusinessApp.exe.config
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.exe
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.pdb
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\bin\Debug\TestBusinessApp.exe
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\bin\Debug\TestBusinessApp.pdb
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.csprojResolveAssemblyReference.cache
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.HCS.resources
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.Properties.Resources.resources
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.GenerateResource.cache
+C:\Users\HCS1\Google Drive\TestBusinessApp (1)\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csprojResolveAssemblyReference.cache
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.HCS.resources
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.Properties.Resources.resources
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.GenerateResource.cache
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.exe
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.pdb
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe.config
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe
+C:\Users\HCS1\source\repos\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.pdb
+C:\C#Source\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe.config
+C:\C#Source\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.exe
+C:\C#Source\TestBusinessApp\TestBusinessApp\bin\Debug\TestBusinessApp.pdb
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csprojResolveAssemblyReference.cache
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.HCS.resources
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.Properties.Resources.resources
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.GenerateResource.cache
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.exe
+C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.pdb
