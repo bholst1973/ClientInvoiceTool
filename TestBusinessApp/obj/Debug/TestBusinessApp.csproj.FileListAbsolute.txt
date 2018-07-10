@@ -38,3 +38,13 @@ C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.Gen
 C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
 C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.exe
 C:\C#Source\TestBusinessApp\TestBusinessApp\obj\Debug\TestBusinessApp.pdb
+C:\C#Projects\Git-Repo\TestBusinessApp\bin\Debug\TestBusinessApp.exe.config
+C:\C#Projects\Git-Repo\TestBusinessApp\bin\Debug\TestBusinessApp.exe
+C:\C#Projects\Git-Repo\TestBusinessApp\bin\Debug\TestBusinessApp.pdb
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.csprojResolveAssemblyReference.cache
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.HCS.resources
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.Properties.Resources.resources
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.GenerateResource.Cache
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.csproj.CoreCompileInputs.cache
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.exe
+C:\C#Projects\Git-Repo\TestBusinessApp\obj\Debug\TestBusinessApp.pdb

@@ -1508,6 +1508,7 @@ namespace TestBusinessApp
                 {
                     Qty = Convert.ToInt32(dr.Cells[0].Value);
                     Det = dr.Cells[1].Value.ToString();
+                    Det = Det.Replace("'", "''");
                     Price = Convert.ToDecimal(dr.Cells[2].Value);
                     Tax = Convert.ToDecimal(dr.Cells[4].Value);
                     
