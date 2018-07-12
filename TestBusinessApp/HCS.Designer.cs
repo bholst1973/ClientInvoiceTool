@@ -108,6 +108,7 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComServGB = new System.Windows.Forms.GroupBox();
+            this.invClDTPicker = new System.Windows.Forms.DateTimePicker();
             this.custnvitmLbl = new System.Windows.Forms.Label();
             this.lineItemLbl = new System.Windows.Forms.Label();
             this.prcLbl = new System.Windows.Forms.Label();
@@ -161,7 +162,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
-            this.invClDTPicker = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -999,6 +999,14 @@
             this.ComServGB.TabStop = false;
             this.ComServGB.Text = "Hardware and Services";
             // 
+            // invClDTPicker
+            // 
+            this.invClDTPicker.Location = new System.Drawing.Point(433, 45);
+            this.invClDTPicker.Name = "invClDTPicker";
+            this.invClDTPicker.Size = new System.Drawing.Size(200, 20);
+            this.invClDTPicker.TabIndex = 29;
+            this.invClDTPicker.ValueChanged += new System.EventHandler(this.invClDTPicker_ValueChanged);
+            // 
             // custnvitmLbl
             // 
             this.custnvitmLbl.AutoSize = true;
@@ -1518,14 +1526,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // invClDTPicker
-            // 
-            this.invClDTPicker.Location = new System.Drawing.Point(433, 45);
-            this.invClDTPicker.Name = "invClDTPicker";
-            this.invClDTPicker.Size = new System.Drawing.Size(200, 20);
-            this.invClDTPicker.TabIndex = 29;
-            this.invClDTPicker.ValueChanged += new System.EventHandler(this.invClDTPicker_ValueChanged);
             // 
             // HCS
             // 

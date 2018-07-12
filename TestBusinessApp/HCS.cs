@@ -1280,7 +1280,8 @@ namespace TestBusinessApp
             }
 
             Total = Qty * Price;
-            Tax = decimal.Round(Total * taxRate,2);
+            //Tax = decimal.Round(Total * taxRate,2);
+            Tax = Total * taxRate;
             if (Total > 0 && Details.Length > 0)
             {
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
@@ -1292,7 +1293,8 @@ namespace TestBusinessApp
                 Details = "General Computer Cleanup/Virus Remval";
                 Price = 75.00m;
                 Total = 75.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1302,7 +1304,8 @@ namespace TestBusinessApp
                 Details = "Data Recovery";
                 Price = 25.00m;
                 Total = 25.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1312,7 +1315,8 @@ namespace TestBusinessApp
                 Details = "Printer  Installation/Setup";
                 Price = 65.00m;
                 Total = 65.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1322,7 +1326,8 @@ namespace TestBusinessApp
                 Details = "New Computer Setup";
                 Price = 75.00m;
                 Total = 75.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1332,7 +1337,8 @@ namespace TestBusinessApp
                 Details = "Router Installation/Setup";
                 Price = 65.00m;
                 Total = 65.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1342,7 +1348,8 @@ namespace TestBusinessApp
                 Details = "32GB USB Recovery Drive with Image";
                 Price = 35.00m;
                 Total = 35.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1352,7 +1359,8 @@ namespace TestBusinessApp
                 Details = "Install Operating System";
                 Price = 125.00m;
                 Total = 125.00m;
-                Tax = decimal.Round(Total * taxRate, 2);
+                //Tax = decimal.Round(Total * taxRate, 2);
+                Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
 
@@ -1390,8 +1398,10 @@ namespace TestBusinessApp
                 qty = Convert.ToDecimal(dr.Cells[0].Value);
                 price = Convert.ToDecimal(dr.Cells[2].Value);
                 total = qty * price;
+                tax = total * taxRate;
                 dr.Cells[2].Value = price.ToString("0.00##");
                 dr.Cells[3].Value = total.ToString("0.00##");
+                dr.Cells[4].Value = tax.ToString("0.0000");
                 total = Convert.ToDecimal(dr.Cells[3].Value);
                 pretaxtotal += total;
             }
