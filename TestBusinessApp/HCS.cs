@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -20,8 +21,8 @@ namespace TestBusinessApp
         Client workingClient = new Client();
         //  Holds the current client row that is being updated.
         int updaterow;
-        //decimal taxRate = 0.06875m;
-        decimal taxRate = 0.065m;
+        decimal taxRate = 0.06875m;
+        //decimal taxRate = 0.065m;
 
         public HCS()
         {
@@ -59,6 +60,7 @@ namespace TestBusinessApp
             this.createInvoiceDataGridView.Columns["Tax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //Invoices
+            loadInvoices();
 
             // Admin
             adminAddHSBut.Enabled = false;
@@ -78,7 +80,7 @@ namespace TestBusinessApp
             invClDTPicker.Value = new DateTime(2009, 06, 01);
         }
 
-        #region <<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         //<<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void autosizeClientColumns()
         {
             for (int i = 0; i < clientDataGridView.Columns.Count - 1; i++)
@@ -148,6 +150,7 @@ namespace TestBusinessApp
                 getClientCount();
                 delClBut.Enabled = false;
             }
+            loadInvClients();
         }
 
         //  This method builds a list of client data
@@ -1036,7 +1039,7 @@ namespace TestBusinessApp
         }
         #endregion
 
-        #region <<<<<<<<<<<<<<<<<<<----------  Create Invoice Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         //<<<<<<<<<<<<<<<<<<<----------  Create Invoice Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void loadInvQty()
         {
             for (int i = 1; i < 10; i++)
@@ -1094,9 +1097,9 @@ namespace TestBusinessApp
                     conn.Open();
                     DataSet ds = new DataSet();
                     da.Fill(ds, "Client");
+                    invClCustCmbBX.DataSource = ds.Tables["Client"];
                     invClCustCmbBX.DisplayMember = "Billing_Name";
                     invClCustCmbBX.ValueMember = "Billing_Name";
-                    invClCustCmbBX.DataSource = ds.Tables["Client"];
                 }
                 catch (Exception ex)
                 {
@@ -1282,7 +1285,7 @@ namespace TestBusinessApp
             Total = Qty * Price;
             //Tax = decimal.Round(Total * taxRate,2);
             Tax = Total * taxRate;
-            if (Total > 0 && Details.Length > 0)
+            if (Total >= 0 && Details.Length > 0)
             {
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
@@ -1525,9 +1528,9 @@ namespace TestBusinessApp
                     Total = Qty * Price * (1 + taxRate);
 
                     string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, " +
-                                   "INV_Qty, INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid)" +
+                                   "INV_Qty, INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid, Inv_Cost, Inv_TaxPaid)" +
                                    "VALUES (" + cid + "," + invNum + ",'" + invClDTPicker.Value.ToString("yyyy-MM-dd") + "','" + bname + "'," +
-                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ")";
+                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + 0 + ',' + 0 + ")";
 
                     executeQuery(query);                    
                 }
@@ -1538,6 +1541,7 @@ namespace TestBusinessApp
                 invclTotalTxtBx.Text = "";
                 invclTaxlTxtBx.Text = "";
                 invclGrandTotalTxtBx.Text = "";
+                loadInvoices();
             }
 
             //MessageBox.Show("Client ID: " + cid.ToString() +
@@ -1574,13 +1578,80 @@ namespace TestBusinessApp
         }
         #endregion
 
-        #region <<<<<<<<<<<<<<<<<<<----------  Invoices Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         //<<<<<<<<<<<<<<<<<<<----------  Invoices Tab  ---------->>>>>>>>>>>>>>>>>>>
 
+        public void loadInvoices()
+        {
+            if (InvoicesInvsDG.Rows.Count > 0)
+            { 
+                InvoicesInvsDG.Rows.Clear();
+            }
+            var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
+            //  Build list of Invoices
+            List<Invoice> invs = new List<Invoice>();
+            using (SqlConnection myCon = new SqlConnection(con))
+            {
+                string query = @"USE HCS
+                                    SELECT INV_Num,
+                                    INV_Date,
+                                    INV_Billing_Name, 
+                                    SUM(INV_Price * INV_Qty) AS 'Sub_Total',
+                                    SUM(INV_Tax) AS 'Tax', 
+                                    ROUND(SUM(INV_Total),2) AS 'Total', 
+                                    ROUND(SUM(INV_Cost),2) AS 'Cost',  
+                                    ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid',
+                                    INV_Paid
+                                    FROM INVOICE
+                                    GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid
+                                    ORDER BY INV_NUM";
 
+                SqlCommand cmd = new SqlCommand(query, myCon);
+                myCon.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                   
+                    while (reader.Read())
+                    {
+                        Invoice inv = new Invoice();
+                        inv.InvNumber = (int)reader["INV_Num"];
+                        inv.Date = (DateTime)reader["INV_Date"];
+                        inv.Billing_Name = reader["INV_Billing_Name"].ToString();
+                        inv.Price = (decimal)reader["Sub_Total"];
+                        inv.Tax = (decimal)reader["Tax"];
+                        inv.Total = (decimal)reader["Total"];
+                        inv.Cost = (decimal)reader["Cost"];
+                        inv.TaxPaid = (decimal)reader["Tax_Paid"];
+                        if((bool)reader["Inv_Paid"])
+                        {
+                            inv.Paid = "Paid";
+                        }
+                        else
+                        {
+                            inv.Paid = "Owing";
+                        }
+                        
+
+                        invs.Add(inv);
+                    }
+                }
+            }
+
+            foreach(Invoice inv in invs)
+            {
+                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, inv.Price, inv.Tax, inv.Total, inv.Cost, inv.TaxPaid, inv.Paid);
+            }
+
+            this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
+        }
+
+        private void invsRefreshBut_Click(object sender, EventArgs e)
+        {
+            loadInvoices();
+        }
 
         #endregion
 
-        #region <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         //<<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void loadAdminCatDrpDwn()
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
@@ -1846,6 +1917,7 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
+
         #endregion
 
 

@@ -8,8 +8,8 @@ ROUND(SUM(INV_Total),2) AS 'Total',
 ROUND(SUM(INV_Cost),2) AS 'Cost',  
 ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid',
 INV_Paid
-
 FROM INVOICE
-
 GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid
 ORDER BY INV_NUM
+
+

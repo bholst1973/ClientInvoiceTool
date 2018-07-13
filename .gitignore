@@ -1,2 +1,26 @@
 
 TestBusinessApp/Data/
+
+\.vs/TestBusinessApp/v15/\.suo
+
+*.ide
+
+*.pdb
+
+*.cache
+
+*.exe
+
+*.ide-shm
+
+*.ide-wal
+
+*.sln
+
+\.vs/TestBusinessApp/v15/
+
+TestBusinessApp/bin/Debug/
+
+*.resx
+
+TestBusinessApp/obj/Debug/

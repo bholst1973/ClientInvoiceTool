@@ -127,7 +127,7 @@
             this.InvClcustTxtBx = new System.Windows.Forms.TextBox();
             this.invoicesPage = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.InvoicesInvsDG = new System.Windows.Forms.DataGridView();
             this.invsGpBx = new System.Windows.Forms.GroupBox();
             this.invsInvoicesLbl = new System.Windows.Forms.Label();
             this.invsClientLbl = new System.Windows.Forms.Label();
@@ -162,6 +162,16 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
+            this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invsRefreshBut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -175,7 +185,7 @@
             this.ComServGB.SuspendLayout();
             this.invoicesPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvsDG)).BeginInit();
             this.invsGpBx.SuspendLayout();
             this.AdminPage.SuspendLayout();
             this.adminTabCtrl.SuspendLayout();
@@ -905,6 +915,7 @@
             this.invClCustCmbBX.Location = new System.Drawing.Point(7, 21);
             this.invClCustCmbBX.Name = "invClCustCmbBX";
             this.invClCustCmbBX.Size = new System.Drawing.Size(230, 21);
+            this.invClCustCmbBX.Sorted = true;
             this.invClCustCmbBX.TabIndex = 0;
             this.invClCustCmbBX.SelectedIndexChanged += new System.EventHandler(this.invClCustCmbBX_SelectedIndexChanged);
             // 
@@ -1167,8 +1178,9 @@
             // 
             // invoicesPage
             // 
+            this.invoicesPage.Controls.Add(this.invsRefreshBut);
             this.invoicesPage.Controls.Add(this.dataGridView2);
-            this.invoicesPage.Controls.Add(this.dataGridView1);
+            this.invoicesPage.Controls.Add(this.InvoicesInvsDG);
             this.invoicesPage.Controls.Add(this.invsGpBx);
             this.invoicesPage.Location = new System.Drawing.Point(4, 22);
             this.invoicesPage.Name = "invoicesPage";
@@ -1180,19 +1192,36 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(8, 266);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(693, 149);
             this.dataGridView2.TabIndex = 2;
             // 
-            // dataGridView1
+            // InvoicesInvsDG
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 87);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1057, 173);
-            this.dataGridView1.TabIndex = 1;
+            this.InvoicesInvsDG.AllowUserToAddRows = false;
+            this.InvoicesInvsDG.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesInvsDG.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.InvoicesInvsDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InvoicesInvsDG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Inv_Num,
+            this.Inv_Date,
+            this.Inv_Billing_Name,
+            this.Inv_Sub_Total,
+            this.Inv_Tax,
+            this.Inv_Total,
+            this.Inv_Cost,
+            this.Inv_Tax_Paid,
+            this.Inv_Paid});
+            this.InvoicesInvsDG.Location = new System.Drawing.Point(8, 87);
+            this.InvoicesInvsDG.Name = "InvoicesInvsDG";
+            this.InvoicesInvsDG.Size = new System.Drawing.Size(1057, 173);
+            this.InvoicesInvsDG.TabIndex = 1;
             // 
             // invsGpBx
             // 
@@ -1527,6 +1556,61 @@
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // Inv_Num
+            // 
+            this.Inv_Num.HeaderText = "Inv Number";
+            this.Inv_Num.Name = "Inv_Num";
+            // 
+            // Inv_Date
+            // 
+            this.Inv_Date.HeaderText = "Inv Date";
+            this.Inv_Date.Name = "Inv_Date";
+            // 
+            // Inv_Billing_Name
+            // 
+            this.Inv_Billing_Name.HeaderText = "Billing Name";
+            this.Inv_Billing_Name.Name = "Inv_Billing_Name";
+            // 
+            // Inv_Sub_Total
+            // 
+            this.Inv_Sub_Total.HeaderText = "Sub Total";
+            this.Inv_Sub_Total.Name = "Inv_Sub_Total";
+            // 
+            // Inv_Tax
+            // 
+            this.Inv_Tax.HeaderText = "Tax";
+            this.Inv_Tax.Name = "Inv_Tax";
+            // 
+            // Inv_Total
+            // 
+            this.Inv_Total.HeaderText = "Total";
+            this.Inv_Total.Name = "Inv_Total";
+            // 
+            // Inv_Cost
+            // 
+            this.Inv_Cost.HeaderText = "Cost";
+            this.Inv_Cost.Name = "Inv_Cost";
+            // 
+            // Inv_Tax_Paid
+            // 
+            this.Inv_Tax_Paid.HeaderText = "Tax Paid";
+            this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
+            // 
+            // Inv_Paid
+            // 
+            this.Inv_Paid.HeaderText = "Paid";
+            this.Inv_Paid.Name = "Inv_Paid";
+            // 
+            // invsRefreshBut
+            // 
+            this.invsRefreshBut.Location = new System.Drawing.Point(488, 45);
+            this.invsRefreshBut.Name = "invsRefreshBut";
+            this.invsRefreshBut.Size = new System.Drawing.Size(75, 23);
+            this.invsRefreshBut.TabIndex = 3;
+            this.invsRefreshBut.Text = "Refresh";
+            this.invsRefreshBut.UseVisualStyleBackColor = true;
+            this.invsRefreshBut.Click += new System.EventHandler(this.invsRefreshBut_Click);
+            // 
             // HCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1556,7 +1640,7 @@
             this.ComServGB.PerformLayout();
             this.invoicesPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvsDG)).EndInit();
             this.invsGpBx.ResumeLayout(false);
             this.invsGpBx.PerformLayout();
             this.AdminPage.ResumeLayout(false);
@@ -1694,7 +1778,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tax;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView InvoicesInvsDG;
         private System.Windows.Forms.GroupBox invsGpBx;
         private System.Windows.Forms.Label invsInvoicesLbl;
         private System.Windows.Forms.Label invsClientLbl;
@@ -1708,6 +1792,16 @@
         private System.Windows.Forms.Button resetDefaultTaxRate;
         private System.Windows.Forms.Button setEffTxRateBut;
         private System.Windows.Forms.DateTimePicker invClDTPicker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Billing_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Sub_Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
+        private System.Windows.Forms.Button invsRefreshBut;
     }
 }
 

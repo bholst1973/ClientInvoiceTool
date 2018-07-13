@@ -1,16 +1,29 @@
+Pop windows need should pop inside the app window
 Setup preset Services Values instead of hard code.
+
 Check if client exists
 Copy paste phone number
+
 Hover info
-Better use of objects
+B
+etter use of objects
+
 Sql queries should be using the using block
+
 Invoice items should be able to move up and down the list
 Add table for prefill city and zip 
+
 Ensure Sql statments account for db size
 
+
+
 Done:
+
 client counter
+
 AutoSize Client Columns
+
 window size
+
 Save Preset Data
 Edit datagridview
