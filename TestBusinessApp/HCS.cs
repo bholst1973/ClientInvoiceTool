@@ -62,6 +62,14 @@ namespace TestBusinessApp
             //Invoices
             loadInvoices();
 
+            this.InvoicesInvsDG.Columns["Inv_Sub_Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.InvoicesInvsDG.Columns["Inv_Tax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.InvoicesInvsDG.Columns["Inv_Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.InvoicesInvsDG.Columns["Inv_Cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.InvoicesInvsDG.Columns["Inv_Tax_Paid"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.InvoicesInvsDG.Columns["Inv_Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            InvoicesInvsDG.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             // Admin
             adminAddHSBut.Enabled = false;
             activateComItBut.Enabled = false;
@@ -80,7 +88,7 @@ namespace TestBusinessApp
             invClDTPicker.Value = new DateTime(2009, 06, 01);
         }
 
-        #region         //<<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         <<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void autosizeClientColumns()
         {
             for (int i = 0; i < clientDataGridView.Columns.Count - 1; i++)
@@ -1039,7 +1047,7 @@ namespace TestBusinessApp
         }
         #endregion
 
-        #region         //<<<<<<<<<<<<<<<<<<<----------  Create Invoice Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         <<<<<<<<<<<<<<<<<<<----------  Create Invoice Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void loadInvQty()
         {
             for (int i = 1; i < 10; i++)
@@ -1578,7 +1586,7 @@ namespace TestBusinessApp
         }
         #endregion
 
-        #region         //<<<<<<<<<<<<<<<<<<<----------  Invoices Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region         <<<<<<<<<<<<<<<<<<<----------  Invoices Tab  ---------->>>>>>>>>>>>>>>>>>>
 
         public void loadInvoices()
         {
@@ -1638,7 +1646,22 @@ namespace TestBusinessApp
 
             foreach(Invoice inv in invs)
             {
-                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, inv.Price, inv.Tax, inv.Total, inv.Cost, inv.TaxPaid, inv.Paid);
+                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price,2), Math.Round(inv.Tax,2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), inv.Paid);
+            }
+
+            foreach(DataGridViewRow row in InvoicesInvsDG.Rows)
+            {
+                if(row.Cells[8].Value.ToString() != "Paid")
+                {
+                    //row.DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
+                    row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Red;
+                    row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Black;
+                    row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Green;
+                }
             }
 
             this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
@@ -1651,7 +1674,7 @@ namespace TestBusinessApp
 
         #endregion
 
-        #region         //<<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
+        #region        <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
         private void loadAdminCatDrpDwn()
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
@@ -1839,8 +1862,7 @@ namespace TestBusinessApp
             }
 
             adminActDelComItBut.Enabled = true;
-
-
+            
         }
 
         public void verifyGS_Cat_Item()
