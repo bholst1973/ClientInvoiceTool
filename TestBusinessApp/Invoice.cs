@@ -25,6 +25,49 @@ namespace TestBusinessApp
         public decimal Cost { get; set; }
         public decimal TaxPaid { get; set; }
 
+        public List<Invoice> GetInvoicebyInvNum(int invn)
+        {
+            var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
+            using (SqlConnection myCon = new SqlConnection(con))
+            {
+                List<Invoice> Invoices = new List<Invoice>();
+                Invoice invs = new Invoice();
+                string query = "USE HCS SELECT * FROM Invoice WHERE INV_NUM = @invNum";
+                SqlCommand cmd = new SqlCommand(query, myCon);
+                cmd.Parameters.AddWithValue("@invNum", invn.ToString());
+                myCon.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        invs.ID = (int)reader["INV_ID"];
+                        invs.ClientID = (int)reader["INV_Client_ID"];
+                        invs.InvNumber = (int)reader["INV_NUM"];
+                        invs.Date = reader.GetDateTime(3);
+                        invs.Billing_Name = reader["INV_Billing_Name"].ToString();
+                        invs.Qty = (int)reader["INV_Qty"];
+                        invs.Details = reader["INV_Details"].ToString();
+                        invs.Price = (decimal)reader["INV_Price"];
+                        invs.Tax = (decimal)reader["INV_Tax"];
+                        invs.Total = (decimal)reader["INV_Total"];
+                        invs.Notes = reader["INV_Notes"].ToString();
+                        if ((bool)reader["Inv_Paid"])
+                        {
+                            invs.Paid = "Paid";
+                        }
+                        else
+                        {
+                            invs.Paid = "Owing";
+                        }
+                        invs.Cost = (decimal)reader["INV_Cost"];
+                        invs.TaxPaid = (decimal)reader["INV_TaxPaid"];
+                        Invoices.Add(invs);
+                    }
+                }
+                return Invoices;
+            }
+        }
+
 
     }
 }

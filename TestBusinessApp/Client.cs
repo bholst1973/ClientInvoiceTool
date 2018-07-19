@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace TestBusinessApp
 {
-        class Client
+    class Client
     {
         public int ID { get; set; }
         public string First { get; set; }

@@ -172,6 +172,20 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
+            this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Client_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_NM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Dt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_BillName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Tx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Nts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Pd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Cst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_TaxPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -1205,9 +1219,24 @@
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.INV_ID,
+            this.INV_Client_ID,
+            this.INV_NM,
+            this.INV_Dt,
+            this.INV_BillName,
+            this.INV_Qty,
+            this.INV_Details,
+            this.INV_Price,
+            this.INV_Tx,
+            this.INV_Ttl,
+            this.INV_Nts,
+            this.INV_Pd,
+            this.INV_Cst,
+            this.INV_TaxPaid});
             this.dataGridView2.Location = new System.Drawing.Point(8, 266);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(693, 149);
+            this.dataGridView2.Size = new System.Drawing.Size(1057, 149);
             this.dataGridView2.TabIndex = 2;
             // 
             // InvoicesInvsDG
@@ -1612,6 +1641,76 @@
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // INV_ID
+            // 
+            this.INV_ID.HeaderText = "Inv ID";
+            this.INV_ID.Name = "INV_ID";
+            // 
+            // INV_Client_ID
+            // 
+            this.INV_Client_ID.HeaderText = "Client ID";
+            this.INV_Client_ID.Name = "INV_Client_ID";
+            // 
+            // INV_NM
+            // 
+            this.INV_NM.HeaderText = "Inv #";
+            this.INV_NM.Name = "INV_NM";
+            // 
+            // INV_Dt
+            // 
+            this.INV_Dt.HeaderText = "Date";
+            this.INV_Dt.Name = "INV_Dt";
+            // 
+            // INV_BillName
+            // 
+            this.INV_BillName.HeaderText = "Billing Name";
+            this.INV_BillName.Name = "INV_BillName";
+            // 
+            // INV_Qty
+            // 
+            this.INV_Qty.HeaderText = "Qty";
+            this.INV_Qty.Name = "INV_Qty";
+            // 
+            // INV_Details
+            // 
+            this.INV_Details.HeaderText = "Details";
+            this.INV_Details.Name = "INV_Details";
+            // 
+            // INV_Price
+            // 
+            this.INV_Price.HeaderText = "Price";
+            this.INV_Price.Name = "INV_Price";
+            // 
+            // INV_Tx
+            // 
+            this.INV_Tx.HeaderText = "Tax";
+            this.INV_Tx.Name = "INV_Tx";
+            // 
+            // INV_Ttl
+            // 
+            this.INV_Ttl.HeaderText = "Total";
+            this.INV_Ttl.Name = "INV_Ttl";
+            // 
+            // INV_Nts
+            // 
+            this.INV_Nts.HeaderText = "Notes";
+            this.INV_Nts.Name = "INV_Nts";
+            // 
+            // INV_Pd
+            // 
+            this.INV_Pd.HeaderText = "Paid";
+            this.INV_Pd.Name = "INV_Pd";
+            // 
+            // INV_Cst
+            // 
+            this.INV_Cst.HeaderText = "Cost";
+            this.INV_Cst.Name = "INV_Cst";
+            // 
+            // INV_TaxPaid
+            // 
+            this.INV_TaxPaid.HeaderText = "Tax Paid";
+            this.INV_TaxPaid.Name = "INV_TaxPaid";
+            // 
             // HCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1803,6 +1902,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
         private System.Windows.Forms.Button invsRefreshBut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Client_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_NM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Dt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_BillName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Details;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Tx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Ttl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Nts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Pd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Cst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_TaxPaid;
     }
 }
 

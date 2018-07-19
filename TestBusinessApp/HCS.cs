@@ -11,6 +11,19 @@ namespace TestBusinessApp
 {
     public partial class HCS : Form
     {
+        #region Collapse 
+        //down vote
+        //accepted
+        //Collapse to definitions
+        //CTRL + M, O
+
+        //Expand all outlining
+        //CTRL + M, X
+
+        //Expand or collapse everything
+        //CTRL + M, L
+        #endregion
+
         SqlConnection HCSConnection = new SqlConnection(System.Configuration.ConfigurationManager
             .ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ConnectionString);
         ContextMenuStrip client_Column_Chooser = new System.Windows.Forms.ContextMenuStrip();
@@ -19,7 +32,7 @@ namespace TestBusinessApp
         string clientheaderfile;
         // Client object that holds the current client data to be updated.
         Client workingClient = new Client();
-        //  Holds the current client row that is being updated.
+        //  Holds the current Client Data Grid row that is being updated.
         int updaterow;
         decimal taxRate = 0.06875m;
         //decimal taxRate = 0.065m;
@@ -1671,16 +1684,22 @@ namespace TestBusinessApp
         {
             loadInvoices();
         }
+
         private void InvoicesInvsDG_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Checks if one row is highlighted, if so the delete button is activated.
             if (InvoicesInvsDG.SelectedRows.Count > 0 && InvoicesInvsDG.SelectedRows.Count < 2)
             {
-                delClBut.Enabled = true;
+                int row = InvoicesInvsDG.CurrentRow.Index;
+                Invoice inv = new Invoice();
+                List<Invoice> invItems = new List<Invoice>();
+                int invNum = Convert.ToInt32(InvoicesInvsDG.CurrentRow.Cells[0].Value.ToString());
+                invItems = inv.GetInvoicebyInvNum(invNum);
             }
+
             else
             {
-                delClBut.Enabled = false;
+                
             }
         }
 
@@ -1951,11 +1970,8 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
-
-
+        
         #endregion
-
- 
     }
 
 }
