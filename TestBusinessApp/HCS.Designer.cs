@@ -126,8 +126,18 @@
             this.compstpChkBx = new System.Windows.Forms.CheckBox();
             this.InvClcustTxtBx = new System.Windows.Forms.TextBox();
             this.invoicesPage = new System.Windows.Forms.TabPage();
+            this.invsRefreshBut = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.InvoicesInvsDG = new System.Windows.Forms.DataGridView();
+            this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invsGpBx = new System.Windows.Forms.GroupBox();
             this.invsInvoicesLbl = new System.Windows.Forms.Label();
             this.invsClientLbl = new System.Windows.Forms.Label();
@@ -162,16 +172,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
-            this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Tax_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invsRefreshBut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -1190,6 +1190,16 @@
             this.invoicesPage.Text = "Invoices";
             this.invoicesPage.UseVisualStyleBackColor = true;
             // 
+            // invsRefreshBut
+            // 
+            this.invsRefreshBut.Location = new System.Drawing.Point(488, 45);
+            this.invsRefreshBut.Name = "invsRefreshBut";
+            this.invsRefreshBut.Size = new System.Drawing.Size(75, 23);
+            this.invsRefreshBut.TabIndex = 3;
+            this.invsRefreshBut.Text = "Refresh";
+            this.invsRefreshBut.UseVisualStyleBackColor = true;
+            this.invsRefreshBut.Click += new System.EventHandler(this.invsRefreshBut_Click);
+            // 
             // dataGridView2
             // 
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1222,6 +1232,52 @@
             this.InvoicesInvsDG.Name = "InvoicesInvsDG";
             this.InvoicesInvsDG.Size = new System.Drawing.Size(1057, 173);
             this.InvoicesInvsDG.TabIndex = 1;
+            this.InvoicesInvsDG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.InvoicesInvsDG_CellClick);
+            // 
+            // Inv_Num
+            // 
+            this.Inv_Num.HeaderText = "Inv Number";
+            this.Inv_Num.Name = "Inv_Num";
+            // 
+            // Inv_Date
+            // 
+            this.Inv_Date.HeaderText = "Inv Date";
+            this.Inv_Date.Name = "Inv_Date";
+            // 
+            // Inv_Billing_Name
+            // 
+            this.Inv_Billing_Name.HeaderText = "Billing Name";
+            this.Inv_Billing_Name.Name = "Inv_Billing_Name";
+            // 
+            // Inv_Sub_Total
+            // 
+            this.Inv_Sub_Total.HeaderText = "Sub Total";
+            this.Inv_Sub_Total.Name = "Inv_Sub_Total";
+            // 
+            // Inv_Tax
+            // 
+            this.Inv_Tax.HeaderText = "Tax";
+            this.Inv_Tax.Name = "Inv_Tax";
+            // 
+            // Inv_Total
+            // 
+            this.Inv_Total.HeaderText = "Total";
+            this.Inv_Total.Name = "Inv_Total";
+            // 
+            // Inv_Cost
+            // 
+            this.Inv_Cost.HeaderText = "Cost";
+            this.Inv_Cost.Name = "Inv_Cost";
+            // 
+            // Inv_Tax_Paid
+            // 
+            this.Inv_Tax_Paid.HeaderText = "Tax Paid";
+            this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
+            // 
+            // Inv_Paid
+            // 
+            this.Inv_Paid.HeaderText = "Paid";
+            this.Inv_Paid.Name = "Inv_Paid";
             // 
             // invsGpBx
             // 
@@ -1555,61 +1611,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // Inv_Num
-            // 
-            this.Inv_Num.HeaderText = "Inv Number";
-            this.Inv_Num.Name = "Inv_Num";
-            // 
-            // Inv_Date
-            // 
-            this.Inv_Date.HeaderText = "Inv Date";
-            this.Inv_Date.Name = "Inv_Date";
-            // 
-            // Inv_Billing_Name
-            // 
-            this.Inv_Billing_Name.HeaderText = "Billing Name";
-            this.Inv_Billing_Name.Name = "Inv_Billing_Name";
-            // 
-            // Inv_Sub_Total
-            // 
-            this.Inv_Sub_Total.HeaderText = "Sub Total";
-            this.Inv_Sub_Total.Name = "Inv_Sub_Total";
-            // 
-            // Inv_Tax
-            // 
-            this.Inv_Tax.HeaderText = "Tax";
-            this.Inv_Tax.Name = "Inv_Tax";
-            // 
-            // Inv_Total
-            // 
-            this.Inv_Total.HeaderText = "Total";
-            this.Inv_Total.Name = "Inv_Total";
-            // 
-            // Inv_Cost
-            // 
-            this.Inv_Cost.HeaderText = "Cost";
-            this.Inv_Cost.Name = "Inv_Cost";
-            // 
-            // Inv_Tax_Paid
-            // 
-            this.Inv_Tax_Paid.HeaderText = "Tax Paid";
-            this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
-            // 
-            // Inv_Paid
-            // 
-            this.Inv_Paid.HeaderText = "Paid";
-            this.Inv_Paid.Name = "Inv_Paid";
-            // 
-            // invsRefreshBut
-            // 
-            this.invsRefreshBut.Location = new System.Drawing.Point(488, 45);
-            this.invsRefreshBut.Name = "invsRefreshBut";
-            this.invsRefreshBut.Size = new System.Drawing.Size(75, 23);
-            this.invsRefreshBut.TabIndex = 3;
-            this.invsRefreshBut.Text = "Refresh";
-            this.invsRefreshBut.UseVisualStyleBackColor = true;
-            this.invsRefreshBut.Click += new System.EventHandler(this.invsRefreshBut_Click);
             // 
             // HCS
             // 

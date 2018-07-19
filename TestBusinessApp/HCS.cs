@@ -1671,6 +1671,18 @@ namespace TestBusinessApp
         {
             loadInvoices();
         }
+        private void InvoicesInvsDG_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Checks if one row is highlighted, if so the delete button is activated.
+            if (InvoicesInvsDG.SelectedRows.Count > 0 && InvoicesInvsDG.SelectedRows.Count < 2)
+            {
+                delClBut.Enabled = true;
+            }
+            else
+            {
+                delClBut.Enabled = false;
+            }
+        }
 
         #endregion
 
@@ -1940,9 +1952,10 @@ namespace TestBusinessApp
             setEffTxRateBut.Enabled = false;
         }
 
+
         #endregion
 
-
+ 
     }
 
 }
