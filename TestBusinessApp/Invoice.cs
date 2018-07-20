@@ -31,7 +31,7 @@ namespace TestBusinessApp
             using (SqlConnection myCon = new SqlConnection(con))
             {
                 List<Invoice> Invoices = new List<Invoice>();
-                Invoice invs = new Invoice();
+                
                 string query = "USE HCS SELECT * FROM Invoice WHERE INV_NUM = @invNum";
                 SqlCommand cmd = new SqlCommand(query, myCon);
                 cmd.Parameters.AddWithValue("@invNum", invn.ToString());
@@ -40,6 +40,7 @@ namespace TestBusinessApp
                 {
                     while (reader.Read())
                     {
+                        Invoice invs = new Invoice();
                         invs.ID = (int)reader["INV_ID"];
                         invs.ClientID = (int)reader["INV_Client_ID"];
                         invs.InvNumber = (int)reader["INV_NUM"];

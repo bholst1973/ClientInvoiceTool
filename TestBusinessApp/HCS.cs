@@ -81,7 +81,10 @@ namespace TestBusinessApp
             this.InvoicesInvsDG.Columns["Inv_Cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Tax_Paid"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
-            InvoicesInvsDG.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //InvoicesInvsDG.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+
+            this.invoiceItemsDG.Columns["Inv_Dt"].DefaultCellStyle.Format = "yyyy-MM-dd";
 
             // Admin
             adminAddHSBut.Enabled = false;
@@ -1666,7 +1669,6 @@ namespace TestBusinessApp
             {
                 if(row.Cells[8].Value.ToString() != "Paid")
                 {
-                    //row.DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
                     row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Red;
                     row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Red;
                 }
@@ -1678,6 +1680,7 @@ namespace TestBusinessApp
             }
 
             this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
+            InvoicesInvsDG.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void invsRefreshBut_Click(object sender, EventArgs e)
@@ -1690,11 +1693,35 @@ namespace TestBusinessApp
             //Checks if one row is highlighted, if so the delete button is activated.
             if (InvoicesInvsDG.SelectedRows.Count > 0 && InvoicesInvsDG.SelectedRows.Count < 2)
             {
+                if (invoiceItemsDG.Rows.Count > 0)
+                {
+                    invoiceItemsDG.Rows.Clear();
+                }
                 int row = InvoicesInvsDG.CurrentRow.Index;
                 Invoice inv = new Invoice();
                 List<Invoice> invItems = new List<Invoice>();
                 int invNum = Convert.ToInt32(InvoicesInvsDG.CurrentRow.Cells[0].Value.ToString());
                 invItems = inv.GetInvoicebyInvNum(invNum);
+                foreach (Invoice invItem in invItems)
+                {
+
+                    this.invoiceItemsDG.Rows.Add(invItem.ID, invItem.ClientID, invItem.InvNumber, invItem.Date, invItem.Billing_Name, 
+                        invItem.Qty, invItem.Details, Math.Round(invItem.Price, 2), Math.Round(invItem.Tax, 2), Math.Round(invItem.Total, 2),
+                        invItem.Notes, invItem.Paid, Math.Round(invItem.Cost, 2),  Math.Round(invItem.TaxPaid, 2));
+                }
+
+                foreach (DataGridViewRow rw in invoiceItemsDG.Rows)
+                {
+                    if (rw.Cells[11].Value.ToString() != "Paid")
+                    {
+                        rw.Cells["Inv_Pd"].Style.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        rw.Cells["Inv_Pd"].Style.ForeColor = System.Drawing.Color.Green;
+                    }
+                }
+                invoiceItemsDG.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
 
             else
