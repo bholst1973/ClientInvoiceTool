@@ -81,8 +81,6 @@ namespace TestBusinessApp
             this.InvoicesInvsDG.Columns["Inv_Cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Tax_Paid"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
-            //InvoicesInvsDG.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
 
             this.invoiceItemsDG.Columns["Inv_Dt"].DefaultCellStyle.Format = "yyyy-MM-dd";
 
@@ -1680,7 +1678,6 @@ namespace TestBusinessApp
             }
 
             this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
-            InvoicesInvsDG.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void invsRefreshBut_Click(object sender, EventArgs e)
@@ -1721,7 +1718,6 @@ namespace TestBusinessApp
                         rw.Cells["Inv_Pd"].Style.ForeColor = System.Drawing.Color.Green;
                     }
                 }
-                invoiceItemsDG.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
 
             else

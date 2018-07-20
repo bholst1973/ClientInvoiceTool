@@ -1220,6 +1220,7 @@
             this.invoiceItemsDG.AllowUserToOrderColumns = true;
             this.invoiceItemsDG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.invoiceItemsDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.invoiceItemsDG.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.invoiceItemsDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invoiceItemsDG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1246,71 +1247,85 @@
             // 
             this.INV_ID.HeaderText = "Inv ID";
             this.INV_ID.Name = "INV_ID";
+            this.INV_ID.Width = 61;
             // 
             // INV_Client_ID
             // 
             this.INV_Client_ID.HeaderText = "Client ID";
             this.INV_Client_ID.Name = "INV_Client_ID";
+            this.INV_Client_ID.Width = 72;
             // 
             // INV_NM
             // 
             this.INV_NM.HeaderText = "Inv #";
             this.INV_NM.Name = "INV_NM";
+            this.INV_NM.Width = 57;
             // 
             // INV_Dt
             // 
             this.INV_Dt.HeaderText = "Date";
             this.INV_Dt.Name = "INV_Dt";
+            this.INV_Dt.Width = 55;
             // 
             // INV_BillName
             // 
             this.INV_BillName.HeaderText = "Billing Name";
             this.INV_BillName.Name = "INV_BillName";
+            this.INV_BillName.Width = 90;
             // 
             // INV_Qty
             // 
             this.INV_Qty.HeaderText = "Qty";
             this.INV_Qty.Name = "INV_Qty";
+            this.INV_Qty.Width = 48;
             // 
             // INV_Details
             // 
             this.INV_Details.HeaderText = "Details";
             this.INV_Details.Name = "INV_Details";
+            this.INV_Details.Width = 64;
             // 
             // INV_Price
             // 
             this.INV_Price.HeaderText = "Price";
             this.INV_Price.Name = "INV_Price";
+            this.INV_Price.Width = 56;
             // 
             // INV_Tx
             // 
             this.INV_Tx.HeaderText = "Tax";
             this.INV_Tx.Name = "INV_Tx";
+            this.INV_Tx.Width = 50;
             // 
             // INV_Ttl
             // 
             this.INV_Ttl.HeaderText = "Total";
             this.INV_Ttl.Name = "INV_Ttl";
+            this.INV_Ttl.Width = 56;
             // 
             // INV_Nts
             // 
             this.INV_Nts.HeaderText = "Notes";
             this.INV_Nts.Name = "INV_Nts";
+            this.INV_Nts.Width = 60;
             // 
             // INV_Pd
             // 
             this.INV_Pd.HeaderText = "Paid";
             this.INV_Pd.Name = "INV_Pd";
+            this.INV_Pd.Width = 53;
             // 
             // INV_Cst
             // 
             this.INV_Cst.HeaderText = "Cost";
             this.INV_Cst.Name = "INV_Cst";
+            this.INV_Cst.Width = 53;
             // 
             // INV_TaxPaid
             // 
             this.INV_TaxPaid.HeaderText = "Tax Paid";
             this.INV_TaxPaid.Name = "INV_TaxPaid";
+            this.INV_TaxPaid.Width = 74;
             // 
             // InvoicesInvsDG
             // 
@@ -1319,6 +1334,7 @@
             this.InvoicesInvsDG.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesInvsDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.InvoicesInvsDG.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InvoicesInvsDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InvoicesInvsDG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1341,46 +1357,55 @@
             // 
             this.Inv_Num.HeaderText = "Inv Number";
             this.Inv_Num.Name = "Inv_Num";
+            this.Inv_Num.Width = 87;
             // 
             // Inv_Date
             // 
             this.Inv_Date.HeaderText = "Inv Date";
             this.Inv_Date.Name = "Inv_Date";
+            this.Inv_Date.Width = 73;
             // 
             // Inv_Billing_Name
             // 
             this.Inv_Billing_Name.HeaderText = "Billing Name";
             this.Inv_Billing_Name.Name = "Inv_Billing_Name";
+            this.Inv_Billing_Name.Width = 90;
             // 
             // Inv_Sub_Total
             // 
             this.Inv_Sub_Total.HeaderText = "Sub Total";
             this.Inv_Sub_Total.Name = "Inv_Sub_Total";
+            this.Inv_Sub_Total.Width = 78;
             // 
             // Inv_Tax
             // 
             this.Inv_Tax.HeaderText = "Tax";
             this.Inv_Tax.Name = "Inv_Tax";
+            this.Inv_Tax.Width = 50;
             // 
             // Inv_Total
             // 
             this.Inv_Total.HeaderText = "Total";
             this.Inv_Total.Name = "Inv_Total";
+            this.Inv_Total.Width = 56;
             // 
             // Inv_Cost
             // 
             this.Inv_Cost.HeaderText = "Cost";
             this.Inv_Cost.Name = "Inv_Cost";
+            this.Inv_Cost.Width = 53;
             // 
             // Inv_Tax_Paid
             // 
             this.Inv_Tax_Paid.HeaderText = "Tax Paid";
             this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
+            this.Inv_Tax_Paid.Width = 74;
             // 
             // Inv_Paid
             // 
             this.Inv_Paid.HeaderText = "Paid";
             this.Inv_Paid.Name = "Inv_Paid";
+            this.Inv_Paid.Width = 53;
             // 
             // invsGpBx
             // 
