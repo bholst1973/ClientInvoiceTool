@@ -15,8 +15,6 @@ TestBusinessApp/Data/
 
 *.ide-wal
 
-*.sln
-
 \.vs/TestBusinessApp/v15/
 
 TestBusinessApp/bin/Debug/
