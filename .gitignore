@@ -20,3 +20,11 @@ TestBusinessApp/Data/
 TestBusinessApp/bin/Debug/
 
 TestBusinessApp/obj/Debug/
+
+Data/\.vs/Data/v15/
+
+\.vs/TestBusinessApp/DesignTimeBuild/
+
+Data/\.vs/
+
+Data/

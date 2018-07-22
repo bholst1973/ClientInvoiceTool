@@ -657,6 +657,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.clientDataGridView.AutoGenerateColumns = false;
+            this.clientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.clientDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.clientDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.clientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -690,6 +691,7 @@
             this.clientIDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
             this.clientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientIDDataGridViewTextBoxColumn.Width = 43;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
@@ -697,7 +699,7 @@
             this.firstNameDataGridViewTextBoxColumn.FillWeight = 112.6873F;
             this.firstNameDataGridViewTextBoxColumn.HeaderText = "First";
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 96;
+            this.firstNameDataGridViewTextBoxColumn.Width = 51;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
@@ -705,7 +707,7 @@
             this.lastNameDataGridViewTextBoxColumn.FillWeight = 108.9343F;
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.Width = 94;
+            this.lastNameDataGridViewTextBoxColumn.Width = 52;
             // 
             // businessNameDataGridViewTextBoxColumn
             // 
@@ -713,13 +715,14 @@
             this.businessNameDataGridViewTextBoxColumn.FillWeight = 105.5468F;
             this.businessNameDataGridViewTextBoxColumn.HeaderText = "Company";
             this.businessNameDataGridViewTextBoxColumn.Name = "businessNameDataGridViewTextBoxColumn";
-            this.businessNameDataGridViewTextBoxColumn.Width = 90;
+            this.businessNameDataGridViewTextBoxColumn.Width = 76;
             // 
             // Billing_Name
             // 
             this.Billing_Name.DataPropertyName = "Billing_Name";
             this.Billing_Name.HeaderText = "Billing";
             this.Billing_Name.Name = "Billing_Name";
+            this.Billing_Name.Width = 59;
             // 
             // address1DataGridViewTextBoxColumn
             // 
@@ -727,7 +730,7 @@
             this.address1DataGridViewTextBoxColumn.FillWeight = 102.489F;
             this.address1DataGridViewTextBoxColumn.HeaderText = "Address ";
             this.address1DataGridViewTextBoxColumn.Name = "address1DataGridViewTextBoxColumn";
-            this.address1DataGridViewTextBoxColumn.Width = 88;
+            this.address1DataGridViewTextBoxColumn.Width = 73;
             // 
             // address2DataGridViewTextBoxColumn
             // 
@@ -735,7 +738,7 @@
             this.address2DataGridViewTextBoxColumn.FillWeight = 99.72904F;
             this.address2DataGridViewTextBoxColumn.HeaderText = "Address";
             this.address2DataGridViewTextBoxColumn.Name = "address2DataGridViewTextBoxColumn";
-            this.address2DataGridViewTextBoxColumn.Width = 85;
+            this.address2DataGridViewTextBoxColumn.Width = 70;
             // 
             // address3DataGridViewTextBoxColumn
             // 
@@ -743,7 +746,7 @@
             this.address3DataGridViewTextBoxColumn.FillWeight = 97.2378F;
             this.address3DataGridViewTextBoxColumn.HeaderText = "Address";
             this.address3DataGridViewTextBoxColumn.Name = "address3DataGridViewTextBoxColumn";
-            this.address3DataGridViewTextBoxColumn.Width = 83;
+            this.address3DataGridViewTextBoxColumn.Width = 70;
             // 
             // cityDataGridViewTextBoxColumn
             // 
@@ -751,7 +754,7 @@
             this.cityDataGridViewTextBoxColumn.FillWeight = 94.98912F;
             this.cityDataGridViewTextBoxColumn.HeaderText = "City";
             this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.Width = 82;
+            this.cityDataGridViewTextBoxColumn.Width = 49;
             // 
             // stateDataGridViewTextBoxColumn
             // 
@@ -759,7 +762,7 @@
             this.stateDataGridViewTextBoxColumn.FillWeight = 92.95942F;
             this.stateDataGridViewTextBoxColumn.HeaderText = "State";
             this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.Width = 79;
+            this.stateDataGridViewTextBoxColumn.Width = 57;
             // 
             // zipDataGridViewTextBoxColumn
             // 
@@ -767,7 +770,7 @@
             this.zipDataGridViewTextBoxColumn.FillWeight = 91.12737F;
             this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
             this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
-            this.zipDataGridViewTextBoxColumn.Width = 78;
+            this.zipDataGridViewTextBoxColumn.Width = 47;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
@@ -775,7 +778,7 @@
             this.phoneDataGridViewTextBoxColumn.FillWeight = 89.47365F;
             this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.Width = 77;
+            this.phoneDataGridViewTextBoxColumn.Width = 63;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -783,7 +786,7 @@
             this.emailDataGridViewTextBoxColumn.FillWeight = 87.98099F;
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 75;
+            this.emailDataGridViewTextBoxColumn.Width = 57;
             // 
             // clientBindingSource
             // 

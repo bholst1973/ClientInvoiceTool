@@ -12,8 +12,6 @@ namespace TestBusinessApp
     public partial class HCS : Form
     {
         #region Collapse 
-        //down vote
-        //accepted
         //Collapse to definitions
         //CTRL + M, O
 
@@ -99,7 +97,7 @@ namespace TestBusinessApp
 
         public void loadTestData()
         {
-            invClDTPicker.Value = new DateTime(2009, 06, 01);
+            //invClDTPicker.Value = new DateTime(2009, 06, 01);
         }
 
         #region         <<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
@@ -151,6 +149,7 @@ namespace TestBusinessApp
                 clearClientData();
                 loadClientPresetData();
                 loadInvClients();
+                autosizeClientColumns();
             }
 
             catch (Exception ex)
@@ -259,7 +258,7 @@ namespace TestBusinessApp
             { clInfo.Add(""); }
             else
             {
-                clInfo.Add(emailTxtBx.Text);
+                clInfo.Add(emailTxtBx.Text.ToLower());
             }
 
             return clInfo;

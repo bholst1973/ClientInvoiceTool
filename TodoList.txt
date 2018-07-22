@@ -1,4 +1,6 @@
-Pop windows need should pop inside the app window
+
+Ensure App will run with no data in the Database.
+Pop windows need should pop inside the app window.
 Setup preset Services Values instead of hard code.
 
 Check if client exists
@@ -19,6 +21,7 @@ Ensure Sql statments account for db size
 
 Done:
 
+Make email addresses all lower case.
 client counter
 
 AutoSize Client Columns
