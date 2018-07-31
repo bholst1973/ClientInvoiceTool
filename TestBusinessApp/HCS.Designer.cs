@@ -49,9 +49,9 @@
             this.phone3TxtBx = new System.Windows.Forms.TextBox();
             this.phone2TxtBx = new System.Windows.Forms.TextBox();
             this.phone1TxtBx = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.phoneLbl = new System.Windows.Forms.Label();
             this.emailTxtBx = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.emailLbl = new System.Windows.Forms.Label();
             this.cityTxtBx = new System.Windows.Forms.TextBox();
             this.cityLbl = new System.Windows.Forms.Label();
             this.stateTxtBx = new System.Windows.Forms.TextBox();
@@ -128,20 +128,6 @@
             this.invoicesPage = new System.Windows.Forms.TabPage();
             this.invsRefreshBut = new System.Windows.Forms.Button();
             this.invoiceItemsDG = new System.Windows.Forms.DataGridView();
-            this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Client_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_NM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Dt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_BillName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Tx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Nts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Pd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Cst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_TaxPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicesInvsDG = new System.Windows.Forms.DataGridView();
             this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -186,6 +172,47 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
+            this.invIDLbl = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.clID = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.invnumLbl = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.subTotLbl = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.bilNameLbl = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.dateLbl = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.taxLbl = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.QtyIPLbl = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.dtlsLbl = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.notesLbl = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.totalLbl = new System.Windows.Forms.Label();
+            this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Client_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_NM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Dt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_BillName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Tx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Nts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Pd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Cst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_TaxPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.taxpaidLbl = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.costLbl = new System.Windows.Forms.Label();
+            this.paidCB = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -284,9 +311,9 @@
             this.ClientPage.Controls.Add(this.phone3TxtBx);
             this.ClientPage.Controls.Add(this.phone2TxtBx);
             this.ClientPage.Controls.Add(this.phone1TxtBx);
-            this.ClientPage.Controls.Add(this.label10);
+            this.ClientPage.Controls.Add(this.phoneLbl);
             this.ClientPage.Controls.Add(this.emailTxtBx);
-            this.ClientPage.Controls.Add(this.label11);
+            this.ClientPage.Controls.Add(this.emailLbl);
             this.ClientPage.Controls.Add(this.cityTxtBx);
             this.ClientPage.Controls.Add(this.cityLbl);
             this.ClientPage.Controls.Add(this.stateTxtBx);
@@ -440,15 +467,15 @@
             this.phone1TxtBx.TabIndex = 11;
             this.phone1TxtBx.TextChanged += new System.EventHandler(this.phone1TxtBx_TextChanged);
             // 
-            // label10
+            // phoneLbl
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(567, 329);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Phone";
+            this.phoneLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.phoneLbl.AutoSize = true;
+            this.phoneLbl.Location = new System.Drawing.Point(567, 329);
+            this.phoneLbl.Name = "phoneLbl";
+            this.phoneLbl.Size = new System.Drawing.Size(38, 13);
+            this.phoneLbl.TabIndex = 23;
+            this.phoneLbl.Text = "Phone";
             // 
             // emailTxtBx
             // 
@@ -459,15 +486,15 @@
             this.emailTxtBx.TabIndex = 14;
             this.emailTxtBx.TextChanged += new System.EventHandler(this.emailTxtBx_TextChanged);
             // 
-            // label11
+            // emailLbl
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(567, 357);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "E-Mail";
+            this.emailLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.emailLbl.AutoSize = true;
+            this.emailLbl.Location = new System.Drawing.Point(567, 357);
+            this.emailLbl.Name = "emailLbl";
+            this.emailLbl.Size = new System.Drawing.Size(36, 13);
+            this.emailLbl.TabIndex = 21;
+            this.emailLbl.Text = "E-Mail";
             // 
             // cityTxtBx
             // 
@@ -1195,6 +1222,33 @@
             // 
             // invoicesPage
             // 
+            this.invoicesPage.Controls.Add(this.paidCB);
+            this.invoicesPage.Controls.Add(this.textBox14);
+            this.invoicesPage.Controls.Add(this.taxpaidLbl);
+            this.invoicesPage.Controls.Add(this.textBox15);
+            this.invoicesPage.Controls.Add(this.costLbl);
+            this.invoicesPage.Controls.Add(this.textBox11);
+            this.invoicesPage.Controls.Add(this.notesLbl);
+            this.invoicesPage.Controls.Add(this.textBox12);
+            this.invoicesPage.Controls.Add(this.totalLbl);
+            this.invoicesPage.Controls.Add(this.textBox7);
+            this.invoicesPage.Controls.Add(this.taxLbl);
+            this.invoicesPage.Controls.Add(this.textBox8);
+            this.invoicesPage.Controls.Add(this.QtyIPLbl);
+            this.invoicesPage.Controls.Add(this.textBox9);
+            this.invoicesPage.Controls.Add(this.dtlsLbl);
+            this.invoicesPage.Controls.Add(this.textBox4);
+            this.invoicesPage.Controls.Add(this.subTotLbl);
+            this.invoicesPage.Controls.Add(this.textBox5);
+            this.invoicesPage.Controls.Add(this.bilNameLbl);
+            this.invoicesPage.Controls.Add(this.textBox6);
+            this.invoicesPage.Controls.Add(this.dateLbl);
+            this.invoicesPage.Controls.Add(this.textBox3);
+            this.invoicesPage.Controls.Add(this.invnumLbl);
+            this.invoicesPage.Controls.Add(this.textBox2);
+            this.invoicesPage.Controls.Add(this.clID);
+            this.invoicesPage.Controls.Add(this.textBox1);
+            this.invoicesPage.Controls.Add(this.invIDLbl);
             this.invoicesPage.Controls.Add(this.invsRefreshBut);
             this.invoicesPage.Controls.Add(this.invoiceItemsDG);
             this.invoicesPage.Controls.Add(this.InvoicesInvsDG);
@@ -1241,94 +1295,10 @@
             this.INV_Pd,
             this.INV_Cst,
             this.INV_TaxPaid});
-            this.invoiceItemsDG.Location = new System.Drawing.Point(6, 240);
+            this.invoiceItemsDG.Location = new System.Drawing.Point(8, 240);
             this.invoiceItemsDG.Name = "invoiceItemsDG";
-            this.invoiceItemsDG.Size = new System.Drawing.Size(1057, 253);
+            this.invoiceItemsDG.Size = new System.Drawing.Size(1057, 139);
             this.invoiceItemsDG.TabIndex = 2;
-            // 
-            // INV_ID
-            // 
-            this.INV_ID.HeaderText = "Inv ID";
-            this.INV_ID.Name = "INV_ID";
-            this.INV_ID.Width = 61;
-            // 
-            // INV_Client_ID
-            // 
-            this.INV_Client_ID.HeaderText = "Client ID";
-            this.INV_Client_ID.Name = "INV_Client_ID";
-            this.INV_Client_ID.Width = 72;
-            // 
-            // INV_NM
-            // 
-            this.INV_NM.HeaderText = "Inv #";
-            this.INV_NM.Name = "INV_NM";
-            this.INV_NM.Width = 57;
-            // 
-            // INV_Dt
-            // 
-            this.INV_Dt.HeaderText = "Date";
-            this.INV_Dt.Name = "INV_Dt";
-            this.INV_Dt.Width = 55;
-            // 
-            // INV_BillName
-            // 
-            this.INV_BillName.HeaderText = "Billing Name";
-            this.INV_BillName.Name = "INV_BillName";
-            this.INV_BillName.Width = 90;
-            // 
-            // INV_Qty
-            // 
-            this.INV_Qty.HeaderText = "Qty";
-            this.INV_Qty.Name = "INV_Qty";
-            this.INV_Qty.Width = 48;
-            // 
-            // INV_Details
-            // 
-            this.INV_Details.HeaderText = "Details";
-            this.INV_Details.Name = "INV_Details";
-            this.INV_Details.Width = 64;
-            // 
-            // INV_Price
-            // 
-            this.INV_Price.HeaderText = "Price";
-            this.INV_Price.Name = "INV_Price";
-            this.INV_Price.Width = 56;
-            // 
-            // INV_Tx
-            // 
-            this.INV_Tx.HeaderText = "Tax";
-            this.INV_Tx.Name = "INV_Tx";
-            this.INV_Tx.Width = 50;
-            // 
-            // INV_Ttl
-            // 
-            this.INV_Ttl.HeaderText = "Total";
-            this.INV_Ttl.Name = "INV_Ttl";
-            this.INV_Ttl.Width = 56;
-            // 
-            // INV_Nts
-            // 
-            this.INV_Nts.HeaderText = "Notes";
-            this.INV_Nts.Name = "INV_Nts";
-            this.INV_Nts.Width = 60;
-            // 
-            // INV_Pd
-            // 
-            this.INV_Pd.HeaderText = "Paid";
-            this.INV_Pd.Name = "INV_Pd";
-            this.INV_Pd.Width = 53;
-            // 
-            // INV_Cst
-            // 
-            this.INV_Cst.HeaderText = "Cost";
-            this.INV_Cst.Name = "INV_Cst";
-            this.INV_Cst.Width = 53;
-            // 
-            // INV_TaxPaid
-            // 
-            this.INV_TaxPaid.HeaderText = "Tax Paid";
-            this.INV_TaxPaid.Name = "INV_TaxPaid";
-            this.INV_TaxPaid.Width = 74;
             // 
             // InvoicesInvsDG
             // 
@@ -1743,6 +1713,308 @@
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // invIDLbl
+            // 
+            this.invIDLbl.AutoSize = true;
+            this.invIDLbl.Location = new System.Drawing.Point(9, 411);
+            this.invIDLbl.Name = "invIDLbl";
+            this.invIDLbl.Size = new System.Drawing.Size(36, 13);
+            this.invIDLbl.TabIndex = 4;
+            this.invIDLbl.Text = "Inv ID";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(62, 408);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(62, 434);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // clID
+            // 
+            this.clID.AutoSize = true;
+            this.clID.Location = new System.Drawing.Point(9, 437);
+            this.clID.Name = "clID";
+            this.clID.Size = new System.Drawing.Size(47, 13);
+            this.clID.TabIndex = 6;
+            this.clID.Text = "Client ID";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(62, 460);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 9;
+            // 
+            // invnumLbl
+            // 
+            this.invnumLbl.AutoSize = true;
+            this.invnumLbl.Location = new System.Drawing.Point(9, 463);
+            this.invnumLbl.Name = "invnumLbl";
+            this.invnumLbl.Size = new System.Drawing.Size(32, 13);
+            this.invnumLbl.TabIndex = 8;
+            this.invnumLbl.Text = "Inv #";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(425, 435);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 15;
+            // 
+            // subTotLbl
+            // 
+            this.subTotLbl.AutoSize = true;
+            this.subTotLbl.Location = new System.Drawing.Point(370, 437);
+            this.subTotLbl.Name = "subTotLbl";
+            this.subTotLbl.Size = new System.Drawing.Size(53, 13);
+            this.subTotLbl.TabIndex = 14;
+            this.subTotLbl.Text = "Sub Total";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(249, 434);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 13;
+            // 
+            // bilNameLbl
+            // 
+            this.bilNameLbl.AutoSize = true;
+            this.bilNameLbl.Location = new System.Drawing.Point(183, 437);
+            this.bilNameLbl.Name = "bilNameLbl";
+            this.bilNameLbl.Size = new System.Drawing.Size(65, 13);
+            this.bilNameLbl.TabIndex = 12;
+            this.bilNameLbl.Text = "Billing Name";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(249, 408);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 11;
+            // 
+            // dateLbl
+            // 
+            this.dateLbl.AutoSize = true;
+            this.dateLbl.Location = new System.Drawing.Point(183, 411);
+            this.dateLbl.Name = "dateLbl";
+            this.dateLbl.Size = new System.Drawing.Size(30, 13);
+            this.dateLbl.TabIndex = 10;
+            this.dateLbl.Text = "Date";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(425, 461);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 21;
+            // 
+            // taxLbl
+            // 
+            this.taxLbl.AutoSize = true;
+            this.taxLbl.Location = new System.Drawing.Point(373, 463);
+            this.taxLbl.Name = "taxLbl";
+            this.taxLbl.Size = new System.Drawing.Size(25, 13);
+            this.taxLbl.TabIndex = 20;
+            this.taxLbl.Text = "Tax";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(249, 460);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 19;
+            // 
+            // QtyIPLbl
+            // 
+            this.QtyIPLbl.AutoSize = true;
+            this.QtyIPLbl.Location = new System.Drawing.Point(183, 463);
+            this.QtyIPLbl.Name = "QtyIPLbl";
+            this.QtyIPLbl.Size = new System.Drawing.Size(23, 13);
+            this.QtyIPLbl.TabIndex = 18;
+            this.QtyIPLbl.Text = "Qty";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(425, 409);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 17;
+            // 
+            // dtlsLbl
+            // 
+            this.dtlsLbl.AutoSize = true;
+            this.dtlsLbl.Location = new System.Drawing.Point(373, 411);
+            this.dtlsLbl.Name = "dtlsLbl";
+            this.dtlsLbl.Size = new System.Drawing.Size(39, 13);
+            this.dtlsLbl.TabIndex = 16;
+            this.dtlsLbl.Text = "Details";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(589, 434);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 25;
+            // 
+            // notesLbl
+            // 
+            this.notesLbl.AutoSize = true;
+            this.notesLbl.Location = new System.Drawing.Point(548, 437);
+            this.notesLbl.Name = "notesLbl";
+            this.notesLbl.Size = new System.Drawing.Size(35, 13);
+            this.notesLbl.TabIndex = 24;
+            this.notesLbl.Text = "Notes";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(589, 409);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 23;
+            // 
+            // totalLbl
+            // 
+            this.totalLbl.AutoSize = true;
+            this.totalLbl.Location = new System.Drawing.Point(548, 412);
+            this.totalLbl.Name = "totalLbl";
+            this.totalLbl.Size = new System.Drawing.Size(31, 13);
+            this.totalLbl.TabIndex = 22;
+            this.totalLbl.Text = "Total";
+            // 
+            // INV_ID
+            // 
+            this.INV_ID.HeaderText = "Inv ID";
+            this.INV_ID.Name = "INV_ID";
+            this.INV_ID.Width = 61;
+            // 
+            // INV_Client_ID
+            // 
+            this.INV_Client_ID.HeaderText = "Client ID";
+            this.INV_Client_ID.Name = "INV_Client_ID";
+            this.INV_Client_ID.Width = 72;
+            // 
+            // INV_NM
+            // 
+            this.INV_NM.HeaderText = "Inv #";
+            this.INV_NM.Name = "INV_NM";
+            this.INV_NM.Width = 57;
+            // 
+            // INV_Dt
+            // 
+            this.INV_Dt.HeaderText = "Date";
+            this.INV_Dt.Name = "INV_Dt";
+            this.INV_Dt.Width = 55;
+            // 
+            // INV_BillName
+            // 
+            this.INV_BillName.HeaderText = "Billing Name";
+            this.INV_BillName.Name = "INV_BillName";
+            this.INV_BillName.Width = 90;
+            // 
+            // INV_Qty
+            // 
+            this.INV_Qty.HeaderText = "Qty";
+            this.INV_Qty.Name = "INV_Qty";
+            this.INV_Qty.Width = 48;
+            // 
+            // INV_Details
+            // 
+            this.INV_Details.HeaderText = "Details";
+            this.INV_Details.Name = "INV_Details";
+            this.INV_Details.Width = 64;
+            // 
+            // INV_Price
+            // 
+            this.INV_Price.HeaderText = "Sub Total";
+            this.INV_Price.Name = "INV_Price";
+            this.INV_Price.Width = 78;
+            // 
+            // INV_Tx
+            // 
+            this.INV_Tx.HeaderText = "Tax";
+            this.INV_Tx.Name = "INV_Tx";
+            this.INV_Tx.Width = 50;
+            // 
+            // INV_Ttl
+            // 
+            this.INV_Ttl.HeaderText = "Total";
+            this.INV_Ttl.Name = "INV_Ttl";
+            this.INV_Ttl.Width = 56;
+            // 
+            // INV_Nts
+            // 
+            this.INV_Nts.HeaderText = "Notes";
+            this.INV_Nts.Name = "INV_Nts";
+            this.INV_Nts.Width = 60;
+            // 
+            // INV_Pd
+            // 
+            this.INV_Pd.HeaderText = "Paid";
+            this.INV_Pd.Name = "INV_Pd";
+            this.INV_Pd.Width = 53;
+            // 
+            // INV_Cst
+            // 
+            this.INV_Cst.HeaderText = "Cost";
+            this.INV_Cst.Name = "INV_Cst";
+            this.INV_Cst.Width = 53;
+            // 
+            // INV_TaxPaid
+            // 
+            this.INV_TaxPaid.HeaderText = "Tax Paid";
+            this.INV_TaxPaid.Name = "INV_TaxPaid";
+            this.INV_TaxPaid.Width = 74;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(771, 435);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 20);
+            this.textBox14.TabIndex = 31;
+            // 
+            // taxpaidLbl
+            // 
+            this.taxpaidLbl.AutoSize = true;
+            this.taxpaidLbl.Location = new System.Drawing.Point(716, 438);
+            this.taxpaidLbl.Name = "taxpaidLbl";
+            this.taxpaidLbl.Size = new System.Drawing.Size(49, 13);
+            this.taxpaidLbl.TabIndex = 30;
+            this.taxpaidLbl.Text = "Tax Paid";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(771, 410);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 29;
+            // 
+            // costLbl
+            // 
+            this.costLbl.AutoSize = true;
+            this.costLbl.Location = new System.Drawing.Point(716, 413);
+            this.costLbl.Name = "costLbl";
+            this.costLbl.Size = new System.Drawing.Size(28, 13);
+            this.costLbl.TabIndex = 28;
+            this.costLbl.Text = "Cost";
+            // 
+            // paidCB
+            // 
+            this.paidCB.AutoSize = true;
+            this.paidCB.Location = new System.Drawing.Point(892, 411);
+            this.paidCB.Name = "paidCB";
+            this.paidCB.Size = new System.Drawing.Size(47, 17);
+            this.paidCB.TabIndex = 32;
+            this.paidCB.Text = "Paid";
+            this.paidCB.UseVisualStyleBackColor = true;
+            // 
             // HCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1771,6 +2043,7 @@
             this.ComServGB.ResumeLayout(false);
             this.ComServGB.PerformLayout();
             this.invoicesPage.ResumeLayout(false);
+            this.invoicesPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemsDG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvsDG)).EndInit();
             this.invsGpBx.ResumeLayout(false);
@@ -1807,9 +2080,9 @@
         private HCSDataSetTableAdapters.ClientTableAdapter clientTableAdapter;
         private HCSDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox phone1TxtBx;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label phoneLbl;
         private System.Windows.Forms.TextBox emailTxtBx;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label emailLbl;
         private System.Windows.Forms.TextBox cityTxtBx;
         private System.Windows.Forms.Label cityLbl;
         private System.Windows.Forms.TextBox stateTxtBx;
@@ -1934,6 +2207,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
         private System.Windows.Forms.Button invsRefreshBut;
+        private System.Windows.Forms.Label invIDLbl;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label notesLbl;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label totalLbl;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label taxLbl;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label QtyIPLbl;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label dtlsLbl;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label subTotLbl;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label bilNameLbl;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label dateLbl;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label invnumLbl;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label clID;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_Client_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_NM;
@@ -1948,6 +2243,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_Pd;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_Cst;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_TaxPaid;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label taxpaidLbl;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label costLbl;
+        private System.Windows.Forms.CheckBox paidCB;
     }
 }
 
