@@ -1372,7 +1372,8 @@ SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, 
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, A" +
-                "ddress2, Address3, City, State, Zip, Phone, Email FROM dbo.Client";
+                "ddress2, Address3, City, State, Zip, Phone, Email FROM dbo.Client WHERE Billing_" +
+                "Name != \'--\'";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

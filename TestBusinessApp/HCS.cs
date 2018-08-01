@@ -31,9 +31,10 @@ namespace TestBusinessApp
         // Client object that holds the current client data to be updated.
         Client workingClient = new Client();
         //  Holds the current Client Data Grid row that is being updated.
-        int updaterow;
+        int clientupdaterow;
         decimal taxRate = 0.06875m;
-        //decimal taxRate = 0.065m;
+        int invoicesupdaterow;
+        Invoice workingInvoice = new Invoice();
 
         public HCS()
         {
@@ -60,7 +61,7 @@ namespace TestBusinessApp
             //  Create Invoice Tab
             loadInvQty();
             loadInvDetails();
-            loadInvClients();
+            loadInvClClientCB();
             addInvBut.Enabled = false;
             createInvBut.Enabled = false;
             createEstBut.Enabled = false;
@@ -72,6 +73,7 @@ namespace TestBusinessApp
 
             //Invoices
             loadInvoices();
+            loadInvsClientCB();
 
             this.InvoicesInvsDG.Columns["Inv_Sub_Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Tax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -148,7 +150,8 @@ namespace TestBusinessApp
                 insertHCSClient(ci);
                 clearClientData();
                 loadClientPresetData();
-                loadInvClients();
+                loadInvClClientCB();
+                loadInvsClientCB();
                 autosizeClientColumns();
             }
 
@@ -171,7 +174,7 @@ namespace TestBusinessApp
                 getClientCount();
                 delClBut.Enabled = false;
             }
-            loadInvClients();
+            loadInvClClientCB();
         }
 
         //  This method builds a list of client data
@@ -953,9 +956,9 @@ namespace TestBusinessApp
 
         private void clientDataGridView_DoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            updaterow = clientDataGridView.CurrentRow.Index;
-            int temp = Convert.ToInt32(clientDataGridView.CurrentRow.Cells[0].Value.ToString());
-            LoadClientEdit(temp);
+            clientupdaterow = clientDataGridView.CurrentRow.Index;
+            int clID = Convert.ToInt32(clientDataGridView.CurrentRow.Cells[0].Value.ToString());
+            LoadClientEdit(clID);
         }
 
         // This method loads the text boxes with the double clicked clients data
@@ -1053,8 +1056,8 @@ namespace TestBusinessApp
                                                       " WHERE Client_ID = " + ID;
             executeQuery(query);
             clientDataGridView.FirstDisplayedScrollingRowIndex = clientDataGridView.RowCount - 1;
-            clientDataGridView.CurrentCell = clientDataGridView.Rows[updaterow].Cells[0];
-            clientDataGridView.Rows[updaterow].Selected = true;
+            clientDataGridView.CurrentCell = clientDataGridView.Rows[clientupdaterow].Cells[0];
+            clientDataGridView.Rows[clientupdaterow].Selected = true;
             clearClientData();
             getClientCount();
         }
@@ -1106,27 +1109,30 @@ namespace TestBusinessApp
             }
         }
 
-        public void loadInvClients()
+        public void loadInvClClientCB()
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
             {
                 try
                 {
-                    //string query = "SELECT LTRIM (COALESCE(First_Name, '') +' '+ COALESCE(Last_Name, '') + ' ' +  COALESCE(Business_Name, '')) AS 'ListName' FROM Client";
                     string query = "SELECT BILLING_NAME FROM Client";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     conn.Open();
                     DataSet ds = new DataSet();
                     da.Fill(ds, "Client");
                     invClCustCmbBX.DataSource = ds.Tables["Client"];
+                    invsClientCB.DataSource = ds.Tables["Client"];
                     invClCustCmbBX.DisplayMember = "Billing_Name";
+                    invsClientCB.DisplayMember = "Billing_Name";
                     invClCustCmbBX.ValueMember = "Billing_Name";
+                    invsClientCB.ValueMember = "Billing_Name";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error occured: " + ex.ToString());
                 }
                 invClCustCmbBX.SelectedIndex = -1;
+                invsClientCB.SelectedIndex = -1;
             }
         }
 
@@ -1506,8 +1512,8 @@ namespace TestBusinessApp
             {
                 tot = Convert.ToDecimal(invclGrandTotalTxtBx.Text.Substring(2));
             }
-
-            if (tot > 0 && invClCustCmbBX.SelectedIndex > -1)
+            
+            if (tot > 0 && invClCustCmbBX.SelectedIndex > 0)
             {
                 createInvBut.Enabled = true;
                 createEstBut.Enabled = true;
@@ -1613,18 +1619,18 @@ namespace TestBusinessApp
             using (SqlConnection myCon = new SqlConnection(con))
             {
                 string query = @"USE HCS
-                                    SELECT INV_Num,
-                                    INV_Date,
-                                    INV_Billing_Name, 
-                                    SUM(INV_Price * INV_Qty) AS 'Sub_Total',
-                                    SUM(INV_Tax) AS 'Tax', 
-                                    ROUND(SUM(INV_Total),2) AS 'Total', 
-                                    ROUND(SUM(INV_Cost),2) AS 'Cost',  
-                                    ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid',
-                                    INV_Paid
-                                    FROM INVOICE
-                                    GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid
-                                    ORDER BY INV_NUM";
+                                        SELECT INV_Num,
+                                        INV_Date,
+                                        INV_Billing_Name, 
+                                        SUM(INV_Price * INV_Qty) AS 'Sub_Total',
+                                        SUM(INV_Tax) AS 'Tax', 
+                                        ROUND(SUM(INV_Total),2) AS 'Total', 
+                                        ROUND(SUM(INV_Cost),2) AS 'Cost',  
+                                        ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid',
+                                        INV_Paid
+                                        FROM INVOICE
+                                        GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid
+                                        ORDER BY INV_NUM";
 
                 SqlCommand cmd = new SqlCommand(query, myCon);
                 myCon.Open();
@@ -1679,6 +1685,29 @@ namespace TestBusinessApp
             this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
         }
 
+        private void loadInvsClientCB()
+        {
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
+            {
+                try
+                {
+                    string query = "SELECT BILLING_NAME FROM Client";
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    conn.Open();
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "Client");
+                    invsClientCB.DataSource = ds.Tables["Client"];
+                    invsClientCB.DisplayMember = "Billing_Name";
+                    invsClientCB.ValueMember = "Billing_Name";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured: " + ex.ToString());
+                }
+                invsClientCB.SelectedIndex = -1;
+            }
+        }
+
         private void invsRefreshBut_Click(object sender, EventArgs e)
         {
             loadInvoices();
@@ -1723,6 +1752,158 @@ namespace TestBusinessApp
             {
                 
             }
+        }
+        private void invsClientCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (invsClientCB.SelectedIndex > 0)
+            {
+                loadInvoicesByClient(this.invsClientCB.GetItemText(this.invsClientCB.SelectedItem));
+                invoiceItemsDG.Rows.Clear();
+            }
+            else
+            {
+                loadInvoices();
+                invoiceItemsDG.Rows.Clear();
+            }
+        }
+
+        private void loadInvoicesByClient(string cl)
+        {
+            if (InvoicesInvsDG.Rows.Count > 0)
+            {
+                InvoicesInvsDG.Rows.Clear();
+            }
+            var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
+            //  Build list of Invoices
+            List<Invoice> invs = new List<Invoice>();
+            using (SqlConnection myCon = new SqlConnection(con))
+            {
+                string query = "USE HCS " +
+                                    "SELECT INV_Num, " +
+                                    "INV_Date, " +
+                                    "INV_Billing_Name, " +
+                                    "SUM(INV_Price * INV_Qty) AS 'Sub_Total', " +
+                                    "SUM(INV_Tax) AS 'Tax', " +
+                                    "ROUND(SUM(INV_Total),2) AS 'Total', " +
+                                    "ROUND(SUM(INV_Cost),2) AS 'Cost', " +
+                                    "ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid', " +
+                                    "INV_Paid " +
+                                    "FROM INVOICE " +
+                                    "WHERE INV_Billing_Name = '" + cl + "' " +
+                                    "GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid " +
+                                    "ORDER BY INV_NUM";
+
+                SqlCommand cmd = new SqlCommand(query, myCon);
+                myCon.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        Invoice inv = new Invoice();
+                        inv.InvNumber = (int)reader["INV_Num"];
+                        inv.Date = (DateTime)reader["INV_Date"];
+                        inv.Billing_Name = reader["INV_Billing_Name"].ToString();
+                        inv.Price = (decimal)reader["Sub_Total"];
+                        inv.Tax = (decimal)reader["Tax"];
+                        inv.Total = (decimal)reader["Total"];
+                        inv.Cost = (decimal)reader["Cost"];
+                        inv.TaxPaid = (decimal)reader["Tax_Paid"];
+                        if ((bool)reader["Inv_Paid"])
+                        {
+                            inv.Paid = "Paid";
+                        }
+                        else
+                        {
+                            inv.Paid = "Owing";
+                        }
+
+
+                        invs.Add(inv);
+                    }
+                }
+            }
+            foreach (Invoice inv in invs)
+            {
+                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price, 2), Math.Round(inv.Tax, 2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), inv.Paid);
+            }
+
+            foreach (DataGridViewRow row in InvoicesInvsDG.Rows)
+            {
+                if (row.Cells[8].Value.ToString() != "Paid")
+                {
+                    row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Red;
+                    row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Black;
+                    row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+
+            this.InvoicesInvsDG.Sort(this.InvoicesInvsDG.Columns["INV_Num"], System.ComponentModel.ListSortDirection.Descending);
+
+
+        }
+
+        private void invoiceItemsDG_DoubleClick(object sender, EventArgs e)
+        {
+            invoicesupdaterow = InvoicesInvsDG.CurrentRow.Index;
+            int invid = Convert.ToInt32(invoiceItemsDG.CurrentRow.Cells[0].Value.ToString());
+            LoadInvoiceItemEdit(invid);
+        }
+
+        private void LoadInvoiceItemEdit(int id)
+        {
+            Invoice invItem = new Invoice();
+            try
+            {
+                // Clear text boxes
+                clearInvoiceItemData();
+                // Get invoice data
+                invItem = invItem.GetInvoiceItemByID(id);
+                // Populate invoice properties
+                invsInvIDTB.Text = invItem.ID.ToString();
+                invsClientIDTB.Text = invItem.ClientID.ToString();
+                invsInvNumTB.Text = invItem.InvNumber.ToString();
+                invsDateTB.Text = invItem.Date.ToString();
+                invsBillNameTB.Text = invItem.Billing_Name;
+                invsQtyTB.Text = invItem.Qty.ToString();
+                invsDetailsTB.Text = invItem.Details.ToString();
+                invsSubTotalTB.Text = invItem.Price.ToString();
+                invsTaxTB.Text = invItem.Tax.ToString();
+                invsTotalTB.Text = invItem.Total.ToString();
+                invsNotesTB.Text = invItem.Notes;
+                invsCostTB.Text = invItem.Cost.ToString();
+                invsTaxPaidTB.Text = invItem.TaxPaid.ToString();
+                // Set public object to the client we want to update
+                workingInvoice = invItem;
+                // Make the update button visible
+                //updtClBut.Enabled = true;
+                //addClBut.Enabled = false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error - LoadClientEdit: " + e.ToString());
+            }
+        }
+
+        private void clearInvoiceItemData()
+        {
+            invsInvIDTB.Text = "";
+            invsClientIDTB.Text = "";
+            invsInvNumTB.Text = "";
+            invsDateTB.Text = "";
+            invsBillNameTB.Text = "";
+            invsQtyTB.Text = "";
+            invsDetailsTB.Text = "";
+            invsSubTotalTB.Text = "";
+            invsTaxTB.Text = "";
+            invsTotalTB.Text = "";
+            invsNotesTB.Text = "";
+            invsCostTB.Text = "";
+            invsTaxPaidTB.Text = "";
         }
 
         #endregion
@@ -1992,8 +2173,11 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
-        
+
+
         #endregion
+
+
     }
 
 }

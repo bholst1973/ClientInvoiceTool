@@ -69,6 +69,40 @@ namespace TestBusinessApp
             }
         }
 
+        public Invoice GetInvoiceItemByID(int id)
+        {
+            var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
+            Invoice invoiceItemByID = new Invoice();
+            using (SqlConnection myCon = new SqlConnection(con))
+            {
+                string query = "USE HCS SELECT * FROM Invoice WHERE INV_ID = @InvoiceID";
+                SqlCommand cmd = new SqlCommand(query, myCon);
+                cmd.Parameters.AddWithValue("@InvoiceID", id);
+                myCon.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        invoiceItemByID.ID = (int)reader["INV_ID"];
+                        invoiceItemByID.ClientID = (int)reader["INV_Client_ID"];
+                        invoiceItemByID.InvNumber = (int)reader["INV_NUM"];
+                        invoiceItemByID.Date = (DateTime)reader["INV_Date"];
+                        invoiceItemByID.Billing_Name = reader["INV_Billing_Name"].ToString();
+                        invoiceItemByID.Qty = (int)reader["INV_Qty"];
+                        invoiceItemByID.Details = reader["INV_Details"].ToString();
+                        invoiceItemByID.Price = (decimal)reader["INV_Price"];
+                        invoiceItemByID.Tax = (decimal)reader["INV_Tax"];
+                        invoiceItemByID.Total = (decimal)reader["INV_Total"];
+                        invoiceItemByID.Notes = reader["INV_Notes"].ToString();
+                        invoiceItemByID.Paid = reader["INV_Paid"].ToString();
+                        invoiceItemByID.Cost = (decimal)reader["INV_Cost"];
+                        invoiceItemByID.TaxPaid = (decimal)reader["INV_TaxPaid"];
+                    }
+                }
+            }
+            return invoiceItemByID;
+        }
+
 
     }
 }
