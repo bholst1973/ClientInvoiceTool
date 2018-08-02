@@ -1867,7 +1867,7 @@ namespace TestBusinessApp
                 invsInvIDTB.Text = invItem.ID.ToString();
                 invsClientIDTB.Text = invItem.ClientID.ToString();
                 invsInvNumTB.Text = invItem.InvNumber.ToString();
-                invsDateTB.Text = invItem.Date.ToString();
+                invsDTPicker.Value = invItem.Date.Date;
                 invsBillNameTB.Text = invItem.Billing_Name;
                 invsQtyTB.Text = invItem.Qty.ToString();
                 invsDetailsTB.Text = invItem.Details.ToString();
@@ -1894,7 +1894,7 @@ namespace TestBusinessApp
             invsInvIDTB.Text = "";
             invsClientIDTB.Text = "";
             invsInvNumTB.Text = "";
-            invsDateTB.Text = "";
+            invsDTPicker.Value = DateTime.Today;
             invsBillNameTB.Text = "";
             invsQtyTB.Text = "";
             invsDetailsTB.Text = "";

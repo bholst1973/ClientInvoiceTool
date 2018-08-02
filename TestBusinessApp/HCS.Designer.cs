@@ -72,7 +72,21 @@
             this.fNameLbl = new System.Windows.Forms.Label();
             this.addClBut = new System.Windows.Forms.Button();
             this.clientDataGridView = new System.Windows.Forms.DataGridView();
+            this.clientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.businessNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hCSDataSet = new TestBusinessApp.HCSDataSet();
             this.InvoiceClientPage = new System.Windows.Forms.TabPage();
             this.createInvClrItmsBut = new System.Windows.Forms.Button();
             this.createInvRmvItmBut = new System.Windows.Forms.Button();
@@ -112,6 +126,7 @@
             this.compstpChkBx = new System.Windows.Forms.CheckBox();
             this.InvClcustTxtBx = new System.Windows.Forms.TextBox();
             this.invoicesPage = new System.Windows.Forms.TabPage();
+            this.invsDTPicker = new System.Windows.Forms.DateTimePicker();
             this.invsTaxPaidTB = new System.Windows.Forms.TextBox();
             this.taxpaidLbl = new System.Windows.Forms.Label();
             this.invsCostTB = new System.Windows.Forms.TextBox();
@@ -130,8 +145,6 @@
             this.subTotLbl = new System.Windows.Forms.Label();
             this.invsBillNameTB = new System.Windows.Forms.TextBox();
             this.bilNameLbl = new System.Windows.Forms.Label();
-            this.invsDateTB = new System.Windows.Forms.TextBox();
-            this.dateLbl = new System.Windows.Forms.Label();
             this.invsInvNumTB = new System.Windows.Forms.TextBox();
             this.invnumLbl = new System.Windows.Forms.Label();
             this.invsClientIDTB = new System.Windows.Forms.TextBox();
@@ -194,26 +207,14 @@
             this.adminCatLbl = new System.Windows.Forms.Label();
             this.adminCategoryCmbBx = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.clientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.businessNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hCSDataSet = new TestBusinessApp.HCSDataSet();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hCSDataSet)).BeginInit();
             this.InvoiceClientPage.SuspendLayout();
             this.invClTotalGB.SuspendLayout();
             this.inv.SuspendLayout();
@@ -229,8 +230,6 @@
             this.salesTaxGB.SuspendLayout();
             this.activeCommonItemsGB.SuspendLayout();
             this.addCommonItemsGP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hCSDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -708,12 +707,119 @@
             this.clientDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientDataGridView_DoubleClick);
             this.clientDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientDataGridView_ColumnHeaderMouseClick);
             // 
+            // clientIDDataGridViewTextBoxColumn
+            // 
+            this.clientIDDataGridViewTextBoxColumn.DataPropertyName = "Client_ID";
+            this.clientIDDataGridViewTextBoxColumn.FillWeight = 116.8452F;
+            this.clientIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
+            this.clientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientIDDataGridViewTextBoxColumn.Width = 43;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "First_Name";
+            this.firstNameDataGridViewTextBoxColumn.FillWeight = 112.6873F;
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "Last_Name";
+            this.lastNameDataGridViewTextBoxColumn.FillWeight = 108.9343F;
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.Width = 52;
+            // 
+            // businessNameDataGridViewTextBoxColumn
+            // 
+            this.businessNameDataGridViewTextBoxColumn.DataPropertyName = "Business_Name";
+            this.businessNameDataGridViewTextBoxColumn.FillWeight = 105.5468F;
+            this.businessNameDataGridViewTextBoxColumn.HeaderText = "Company";
+            this.businessNameDataGridViewTextBoxColumn.Name = "businessNameDataGridViewTextBoxColumn";
+            this.businessNameDataGridViewTextBoxColumn.Width = 76;
+            // 
             // Billing_Name
             // 
             this.Billing_Name.DataPropertyName = "Billing_Name";
             this.Billing_Name.HeaderText = "Billing";
             this.Billing_Name.Name = "Billing_Name";
             this.Billing_Name.Width = 59;
+            // 
+            // address1DataGridViewTextBoxColumn
+            // 
+            this.address1DataGridViewTextBoxColumn.DataPropertyName = "Address1";
+            this.address1DataGridViewTextBoxColumn.FillWeight = 102.489F;
+            this.address1DataGridViewTextBoxColumn.HeaderText = "Address ";
+            this.address1DataGridViewTextBoxColumn.Name = "address1DataGridViewTextBoxColumn";
+            this.address1DataGridViewTextBoxColumn.Width = 73;
+            // 
+            // address2DataGridViewTextBoxColumn
+            // 
+            this.address2DataGridViewTextBoxColumn.DataPropertyName = "Address2";
+            this.address2DataGridViewTextBoxColumn.FillWeight = 99.72904F;
+            this.address2DataGridViewTextBoxColumn.HeaderText = "Address";
+            this.address2DataGridViewTextBoxColumn.Name = "address2DataGridViewTextBoxColumn";
+            this.address2DataGridViewTextBoxColumn.Width = 70;
+            // 
+            // address3DataGridViewTextBoxColumn
+            // 
+            this.address3DataGridViewTextBoxColumn.DataPropertyName = "Address3";
+            this.address3DataGridViewTextBoxColumn.FillWeight = 97.2378F;
+            this.address3DataGridViewTextBoxColumn.HeaderText = "Address";
+            this.address3DataGridViewTextBoxColumn.Name = "address3DataGridViewTextBoxColumn";
+            this.address3DataGridViewTextBoxColumn.Width = 70;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.FillWeight = 94.98912F;
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.Width = 49;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.FillWeight = 92.95942F;
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // zipDataGridViewTextBoxColumn
+            // 
+            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
+            this.zipDataGridViewTextBoxColumn.FillWeight = 91.12737F;
+            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
+            this.zipDataGridViewTextBoxColumn.Width = 47;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.FillWeight = 89.47365F;
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.FillWeight = 87.98099F;
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataMember = "Client";
+            this.clientBindingSource.DataSource = this.hCSDataSet;
+            // 
+            // hCSDataSet
+            // 
+            this.hCSDataSet.DataSetName = "HCSDataSet";
+            this.hCSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // InvoiceClientPage
             // 
@@ -1112,6 +1218,7 @@
             // 
             // invoicesPage
             // 
+            this.invoicesPage.Controls.Add(this.invsDTPicker);
             this.invoicesPage.Controls.Add(this.invsTaxPaidTB);
             this.invoicesPage.Controls.Add(this.taxpaidLbl);
             this.invoicesPage.Controls.Add(this.invsCostTB);
@@ -1130,8 +1237,6 @@
             this.invoicesPage.Controls.Add(this.subTotLbl);
             this.invoicesPage.Controls.Add(this.invsBillNameTB);
             this.invoicesPage.Controls.Add(this.bilNameLbl);
-            this.invoicesPage.Controls.Add(this.invsDateTB);
-            this.invoicesPage.Controls.Add(this.dateLbl);
             this.invoicesPage.Controls.Add(this.invsInvNumTB);
             this.invoicesPage.Controls.Add(this.invnumLbl);
             this.invoicesPage.Controls.Add(this.invsClientIDTB);
@@ -1150,10 +1255,18 @@
             this.invoicesPage.Text = "Invoices";
             this.invoicesPage.UseVisualStyleBackColor = true;
             // 
+            // invsDTPicker
+            // 
+            this.invsDTPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.invsDTPicker.Location = new System.Drawing.Point(63, 462);
+            this.invsDTPicker.Name = "invsDTPicker";
+            this.invsDTPicker.Size = new System.Drawing.Size(200, 20);
+            this.invsDTPicker.TabIndex = 32;
+            // 
             // invsTaxPaidTB
             // 
             this.invsTaxPaidTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxPaidTB.Location = new System.Drawing.Point(771, 435);
+            this.invsTaxPaidTB.Location = new System.Drawing.Point(558, 434);
             this.invsTaxPaidTB.Name = "invsTaxPaidTB";
             this.invsTaxPaidTB.Size = new System.Drawing.Size(100, 20);
             this.invsTaxPaidTB.TabIndex = 31;
@@ -1162,7 +1275,7 @@
             // 
             this.taxpaidLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxpaidLbl.AutoSize = true;
-            this.taxpaidLbl.Location = new System.Drawing.Point(716, 438);
+            this.taxpaidLbl.Location = new System.Drawing.Point(503, 437);
             this.taxpaidLbl.Name = "taxpaidLbl";
             this.taxpaidLbl.Size = new System.Drawing.Size(49, 13);
             this.taxpaidLbl.TabIndex = 30;
@@ -1171,7 +1284,7 @@
             // invsCostTB
             // 
             this.invsCostTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsCostTB.Location = new System.Drawing.Point(771, 410);
+            this.invsCostTB.Location = new System.Drawing.Point(558, 409);
             this.invsCostTB.Name = "invsCostTB";
             this.invsCostTB.Size = new System.Drawing.Size(100, 20);
             this.invsCostTB.TabIndex = 29;
@@ -1180,7 +1293,7 @@
             // 
             this.costLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.costLbl.AutoSize = true;
-            this.costLbl.Location = new System.Drawing.Point(716, 413);
+            this.costLbl.Location = new System.Drawing.Point(503, 412);
             this.costLbl.Name = "costLbl";
             this.costLbl.Size = new System.Drawing.Size(28, 13);
             this.costLbl.TabIndex = 28;
@@ -1189,7 +1302,7 @@
             // invsNotesTB
             // 
             this.invsNotesTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsNotesTB.Location = new System.Drawing.Point(589, 434);
+            this.invsNotesTB.Location = new System.Drawing.Point(558, 385);
             this.invsNotesTB.Name = "invsNotesTB";
             this.invsNotesTB.Size = new System.Drawing.Size(100, 20);
             this.invsNotesTB.TabIndex = 25;
@@ -1198,7 +1311,7 @@
             // 
             this.notesLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.notesLbl.AutoSize = true;
-            this.notesLbl.Location = new System.Drawing.Point(548, 437);
+            this.notesLbl.Location = new System.Drawing.Point(503, 389);
             this.notesLbl.Name = "notesLbl";
             this.notesLbl.Size = new System.Drawing.Size(35, 13);
             this.notesLbl.TabIndex = 24;
@@ -1207,7 +1320,7 @@
             // invsTotalTB
             // 
             this.invsTotalTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTotalTB.Location = new System.Drawing.Point(589, 409);
+            this.invsTotalTB.Location = new System.Drawing.Point(396, 436);
             this.invsTotalTB.Name = "invsTotalTB";
             this.invsTotalTB.Size = new System.Drawing.Size(100, 20);
             this.invsTotalTB.TabIndex = 23;
@@ -1216,7 +1329,7 @@
             // 
             this.totalLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalLbl.AutoSize = true;
-            this.totalLbl.Location = new System.Drawing.Point(548, 412);
+            this.totalLbl.Location = new System.Drawing.Point(344, 439);
             this.totalLbl.Name = "totalLbl";
             this.totalLbl.Size = new System.Drawing.Size(31, 13);
             this.totalLbl.TabIndex = 22;
@@ -1225,7 +1338,7 @@
             // invsTaxTB
             // 
             this.invsTaxTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxTB.Location = new System.Drawing.Point(425, 461);
+            this.invsTaxTB.Location = new System.Drawing.Point(396, 412);
             this.invsTaxTB.Name = "invsTaxTB";
             this.invsTaxTB.Size = new System.Drawing.Size(100, 20);
             this.invsTaxTB.TabIndex = 21;
@@ -1234,7 +1347,7 @@
             // 
             this.taxLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxLbl.AutoSize = true;
-            this.taxLbl.Location = new System.Drawing.Point(373, 463);
+            this.taxLbl.Location = new System.Drawing.Point(344, 414);
             this.taxLbl.Name = "taxLbl";
             this.taxLbl.Size = new System.Drawing.Size(25, 13);
             this.taxLbl.TabIndex = 20;
@@ -1243,7 +1356,7 @@
             // invsQtyTB
             // 
             this.invsQtyTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsQtyTB.Location = new System.Drawing.Point(249, 460);
+            this.invsQtyTB.Location = new System.Drawing.Point(235, 410);
             this.invsQtyTB.Name = "invsQtyTB";
             this.invsQtyTB.Size = new System.Drawing.Size(100, 20);
             this.invsQtyTB.TabIndex = 19;
@@ -1252,7 +1365,7 @@
             // 
             this.QtyIPLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.QtyIPLbl.AutoSize = true;
-            this.QtyIPLbl.Location = new System.Drawing.Point(183, 463);
+            this.QtyIPLbl.Location = new System.Drawing.Point(169, 413);
             this.QtyIPLbl.Name = "QtyIPLbl";
             this.QtyIPLbl.Size = new System.Drawing.Size(23, 13);
             this.QtyIPLbl.TabIndex = 18;
@@ -1261,7 +1374,7 @@
             // invsDetailsTB
             // 
             this.invsDetailsTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsDetailsTB.Location = new System.Drawing.Point(425, 409);
+            this.invsDetailsTB.Location = new System.Drawing.Point(235, 437);
             this.invsDetailsTB.Name = "invsDetailsTB";
             this.invsDetailsTB.Size = new System.Drawing.Size(100, 20);
             this.invsDetailsTB.TabIndex = 17;
@@ -1270,7 +1383,7 @@
             // 
             this.dtlsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtlsLbl.AutoSize = true;
-            this.dtlsLbl.Location = new System.Drawing.Point(373, 411);
+            this.dtlsLbl.Location = new System.Drawing.Point(169, 440);
             this.dtlsLbl.Name = "dtlsLbl";
             this.dtlsLbl.Size = new System.Drawing.Size(39, 13);
             this.dtlsLbl.TabIndex = 16;
@@ -1279,7 +1392,7 @@
             // invsSubTotalTB
             // 
             this.invsSubTotalTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsSubTotalTB.Location = new System.Drawing.Point(425, 435);
+            this.invsSubTotalTB.Location = new System.Drawing.Point(396, 386);
             this.invsSubTotalTB.Name = "invsSubTotalTB";
             this.invsSubTotalTB.Size = new System.Drawing.Size(100, 20);
             this.invsSubTotalTB.TabIndex = 15;
@@ -1288,7 +1401,7 @@
             // 
             this.subTotLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.subTotLbl.AutoSize = true;
-            this.subTotLbl.Location = new System.Drawing.Point(370, 437);
+            this.subTotLbl.Location = new System.Drawing.Point(341, 388);
             this.subTotLbl.Name = "subTotLbl";
             this.subTotLbl.Size = new System.Drawing.Size(53, 13);
             this.subTotLbl.TabIndex = 14;
@@ -1297,7 +1410,7 @@
             // invsBillNameTB
             // 
             this.invsBillNameTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsBillNameTB.Location = new System.Drawing.Point(249, 434);
+            this.invsBillNameTB.Location = new System.Drawing.Point(235, 384);
             this.invsBillNameTB.Name = "invsBillNameTB";
             this.invsBillNameTB.Size = new System.Drawing.Size(100, 20);
             this.invsBillNameTB.TabIndex = 13;
@@ -1306,34 +1419,16 @@
             // 
             this.bilNameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bilNameLbl.AutoSize = true;
-            this.bilNameLbl.Location = new System.Drawing.Point(183, 437);
+            this.bilNameLbl.Location = new System.Drawing.Point(169, 387);
             this.bilNameLbl.Name = "bilNameLbl";
             this.bilNameLbl.Size = new System.Drawing.Size(65, 13);
             this.bilNameLbl.TabIndex = 12;
             this.bilNameLbl.Text = "Billing Name";
             // 
-            // invsDateTB
-            // 
-            this.invsDateTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsDateTB.Location = new System.Drawing.Point(249, 408);
-            this.invsDateTB.Name = "invsDateTB";
-            this.invsDateTB.Size = new System.Drawing.Size(100, 20);
-            this.invsDateTB.TabIndex = 11;
-            // 
-            // dateLbl
-            // 
-            this.dateLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateLbl.AutoSize = true;
-            this.dateLbl.Location = new System.Drawing.Point(183, 411);
-            this.dateLbl.Name = "dateLbl";
-            this.dateLbl.Size = new System.Drawing.Size(30, 13);
-            this.dateLbl.TabIndex = 10;
-            this.dateLbl.Text = "Date";
-            // 
             // invsInvNumTB
             // 
             this.invsInvNumTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsInvNumTB.Location = new System.Drawing.Point(62, 460);
+            this.invsInvNumTB.Location = new System.Drawing.Point(63, 436);
             this.invsInvNumTB.Name = "invsInvNumTB";
             this.invsInvNumTB.Size = new System.Drawing.Size(100, 20);
             this.invsInvNumTB.TabIndex = 9;
@@ -1342,7 +1437,7 @@
             // 
             this.invnumLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.invnumLbl.AutoSize = true;
-            this.invnumLbl.Location = new System.Drawing.Point(9, 463);
+            this.invnumLbl.Location = new System.Drawing.Point(10, 439);
             this.invnumLbl.Name = "invnumLbl";
             this.invnumLbl.Size = new System.Drawing.Size(32, 13);
             this.invnumLbl.TabIndex = 8;
@@ -1351,7 +1446,7 @@
             // invsClientIDTB
             // 
             this.invsClientIDTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsClientIDTB.Location = new System.Drawing.Point(62, 434);
+            this.invsClientIDTB.Location = new System.Drawing.Point(63, 410);
             this.invsClientIDTB.Name = "invsClientIDTB";
             this.invsClientIDTB.Size = new System.Drawing.Size(100, 20);
             this.invsClientIDTB.TabIndex = 7;
@@ -1360,7 +1455,7 @@
             // 
             this.clID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.clID.AutoSize = true;
-            this.clID.Location = new System.Drawing.Point(9, 437);
+            this.clID.Location = new System.Drawing.Point(10, 413);
             this.clID.Name = "clID";
             this.clID.Size = new System.Drawing.Size(47, 13);
             this.clID.TabIndex = 6;
@@ -1369,7 +1464,7 @@
             // invsInvIDTB
             // 
             this.invsInvIDTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsInvIDTB.Location = new System.Drawing.Point(62, 408);
+            this.invsInvIDTB.Location = new System.Drawing.Point(63, 384);
             this.invsInvIDTB.Name = "invsInvIDTB";
             this.invsInvIDTB.Size = new System.Drawing.Size(100, 20);
             this.invsInvIDTB.TabIndex = 5;
@@ -1378,7 +1473,7 @@
             // 
             this.invIDLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.invIDLbl.AutoSize = true;
-            this.invIDLbl.Location = new System.Drawing.Point(9, 411);
+            this.invIDLbl.Location = new System.Drawing.Point(10, 387);
             this.invIDLbl.Name = "invIDLbl";
             this.invIDLbl.Size = new System.Drawing.Size(36, 13);
             this.invIDLbl.TabIndex = 4;
@@ -1894,113 +1989,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // clientIDDataGridViewTextBoxColumn
-            // 
-            this.clientIDDataGridViewTextBoxColumn.DataPropertyName = "Client_ID";
-            this.clientIDDataGridViewTextBoxColumn.FillWeight = 116.8452F;
-            this.clientIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
-            this.clientIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientIDDataGridViewTextBoxColumn.Width = 43;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "First_Name";
-            this.firstNameDataGridViewTextBoxColumn.FillWeight = 112.6873F;
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "Last_Name";
-            this.lastNameDataGridViewTextBoxColumn.FillWeight = 108.9343F;
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.Width = 52;
-            // 
-            // businessNameDataGridViewTextBoxColumn
-            // 
-            this.businessNameDataGridViewTextBoxColumn.DataPropertyName = "Business_Name";
-            this.businessNameDataGridViewTextBoxColumn.FillWeight = 105.5468F;
-            this.businessNameDataGridViewTextBoxColumn.HeaderText = "Company";
-            this.businessNameDataGridViewTextBoxColumn.Name = "businessNameDataGridViewTextBoxColumn";
-            this.businessNameDataGridViewTextBoxColumn.Width = 76;
-            // 
-            // address1DataGridViewTextBoxColumn
-            // 
-            this.address1DataGridViewTextBoxColumn.DataPropertyName = "Address1";
-            this.address1DataGridViewTextBoxColumn.FillWeight = 102.489F;
-            this.address1DataGridViewTextBoxColumn.HeaderText = "Address ";
-            this.address1DataGridViewTextBoxColumn.Name = "address1DataGridViewTextBoxColumn";
-            this.address1DataGridViewTextBoxColumn.Width = 73;
-            // 
-            // address2DataGridViewTextBoxColumn
-            // 
-            this.address2DataGridViewTextBoxColumn.DataPropertyName = "Address2";
-            this.address2DataGridViewTextBoxColumn.FillWeight = 99.72904F;
-            this.address2DataGridViewTextBoxColumn.HeaderText = "Address";
-            this.address2DataGridViewTextBoxColumn.Name = "address2DataGridViewTextBoxColumn";
-            this.address2DataGridViewTextBoxColumn.Width = 70;
-            // 
-            // address3DataGridViewTextBoxColumn
-            // 
-            this.address3DataGridViewTextBoxColumn.DataPropertyName = "Address3";
-            this.address3DataGridViewTextBoxColumn.FillWeight = 97.2378F;
-            this.address3DataGridViewTextBoxColumn.HeaderText = "Address";
-            this.address3DataGridViewTextBoxColumn.Name = "address3DataGridViewTextBoxColumn";
-            this.address3DataGridViewTextBoxColumn.Width = 70;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.FillWeight = 94.98912F;
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.Width = 49;
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.FillWeight = 92.95942F;
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.Width = 57;
-            // 
-            // zipDataGridViewTextBoxColumn
-            // 
-            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
-            this.zipDataGridViewTextBoxColumn.FillWeight = 91.12737F;
-            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
-            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
-            this.zipDataGridViewTextBoxColumn.Width = 47;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.FillWeight = 89.47365F;
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.FillWeight = 87.98099F;
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 57;
-            // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataMember = "Client";
-            this.clientBindingSource.DataSource = this.hCSDataSet;
-            // 
-            // hCSDataSet
-            // 
-            this.hCSDataSet.DataSetName = "HCSDataSet";
-            this.hCSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // clientTableAdapter
             // 
             this.clientTableAdapter.ClearBeforeFill = true;
@@ -2029,6 +2017,8 @@
             this.ClientPage.ResumeLayout(false);
             this.ClientPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hCSDataSet)).EndInit();
             this.InvoiceClientPage.ResumeLayout(false);
             this.invClTotalGB.ResumeLayout(false);
             this.invClTotalGB.PerformLayout();
@@ -2051,8 +2041,6 @@
             this.activeCommonItemsGB.PerformLayout();
             this.addCommonItemsGP.ResumeLayout(false);
             this.addCommonItemsGP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hCSDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2216,8 +2204,6 @@
         private System.Windows.Forms.Label subTotLbl;
         private System.Windows.Forms.TextBox invsBillNameTB;
         private System.Windows.Forms.Label bilNameLbl;
-        private System.Windows.Forms.TextBox invsDateTB;
-        private System.Windows.Forms.Label dateLbl;
         private System.Windows.Forms.TextBox invsInvNumTB;
         private System.Windows.Forms.Label invnumLbl;
         private System.Windows.Forms.TextBox invsClientIDTB;
@@ -2241,6 +2227,7 @@
         private System.Windows.Forms.Label taxpaidLbl;
         private System.Windows.Forms.TextBox invsCostTB;
         private System.Windows.Forms.Label costLbl;
+        private System.Windows.Forms.DateTimePicker invsDTPicker;
     }
 }
 
