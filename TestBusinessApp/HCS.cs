@@ -1708,6 +1708,29 @@ namespace TestBusinessApp
             }
         }
 
+        private void loadInvsClientEditCB()
+        {
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
+            {
+                try
+                {
+                    string query = "SELECT BILLING_NAME FROM Client";
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    conn.Open();
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "Client");
+                    invsBillNameCB.DataSource = ds.Tables["Client"];
+                    invsBillNameCB.DisplayMember = "Billing_Name";
+                    invsBillNameCB.ValueMember = "Billing_Name";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured: " + ex.ToString());
+                }
+                invsClientCB.SelectedIndex = -1;
+            }
+        }
+
         private void invsRefreshBut_Click(object sender, EventArgs e)
         {
             loadInvoices();
@@ -1753,6 +1776,7 @@ namespace TestBusinessApp
                 
             }
         }
+
         private void invsClientCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (invsClientCB.SelectedIndex > 0)
@@ -1864,16 +1888,14 @@ namespace TestBusinessApp
                 // Get invoice data
                 invItem = invItem.GetInvoiceItemByID(id);
                 // Populate invoice properties
-                invsInvIDTB.Text = invItem.ID.ToString();
-                invsClientIDTB.Text = invItem.ClientID.ToString();
+                loadInvsClientEditCB();
                 invsInvNumTB.Text = invItem.InvNumber.ToString();
                 invsDTPicker.Value = invItem.Date.Date;
-                invsBillNameTB.Text = invItem.Billing_Name;
+                invsBillNameCB.Text = invItem.Billing_Name;
                 invsQtyTB.Text = invItem.Qty.ToString();
                 invsDetailsTB.Text = invItem.Details.ToString();
                 invsSubTotalTB.Text = invItem.Price.ToString();
                 invsTaxTB.Text = invItem.Tax.ToString();
-                invsTotalTB.Text = invItem.Total.ToString();
                 invsNotesTB.Text = invItem.Notes;
                 invsCostTB.Text = invItem.Cost.ToString();
                 invsTaxPaidTB.Text = invItem.TaxPaid.ToString();
@@ -1891,19 +1913,105 @@ namespace TestBusinessApp
 
         private void clearInvoiceItemData()
         {
-            invsInvIDTB.Text = "";
-            invsClientIDTB.Text = "";
+            this.invsBillNameCB.DataSource = null;
+            invsBillNameCB.Items.Clear();
             invsInvNumTB.Text = "";
             invsDTPicker.Value = DateTime.Today;
-            invsBillNameTB.Text = "";
+            invsBillNameCB.SelectedIndex = -1;
             invsQtyTB.Text = "";
             invsDetailsTB.Text = "";
             invsSubTotalTB.Text = "";
             invsTaxTB.Text = "";
-            invsTotalTB.Text = "";
             invsNotesTB.Text = "";
             invsCostTB.Text = "";
             invsTaxPaidTB.Text = "";
+        }
+        private void invsClearEditItemsBut_Click(object sender, EventArgs e)
+        {
+            clearInvoiceItemData();
+        }
+        private void invsEditUpdateBut_Click(object sender, EventArgs e)
+        {
+            Invoice invEdit = new Invoice();
+            invEdit = workingInvoice;
+            string bn = this.invsBillNameCB.GetItemText(this.invsBillNameCB.SelectedItem);
+            int invNum = int.Parse(this.invsInvNumTB.Text);
+            DateTime dt = invsDTPicker.Value.Date;
+            string dtls = invsDetailsTB.Text;
+            string nts = invsNotesTB.Text;
+            int qty = int.Parse(invsQtyTB.Text);
+            decimal subT = decimal.Parse(invsSubTotalTB.Text);
+            decimal tx = decimal.Parse(invsTaxTB.Text);
+            decimal cst = decimal.Parse(invsCostTB.Text);
+            decimal txpd = decimal.Parse(invsTaxPaidTB.Text);
+
+            if (bn != invEdit.Billing_Name)
+            {
+                if (MessageBox.Show("Change " + invEdit.Billing_Name + " to " + bn + " for all items in invoice " + invNum.ToString() + "?", "Change Client?",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //Pull the new clients id
+                    Client cl = new Client();
+                    cl = cl.GetClientbyName(bn);
+                    int clientID = cl.ID;
+                    string query = "USE HCS UPDATE Invoice SET INV_Client_ID = " + clientID + ", INV_Billing_Name = '" + bn + "' WHERE INV_NUM = " + invNum;
+                    try
+                    {
+                        //executeQuery(query);
+                        MessageBox.Show(query);
+                    }
+                    catch(Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString());
+                        return;
+                    }
+                    invEdit.ID = clientID;
+                    invEdit.Billing_Name = bn;
+                }
+            }
+
+            if (invNum != invEdit.InvNumber)
+            {
+                if (MessageBox.Show("Change " + invEdit.InvNumber + " to " + invNum + " for all items in invoice?", "Change Invoice Number?",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_NUM = " + invEdit.InvNumber;
+                    try
+                    {
+                        //executeQuery(query);
+                        MessageBox.Show(query);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString());
+                        return;
+                    }
+                    invEdit.InvNumber = invNum;
+                }
+            }
+
+            if (dt != invEdit.Date)
+            {
+                if (MessageBox.Show("Change " + invEdit.Date + " to " + dt + " for all items in invoice?", "Change Invoice Number?",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string query = "USE HCS UPDATE Invoice SET INV_Date = " + dt + " WHERE INV_NUM = " + invEdit.InvNumber;
+                    try
+                    {
+                        //executeQuery(query);
+                        MessageBox.Show(query);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString());
+                        return;
+                    }
+                    invEdit.Date = dt;
+                }
+            }
+
+
+
         }
 
         #endregion
@@ -2173,6 +2281,9 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
+
+
+
 
 
         #endregion

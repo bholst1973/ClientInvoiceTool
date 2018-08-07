@@ -126,6 +126,9 @@
             this.compstpChkBx = new System.Windows.Forms.CheckBox();
             this.InvClcustTxtBx = new System.Windows.Forms.TextBox();
             this.invoicesPage = new System.Windows.Forms.TabPage();
+            this.invsEditUpdateBut = new System.Windows.Forms.Button();
+            this.invsClearEditItemsBut = new System.Windows.Forms.Button();
+            this.invsBillNameCB = new System.Windows.Forms.ComboBox();
             this.invsDTPicker = new System.Windows.Forms.DateTimePicker();
             this.invsTaxPaidTB = new System.Windows.Forms.TextBox();
             this.taxpaidLbl = new System.Windows.Forms.Label();
@@ -133,8 +136,6 @@
             this.costLbl = new System.Windows.Forms.Label();
             this.invsNotesTB = new System.Windows.Forms.TextBox();
             this.notesLbl = new System.Windows.Forms.Label();
-            this.invsTotalTB = new System.Windows.Forms.TextBox();
-            this.totalLbl = new System.Windows.Forms.Label();
             this.invsTaxTB = new System.Windows.Forms.TextBox();
             this.taxLbl = new System.Windows.Forms.Label();
             this.invsQtyTB = new System.Windows.Forms.TextBox();
@@ -143,14 +144,9 @@
             this.dtlsLbl = new System.Windows.Forms.Label();
             this.invsSubTotalTB = new System.Windows.Forms.TextBox();
             this.subTotLbl = new System.Windows.Forms.Label();
-            this.invsBillNameTB = new System.Windows.Forms.TextBox();
             this.bilNameLbl = new System.Windows.Forms.Label();
             this.invsInvNumTB = new System.Windows.Forms.TextBox();
             this.invnumLbl = new System.Windows.Forms.Label();
-            this.invsClientIDTB = new System.Windows.Forms.TextBox();
-            this.clID = new System.Windows.Forms.Label();
-            this.invsInvIDTB = new System.Windows.Forms.TextBox();
-            this.invIDLbl = new System.Windows.Forms.Label();
             this.invsRefreshBut = new System.Windows.Forms.Button();
             this.invoiceItemsDG = new System.Windows.Forms.DataGridView();
             this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1218,6 +1214,9 @@
             // 
             // invoicesPage
             // 
+            this.invoicesPage.Controls.Add(this.invsEditUpdateBut);
+            this.invoicesPage.Controls.Add(this.invsClearEditItemsBut);
+            this.invoicesPage.Controls.Add(this.invsBillNameCB);
             this.invoicesPage.Controls.Add(this.invsDTPicker);
             this.invoicesPage.Controls.Add(this.invsTaxPaidTB);
             this.invoicesPage.Controls.Add(this.taxpaidLbl);
@@ -1225,8 +1224,6 @@
             this.invoicesPage.Controls.Add(this.costLbl);
             this.invoicesPage.Controls.Add(this.invsNotesTB);
             this.invoicesPage.Controls.Add(this.notesLbl);
-            this.invoicesPage.Controls.Add(this.invsTotalTB);
-            this.invoicesPage.Controls.Add(this.totalLbl);
             this.invoicesPage.Controls.Add(this.invsTaxTB);
             this.invoicesPage.Controls.Add(this.taxLbl);
             this.invoicesPage.Controls.Add(this.invsQtyTB);
@@ -1235,14 +1232,9 @@
             this.invoicesPage.Controls.Add(this.dtlsLbl);
             this.invoicesPage.Controls.Add(this.invsSubTotalTB);
             this.invoicesPage.Controls.Add(this.subTotLbl);
-            this.invoicesPage.Controls.Add(this.invsBillNameTB);
             this.invoicesPage.Controls.Add(this.bilNameLbl);
             this.invoicesPage.Controls.Add(this.invsInvNumTB);
             this.invoicesPage.Controls.Add(this.invnumLbl);
-            this.invoicesPage.Controls.Add(this.invsClientIDTB);
-            this.invoicesPage.Controls.Add(this.clID);
-            this.invoicesPage.Controls.Add(this.invsInvIDTB);
-            this.invoicesPage.Controls.Add(this.invIDLbl);
             this.invoicesPage.Controls.Add(this.invsRefreshBut);
             this.invoicesPage.Controls.Add(this.invoiceItemsDG);
             this.invoicesPage.Controls.Add(this.InvoicesInvsDG);
@@ -1255,10 +1247,40 @@
             this.invoicesPage.Text = "Invoices";
             this.invoicesPage.UseVisualStyleBackColor = true;
             // 
+            // invsEditUpdateBut
+            // 
+            this.invsEditUpdateBut.Location = new System.Drawing.Point(990, 467);
+            this.invsEditUpdateBut.Name = "invsEditUpdateBut";
+            this.invsEditUpdateBut.Size = new System.Drawing.Size(75, 23);
+            this.invsEditUpdateBut.TabIndex = 35;
+            this.invsEditUpdateBut.Text = "Update";
+            this.invsEditUpdateBut.UseVisualStyleBackColor = true;
+            this.invsEditUpdateBut.Click += new System.EventHandler(this.invsEditUpdateBut_Click);
+            // 
+            // invsClearEditItemsBut
+            // 
+            this.invsClearEditItemsBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.invsClearEditItemsBut.Location = new System.Drawing.Point(909, 467);
+            this.invsClearEditItemsBut.Name = "invsClearEditItemsBut";
+            this.invsClearEditItemsBut.Size = new System.Drawing.Size(75, 23);
+            this.invsClearEditItemsBut.TabIndex = 34;
+            this.invsClearEditItemsBut.Text = "Clear";
+            this.invsClearEditItemsBut.UseVisualStyleBackColor = true;
+            this.invsClearEditItemsBut.Click += new System.EventHandler(this.invsClearEditItemsBut_Click);
+            // 
+            // invsBillNameCB
+            // 
+            this.invsBillNameCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.invsBillNameCB.FormattingEnabled = true;
+            this.invsBillNameCB.Location = new System.Drawing.Point(53, 390);
+            this.invsBillNameCB.Name = "invsBillNameCB";
+            this.invsBillNameCB.Size = new System.Drawing.Size(121, 21);
+            this.invsBillNameCB.TabIndex = 33;
+            // 
             // invsDTPicker
             // 
             this.invsDTPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsDTPicker.Location = new System.Drawing.Point(63, 462);
+            this.invsDTPicker.Location = new System.Drawing.Point(8, 470);
             this.invsDTPicker.Name = "invsDTPicker";
             this.invsDTPicker.Size = new System.Drawing.Size(200, 20);
             this.invsDTPicker.TabIndex = 32;
@@ -1266,7 +1288,7 @@
             // invsTaxPaidTB
             // 
             this.invsTaxPaidTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxPaidTB.Location = new System.Drawing.Point(558, 434);
+            this.invsTaxPaidTB.Location = new System.Drawing.Point(409, 440);
             this.invsTaxPaidTB.Name = "invsTaxPaidTB";
             this.invsTaxPaidTB.Size = new System.Drawing.Size(100, 20);
             this.invsTaxPaidTB.TabIndex = 31;
@@ -1275,7 +1297,7 @@
             // 
             this.taxpaidLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxpaidLbl.AutoSize = true;
-            this.taxpaidLbl.Location = new System.Drawing.Point(503, 437);
+            this.taxpaidLbl.Location = new System.Drawing.Point(354, 443);
             this.taxpaidLbl.Name = "taxpaidLbl";
             this.taxpaidLbl.Size = new System.Drawing.Size(49, 13);
             this.taxpaidLbl.TabIndex = 30;
@@ -1284,7 +1306,7 @@
             // invsCostTB
             // 
             this.invsCostTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsCostTB.Location = new System.Drawing.Point(558, 409);
+            this.invsCostTB.Location = new System.Drawing.Point(409, 415);
             this.invsCostTB.Name = "invsCostTB";
             this.invsCostTB.Size = new System.Drawing.Size(100, 20);
             this.invsCostTB.TabIndex = 29;
@@ -1293,7 +1315,7 @@
             // 
             this.costLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.costLbl.AutoSize = true;
-            this.costLbl.Location = new System.Drawing.Point(503, 412);
+            this.costLbl.Location = new System.Drawing.Point(354, 418);
             this.costLbl.Name = "costLbl";
             this.costLbl.Size = new System.Drawing.Size(28, 13);
             this.costLbl.TabIndex = 28;
@@ -1302,43 +1324,25 @@
             // invsNotesTB
             // 
             this.invsNotesTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsNotesTB.Location = new System.Drawing.Point(558, 385);
+            this.invsNotesTB.Location = new System.Drawing.Point(53, 441);
             this.invsNotesTB.Name = "invsNotesTB";
-            this.invsNotesTB.Size = new System.Drawing.Size(100, 20);
+            this.invsNotesTB.Size = new System.Drawing.Size(121, 20);
             this.invsNotesTB.TabIndex = 25;
             // 
             // notesLbl
             // 
             this.notesLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.notesLbl.AutoSize = true;
-            this.notesLbl.Location = new System.Drawing.Point(503, 389);
+            this.notesLbl.Location = new System.Drawing.Point(8, 444);
             this.notesLbl.Name = "notesLbl";
             this.notesLbl.Size = new System.Drawing.Size(35, 13);
             this.notesLbl.TabIndex = 24;
             this.notesLbl.Text = "Notes";
             // 
-            // invsTotalTB
-            // 
-            this.invsTotalTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTotalTB.Location = new System.Drawing.Point(396, 436);
-            this.invsTotalTB.Name = "invsTotalTB";
-            this.invsTotalTB.Size = new System.Drawing.Size(100, 20);
-            this.invsTotalTB.TabIndex = 23;
-            // 
-            // totalLbl
-            // 
-            this.totalLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.totalLbl.AutoSize = true;
-            this.totalLbl.Location = new System.Drawing.Point(344, 439);
-            this.totalLbl.Name = "totalLbl";
-            this.totalLbl.Size = new System.Drawing.Size(31, 13);
-            this.totalLbl.TabIndex = 22;
-            this.totalLbl.Text = "Total";
-            // 
             // invsTaxTB
             // 
             this.invsTaxTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxTB.Location = new System.Drawing.Point(396, 412);
+            this.invsTaxTB.Location = new System.Drawing.Point(240, 443);
             this.invsTaxTB.Name = "invsTaxTB";
             this.invsTaxTB.Size = new System.Drawing.Size(100, 20);
             this.invsTaxTB.TabIndex = 21;
@@ -1347,7 +1351,7 @@
             // 
             this.taxLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxLbl.AutoSize = true;
-            this.taxLbl.Location = new System.Drawing.Point(344, 414);
+            this.taxLbl.Location = new System.Drawing.Point(185, 444);
             this.taxLbl.Name = "taxLbl";
             this.taxLbl.Size = new System.Drawing.Size(25, 13);
             this.taxLbl.TabIndex = 20;
@@ -1356,7 +1360,7 @@
             // invsQtyTB
             // 
             this.invsQtyTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsQtyTB.Location = new System.Drawing.Point(235, 410);
+            this.invsQtyTB.Location = new System.Drawing.Point(240, 390);
             this.invsQtyTB.Name = "invsQtyTB";
             this.invsQtyTB.Size = new System.Drawing.Size(100, 20);
             this.invsQtyTB.TabIndex = 19;
@@ -1365,7 +1369,7 @@
             // 
             this.QtyIPLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.QtyIPLbl.AutoSize = true;
-            this.QtyIPLbl.Location = new System.Drawing.Point(169, 413);
+            this.QtyIPLbl.Location = new System.Drawing.Point(185, 393);
             this.QtyIPLbl.Name = "QtyIPLbl";
             this.QtyIPLbl.Size = new System.Drawing.Size(23, 13);
             this.QtyIPLbl.TabIndex = 18;
@@ -1374,16 +1378,16 @@
             // invsDetailsTB
             // 
             this.invsDetailsTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsDetailsTB.Location = new System.Drawing.Point(235, 437);
+            this.invsDetailsTB.Location = new System.Drawing.Point(53, 417);
             this.invsDetailsTB.Name = "invsDetailsTB";
-            this.invsDetailsTB.Size = new System.Drawing.Size(100, 20);
+            this.invsDetailsTB.Size = new System.Drawing.Size(121, 20);
             this.invsDetailsTB.TabIndex = 17;
             // 
             // dtlsLbl
             // 
             this.dtlsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtlsLbl.AutoSize = true;
-            this.dtlsLbl.Location = new System.Drawing.Point(169, 440);
+            this.dtlsLbl.Location = new System.Drawing.Point(8, 418);
             this.dtlsLbl.Name = "dtlsLbl";
             this.dtlsLbl.Size = new System.Drawing.Size(39, 13);
             this.dtlsLbl.TabIndex = 16;
@@ -1392,7 +1396,7 @@
             // invsSubTotalTB
             // 
             this.invsSubTotalTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsSubTotalTB.Location = new System.Drawing.Point(396, 386);
+            this.invsSubTotalTB.Location = new System.Drawing.Point(240, 417);
             this.invsSubTotalTB.Name = "invsSubTotalTB";
             this.invsSubTotalTB.Size = new System.Drawing.Size(100, 20);
             this.invsSubTotalTB.TabIndex = 15;
@@ -1401,34 +1405,26 @@
             // 
             this.subTotLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.subTotLbl.AutoSize = true;
-            this.subTotLbl.Location = new System.Drawing.Point(341, 388);
+            this.subTotLbl.Location = new System.Drawing.Point(181, 420);
             this.subTotLbl.Name = "subTotLbl";
             this.subTotLbl.Size = new System.Drawing.Size(53, 13);
             this.subTotLbl.TabIndex = 14;
             this.subTotLbl.Text = "Sub Total";
             // 
-            // invsBillNameTB
-            // 
-            this.invsBillNameTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsBillNameTB.Location = new System.Drawing.Point(235, 384);
-            this.invsBillNameTB.Name = "invsBillNameTB";
-            this.invsBillNameTB.Size = new System.Drawing.Size(100, 20);
-            this.invsBillNameTB.TabIndex = 13;
-            // 
             // bilNameLbl
             // 
             this.bilNameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bilNameLbl.AutoSize = true;
-            this.bilNameLbl.Location = new System.Drawing.Point(169, 387);
+            this.bilNameLbl.Location = new System.Drawing.Point(8, 393);
             this.bilNameLbl.Name = "bilNameLbl";
-            this.bilNameLbl.Size = new System.Drawing.Size(65, 13);
+            this.bilNameLbl.Size = new System.Drawing.Size(33, 13);
             this.bilNameLbl.TabIndex = 12;
-            this.bilNameLbl.Text = "Billing Name";
+            this.bilNameLbl.Text = "Client";
             // 
             // invsInvNumTB
             // 
             this.invsInvNumTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsInvNumTB.Location = new System.Drawing.Point(63, 436);
+            this.invsInvNumTB.Location = new System.Drawing.Point(409, 389);
             this.invsInvNumTB.Name = "invsInvNumTB";
             this.invsInvNumTB.Size = new System.Drawing.Size(100, 20);
             this.invsInvNumTB.TabIndex = 9;
@@ -1437,47 +1433,11 @@
             // 
             this.invnumLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.invnumLbl.AutoSize = true;
-            this.invnumLbl.Location = new System.Drawing.Point(10, 439);
+            this.invnumLbl.Location = new System.Drawing.Point(357, 393);
             this.invnumLbl.Name = "invnumLbl";
             this.invnumLbl.Size = new System.Drawing.Size(32, 13);
             this.invnumLbl.TabIndex = 8;
             this.invnumLbl.Text = "Inv #";
-            // 
-            // invsClientIDTB
-            // 
-            this.invsClientIDTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsClientIDTB.Location = new System.Drawing.Point(63, 410);
-            this.invsClientIDTB.Name = "invsClientIDTB";
-            this.invsClientIDTB.Size = new System.Drawing.Size(100, 20);
-            this.invsClientIDTB.TabIndex = 7;
-            // 
-            // clID
-            // 
-            this.clID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clID.AutoSize = true;
-            this.clID.Location = new System.Drawing.Point(10, 413);
-            this.clID.Name = "clID";
-            this.clID.Size = new System.Drawing.Size(47, 13);
-            this.clID.TabIndex = 6;
-            this.clID.Text = "Client ID";
-            // 
-            // invsInvIDTB
-            // 
-            this.invsInvIDTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsInvIDTB.Location = new System.Drawing.Point(63, 384);
-            this.invsInvIDTB.Name = "invsInvIDTB";
-            this.invsInvIDTB.Size = new System.Drawing.Size(100, 20);
-            this.invsInvIDTB.TabIndex = 5;
-            // 
-            // invIDLbl
-            // 
-            this.invIDLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invIDLbl.AutoSize = true;
-            this.invIDLbl.Location = new System.Drawing.Point(10, 387);
-            this.invIDLbl.Name = "invIDLbl";
-            this.invIDLbl.Size = new System.Drawing.Size(36, 13);
-            this.invIDLbl.TabIndex = 4;
-            this.invIDLbl.Text = "Inv ID";
             // 
             // invsRefreshBut
             // 
@@ -2189,11 +2149,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
         private System.Windows.Forms.Button invsRefreshBut;
-        private System.Windows.Forms.Label invIDLbl;
         private System.Windows.Forms.TextBox invsNotesTB;
         private System.Windows.Forms.Label notesLbl;
-        private System.Windows.Forms.TextBox invsTotalTB;
-        private System.Windows.Forms.Label totalLbl;
         private System.Windows.Forms.TextBox invsTaxTB;
         private System.Windows.Forms.Label taxLbl;
         private System.Windows.Forms.TextBox invsQtyTB;
@@ -2202,13 +2159,6 @@
         private System.Windows.Forms.Label dtlsLbl;
         private System.Windows.Forms.TextBox invsSubTotalTB;
         private System.Windows.Forms.Label subTotLbl;
-        private System.Windows.Forms.TextBox invsBillNameTB;
-        private System.Windows.Forms.Label bilNameLbl;
-        private System.Windows.Forms.TextBox invsInvNumTB;
-        private System.Windows.Forms.Label invnumLbl;
-        private System.Windows.Forms.TextBox invsClientIDTB;
-        private System.Windows.Forms.Label clID;
-        private System.Windows.Forms.TextBox invsInvIDTB;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_Client_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn INV_NM;
@@ -2227,7 +2177,13 @@
         private System.Windows.Forms.Label taxpaidLbl;
         private System.Windows.Forms.TextBox invsCostTB;
         private System.Windows.Forms.Label costLbl;
+        private System.Windows.Forms.ComboBox invsBillNameCB;
         private System.Windows.Forms.DateTimePicker invsDTPicker;
+        private System.Windows.Forms.Label bilNameLbl;
+        private System.Windows.Forms.TextBox invsInvNumTB;
+        private System.Windows.Forms.Label invnumLbl;
+        private System.Windows.Forms.Button invsClearEditItemsBut;
+        private System.Windows.Forms.Button invsEditUpdateBut;
     }
 }
 
