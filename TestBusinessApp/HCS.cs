@@ -32,9 +32,11 @@ namespace TestBusinessApp
         Client workingClient = new Client();
         //  Holds the current Client Data Grid row that is being updated.
         int clientupdaterow;
-        decimal taxRate = 0.06875m;
+        //decimal taxRate = 0.06875m;
+        decimal taxRate = 0.06500m;
         int invoicesupdaterow;
         Invoice workingInvoice = new Invoice();
+        bool invoiceEditTaxWarning = false;
 
         public HCS()
         {
@@ -81,8 +83,8 @@ namespace TestBusinessApp
             this.InvoicesInvsDG.Columns["Inv_Cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Tax_Paid"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.InvoicesInvsDG.Columns["Inv_Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
-
             this.invoiceItemsDG.Columns["Inv_Dt"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            enableInvEditFields(false);
 
             // Admin
             adminAddHSBut.Enabled = false;
@@ -1661,7 +1663,6 @@ namespace TestBusinessApp
                             inv.Paid = "Owing";
                         }
                         
-
                         invs.Add(inv);
                     }
                 }
@@ -1881,6 +1882,7 @@ namespace TestBusinessApp
             invoicesupdaterow = InvoicesInvsDG.CurrentRow.Index;
             int invid = Convert.ToInt32(invoiceItemsDG.CurrentRow.Cells[0].Value.ToString());
             LoadInvoiceItemEdit(invid);
+            enableInvEditFields(true);
         }
 
         private void LoadInvoiceItemEdit(int id)
@@ -1900,7 +1902,6 @@ namespace TestBusinessApp
                 invsQtyTB.Text = invItem.Qty.ToString();
                 invsDetailsTB.Text = invItem.Details.ToString();
                 invsSubTotalTB.Text = invItem.Price.ToString();
-                invsTaxTB.Text = invItem.Tax.ToString();
                 invsNotesTB.Text = invItem.Notes;
                 invsCostTB.Text = invItem.Cost.ToString();
                 invsTaxPaidTB.Text = invItem.TaxPaid.ToString();
@@ -1926,10 +1927,11 @@ namespace TestBusinessApp
             invsQtyTB.Text = "";
             invsDetailsTB.Text = "";
             invsSubTotalTB.Text = "";
-            invsTaxTB.Text = "";
             invsNotesTB.Text = "";
             invsCostTB.Text = "";
             invsTaxPaidTB.Text = "";
+
+            enableInvEditFields(false);
         }
 
         private void invsClearEditItemsBut_Click(object sender, EventArgs e)
@@ -1949,7 +1951,8 @@ namespace TestBusinessApp
             string nts = invsNotesTB.Text;
             int qty = int.Parse(invsQtyTB.Text);
             decimal subT = decimal.Parse(invsSubTotalTB.Text);
-            decimal tx = decimal.Parse(invsTaxTB.Text);
+            decimal tx = qty * subT * taxRate;
+            decimal ttl = (qty * subT) + tx;
             decimal cst = decimal.Parse(invsCostTB.Text);
             decimal txpd = decimal.Parse(invsTaxPaidTB.Text);
 
@@ -2072,14 +2075,15 @@ namespace TestBusinessApp
                 }
             }
 
-            if(dtls != invEdit.Details || nts != invEdit.Notes || qty != invEdit.InvNumber || subT != invEdit.Price ||
-                tx != invEdit.Tax || cst != invEdit.Cost || txpd != invEdit.TaxPaid)
+            if(dtls != invEdit.Details || nts != invEdit.Notes || qty != invEdit.InvNumber ||
+                subT != invEdit.Price || cst != invEdit.Cost || txpd != invEdit.TaxPaid)
             {
                 string query = "USE HCS UPDATE Invoice SET INV_Details = '" + dtls + "'," +
                                                            "INV_Notes = '" + nts + "'," +
                                                            "INV_Qty = " + qty + "," +
                                                            "INV_Price = " + subT + "," +
                                                            "INV_Tax = " + tx + "," +
+                                                           "INV_Total = " + ttl + "," +
                                                            "INV_Cost =" + cst + "," +
                                                            "INV_TaxPaid = " + txpd +
                                                            " WHERE INV_ID = " + invEdit.ID;
@@ -2099,6 +2103,48 @@ namespace TestBusinessApp
             loadInvoices();
             // Clear Editable fields
             clearInvoiceItemData();
+            enableInvEditFields(false);
+        }
+
+        private void invsSubTotalTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!invoiceEditTaxWarning)
+            {
+                MessageBox.Show("Be sure to check the tax rate before updating Quantity or Price fields.");
+                invoiceEditTaxWarning = true;
+            }
+        }
+
+        private void invsQtyTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!invoiceEditTaxWarning)
+            {
+                MessageBox.Show("Be sure to check the tax rate before updating Quantity or Price fields.");
+                invoiceEditTaxWarning = true;
+            }
+        }
+
+        private void enableInvEditFields(bool e)
+        {
+            bilNameLbl.Enabled = e;
+            invsBillNameCB.Enabled = e;
+            dtlsLbl.Enabled = e;
+            invsDetailsTB.Enabled = e;
+            notesLbl.Enabled = e;
+            invsNotesTB.Enabled = e;
+            invsDTPicker.Enabled = e;
+            QtyIPLbl.Enabled = e;
+            invsQtyTB.Enabled = e;
+            subTotLbl.Enabled = e;
+            invsSubTotalTB.Enabled = e;
+            invnumLbl.Enabled = e;
+            invsInvNumTB.Enabled = e;
+            costLbl.Enabled = e;
+            invsCostTB.Enabled = e;
+            taxpaidLbl.Enabled = e;
+            invsTaxPaidTB.Enabled = e;
+            invsClearEditItemsBut.Enabled = e;
+            invsEditUpdateBut.Enabled = e;
         }
 
         #endregion
@@ -2368,6 +2414,7 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
+
 
 
 

@@ -136,8 +136,6 @@
             this.costLbl = new System.Windows.Forms.Label();
             this.invsNotesTB = new System.Windows.Forms.TextBox();
             this.notesLbl = new System.Windows.Forms.Label();
-            this.invsTaxTB = new System.Windows.Forms.TextBox();
-            this.taxLbl = new System.Windows.Forms.Label();
             this.invsQtyTB = new System.Windows.Forms.TextBox();
             this.QtyIPLbl = new System.Windows.Forms.Label();
             this.invsDetailsTB = new System.Windows.Forms.TextBox();
@@ -1224,8 +1222,6 @@
             this.invoicesPage.Controls.Add(this.costLbl);
             this.invoicesPage.Controls.Add(this.invsNotesTB);
             this.invoicesPage.Controls.Add(this.notesLbl);
-            this.invoicesPage.Controls.Add(this.invsTaxTB);
-            this.invoicesPage.Controls.Add(this.taxLbl);
             this.invoicesPage.Controls.Add(this.invsQtyTB);
             this.invoicesPage.Controls.Add(this.QtyIPLbl);
             this.invoicesPage.Controls.Add(this.invsDetailsTB);
@@ -1289,7 +1285,6 @@
             // invsTaxPaidTB
             // 
             this.invsTaxPaidTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxPaidTB.Enabled = false;
             this.invsTaxPaidTB.Location = new System.Drawing.Point(409, 440);
             this.invsTaxPaidTB.Name = "invsTaxPaidTB";
             this.invsTaxPaidTB.Size = new System.Drawing.Size(100, 20);
@@ -1299,7 +1294,6 @@
             // 
             this.taxpaidLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxpaidLbl.AutoSize = true;
-            this.taxpaidLbl.Enabled = false;
             this.taxpaidLbl.Location = new System.Drawing.Point(354, 443);
             this.taxpaidLbl.Name = "taxpaidLbl";
             this.taxpaidLbl.Size = new System.Drawing.Size(49, 13);
@@ -1342,26 +1336,6 @@
             this.notesLbl.TabIndex = 24;
             this.notesLbl.Text = "Notes";
             // 
-            // invsTaxTB
-            // 
-            this.invsTaxTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsTaxTB.Enabled = false;
-            this.invsTaxTB.Location = new System.Drawing.Point(240, 443);
-            this.invsTaxTB.Name = "invsTaxTB";
-            this.invsTaxTB.Size = new System.Drawing.Size(100, 20);
-            this.invsTaxTB.TabIndex = 21;
-            // 
-            // taxLbl
-            // 
-            this.taxLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.taxLbl.AutoSize = true;
-            this.taxLbl.Enabled = false;
-            this.taxLbl.Location = new System.Drawing.Point(185, 444);
-            this.taxLbl.Name = "taxLbl";
-            this.taxLbl.Size = new System.Drawing.Size(25, 13);
-            this.taxLbl.TabIndex = 20;
-            this.taxLbl.Text = "Tax";
-            // 
             // invsQtyTB
             // 
             this.invsQtyTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1369,6 +1343,7 @@
             this.invsQtyTB.Name = "invsQtyTB";
             this.invsQtyTB.Size = new System.Drawing.Size(100, 20);
             this.invsQtyTB.TabIndex = 19;
+            this.invsQtyTB.TextChanged += new System.EventHandler(this.invsQtyTB_TextChanged);
             // 
             // QtyIPLbl
             // 
@@ -1405,6 +1380,7 @@
             this.invsSubTotalTB.Name = "invsSubTotalTB";
             this.invsSubTotalTB.Size = new System.Drawing.Size(100, 20);
             this.invsSubTotalTB.TabIndex = 15;
+            this.invsSubTotalTB.TextChanged += new System.EventHandler(this.invsSubTotalTB_TextChanged);
             // 
             // subTotLbl
             // 
@@ -1429,7 +1405,7 @@
             // invsInvNumTB
             // 
             this.invsInvNumTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.invsInvNumTB.Location = new System.Drawing.Point(409, 389);
+            this.invsInvNumTB.Location = new System.Drawing.Point(240, 443);
             this.invsInvNumTB.Name = "invsInvNumTB";
             this.invsInvNumTB.Size = new System.Drawing.Size(100, 20);
             this.invsInvNumTB.TabIndex = 9;
@@ -1438,7 +1414,7 @@
             // 
             this.invnumLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.invnumLbl.AutoSize = true;
-            this.invnumLbl.Location = new System.Drawing.Point(357, 393);
+            this.invnumLbl.Location = new System.Drawing.Point(185, 446);
             this.invnumLbl.Name = "invnumLbl";
             this.invnumLbl.Size = new System.Drawing.Size(32, 13);
             this.invnumLbl.TabIndex = 8;
@@ -2156,8 +2132,6 @@
         private System.Windows.Forms.Button invsRefreshBut;
         private System.Windows.Forms.TextBox invsNotesTB;
         private System.Windows.Forms.Label notesLbl;
-        private System.Windows.Forms.TextBox invsTaxTB;
-        private System.Windows.Forms.Label taxLbl;
         private System.Windows.Forms.TextBox invsQtyTB;
         private System.Windows.Forms.Label QtyIPLbl;
         private System.Windows.Forms.TextBox invsDetailsTB;
