@@ -338,7 +338,7 @@
             this.bNameTxtBx.Location = new System.Drawing.Point(63, 405);
             this.bNameTxtBx.Name = "bNameTxtBx";
             this.bNameTxtBx.Size = new System.Drawing.Size(127, 20);
-            this.bNameTxtBx.TabIndex = 30;
+            this.bNameTxtBx.TabIndex = 4;
             this.bNameTxtBx.TextChanged += new System.EventHandler(this.bNameTxtBx_TextChanged);
             // 
             // bNameLbl
@@ -357,7 +357,7 @@
             this.clrdataBut.Location = new System.Drawing.Point(875, 441);
             this.clrdataBut.Name = "clrdataBut";
             this.clrdataBut.Size = new System.Drawing.Size(87, 23);
-            this.clrdataBut.TabIndex = 29;
+            this.clrdataBut.TabIndex = 18;
             this.clrdataBut.Text = "Clear Data";
             this.clrdataBut.UseVisualStyleBackColor = true;
             this.clrdataBut.Click += new System.EventHandler(this.clrdataBut_Click);
@@ -378,7 +378,7 @@
             this.updtClBut.Location = new System.Drawing.Point(875, 470);
             this.updtClBut.Name = "updtClBut";
             this.updtClBut.Size = new System.Drawing.Size(87, 23);
-            this.updtClBut.TabIndex = 27;
+            this.updtClBut.TabIndex = 20;
             this.updtClBut.Text = "Update Client";
             this.updtClBut.UseVisualStyleBackColor = true;
             this.updtClBut.Click += new System.EventHandler(this.updtClBut_Click);
@@ -390,7 +390,7 @@
             this.trimChkbx.Location = new System.Drawing.Point(696, 385);
             this.trimChkbx.Name = "trimChkbx";
             this.trimChkbx.Size = new System.Drawing.Size(46, 17);
-            this.trimChkbx.TabIndex = 26;
+            this.trimChkbx.TabIndex = 17;
             this.trimChkbx.Text = "Trim";
             this.trimChkbx.UseVisualStyleBackColor = true;
             // 
@@ -401,7 +401,7 @@
             this.presetDataChkbx.Location = new System.Drawing.Point(608, 385);
             this.presetDataChkbx.Name = "presetDataChkbx";
             this.presetDataChkbx.Size = new System.Drawing.Size(82, 17);
-            this.presetDataChkbx.TabIndex = 25;
+            this.presetDataChkbx.TabIndex = 16;
             this.presetDataChkbx.Text = "Preset Data";
             this.presetDataChkbx.UseVisualStyleBackColor = true;
             this.presetDataChkbx.CheckedChanged += new System.EventHandler(this.presetDataChkbx_CheckedChanged);
@@ -413,7 +413,7 @@
             this.delClBut.Location = new System.Drawing.Point(968, 470);
             this.delClBut.Name = "delClBut";
             this.delClBut.Size = new System.Drawing.Size(87, 23);
-            this.delClBut.TabIndex = 24;
+            this.delClBut.TabIndex = 21;
             this.delClBut.Text = "Delete Client";
             this.delClBut.UseVisualStyleBackColor = true;
             this.delClBut.Click += new System.EventHandler(this.delClBut_Click);
@@ -425,7 +425,7 @@
             this.zipETxtBx.MaxLength = 4;
             this.zipETxtBx.Name = "zipETxtBx";
             this.zipETxtBx.Size = new System.Drawing.Size(36, 20);
-            this.zipETxtBx.TabIndex = 10;
+            this.zipETxtBx.TabIndex = 11;
             // 
             // phone3TxtBx
             // 
@@ -434,7 +434,7 @@
             this.phone3TxtBx.MaxLength = 4;
             this.phone3TxtBx.Name = "phone3TxtBx";
             this.phone3TxtBx.Size = new System.Drawing.Size(50, 20);
-            this.phone3TxtBx.TabIndex = 13;
+            this.phone3TxtBx.TabIndex = 14;
             this.phone3TxtBx.TextChanged += new System.EventHandler(this.phone3TxtBx_TextChanged);
             // 
             // phone2TxtBx
@@ -444,7 +444,7 @@
             this.phone2TxtBx.MaxLength = 3;
             this.phone2TxtBx.Name = "phone2TxtBx";
             this.phone2TxtBx.Size = new System.Drawing.Size(35, 20);
-            this.phone2TxtBx.TabIndex = 12;
+            this.phone2TxtBx.TabIndex = 13;
             this.phone2TxtBx.TextChanged += new System.EventHandler(this.phone2TxtBx_TextChanged);
             // 
             // phone1TxtBx
@@ -454,7 +454,7 @@
             this.phone1TxtBx.MaxLength = 3;
             this.phone1TxtBx.Name = "phone1TxtBx";
             this.phone1TxtBx.Size = new System.Drawing.Size(35, 20);
-            this.phone1TxtBx.TabIndex = 11;
+            this.phone1TxtBx.TabIndex = 12;
             this.phone1TxtBx.TextChanged += new System.EventHandler(this.phone1TxtBx_TextChanged);
             // 
             // phoneLbl
@@ -473,7 +473,7 @@
             this.emailTxtBx.Location = new System.Drawing.Point(608, 354);
             this.emailTxtBx.Name = "emailTxtBx";
             this.emailTxtBx.Size = new System.Drawing.Size(202, 20);
-            this.emailTxtBx.TabIndex = 14;
+            this.emailTxtBx.TabIndex = 15;
             this.emailTxtBx.TextChanged += new System.EventHandler(this.emailTxtBx_TextChanged);
             // 
             // emailLbl
@@ -492,7 +492,7 @@
             this.cityTxtBx.Location = new System.Drawing.Point(461, 326);
             this.cityTxtBx.Name = "cityTxtBx";
             this.cityTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.cityTxtBx.TabIndex = 7;
+            this.cityTxtBx.TabIndex = 8;
             this.cityTxtBx.TextChanged += new System.EventHandler(this.cityTxtBx_TextChanged);
             // 
             // cityLbl
@@ -512,7 +512,7 @@
             this.stateTxtBx.MaxLength = 2;
             this.stateTxtBx.Name = "stateTxtBx";
             this.stateTxtBx.Size = new System.Drawing.Size(25, 20);
-            this.stateTxtBx.TabIndex = 8;
+            this.stateTxtBx.TabIndex = 9;
             // 
             // stateLbl
             // 
@@ -531,7 +531,7 @@
             this.zipTxtBx.MaxLength = 5;
             this.zipTxtBx.Name = "zipTxtBx";
             this.zipTxtBx.Size = new System.Drawing.Size(58, 20);
-            this.zipTxtBx.TabIndex = 9;
+            this.zipTxtBx.TabIndex = 10;
             this.zipTxtBx.TextChanged += new System.EventHandler(this.zipTxtBx_TextChanged);
             // 
             // zipLbl
@@ -550,7 +550,7 @@
             this.add2TxtBx.Location = new System.Drawing.Point(261, 353);
             this.add2TxtBx.Name = "add2TxtBx";
             this.add2TxtBx.Size = new System.Drawing.Size(153, 20);
-            this.add2TxtBx.TabIndex = 5;
+            this.add2TxtBx.TabIndex = 6;
             // 
             // add2Lbl
             // 
@@ -568,7 +568,7 @@
             this.add3TxtBx.Location = new System.Drawing.Point(261, 382);
             this.add3TxtBx.Name = "add3TxtBx";
             this.add3TxtBx.Size = new System.Drawing.Size(153, 20);
-            this.add3TxtBx.TabIndex = 6;
+            this.add3TxtBx.TabIndex = 7;
             // 
             // add3Lbl
             // 
@@ -605,7 +605,7 @@
             this.add1TxtBx.Location = new System.Drawing.Point(261, 325);
             this.add1TxtBx.Name = "add1TxtBx";
             this.add1TxtBx.Size = new System.Drawing.Size(153, 20);
-            this.add1TxtBx.TabIndex = 4;
+            this.add1TxtBx.TabIndex = 5;
             // 
             // add1Lbl
             // 
@@ -662,7 +662,7 @@
             this.addClBut.Location = new System.Drawing.Point(968, 441);
             this.addClBut.Name = "addClBut";
             this.addClBut.Size = new System.Drawing.Size(87, 23);
-            this.addClBut.TabIndex = 15;
+            this.addClBut.TabIndex = 19;
             this.addClBut.Text = "Add Client";
             this.addClBut.UseVisualStyleBackColor = true;
             this.addClBut.Click += new System.EventHandler(this.AddClientButton_Click);
@@ -839,7 +839,7 @@
             this.createInvClrItmsBut.Location = new System.Drawing.Point(114, 470);
             this.createInvClrItmsBut.Name = "createInvClrItmsBut";
             this.createInvClrItmsBut.Size = new System.Drawing.Size(75, 23);
-            this.createInvClrItmsBut.TabIndex = 11;
+            this.createInvClrItmsBut.TabIndex = 16;
             this.createInvClrItmsBut.Text = "Remove All";
             this.createInvClrItmsBut.UseVisualStyleBackColor = true;
             this.createInvClrItmsBut.Click += new System.EventHandler(this.createInvClrItmsBut_Click);
@@ -850,7 +850,7 @@
             this.createInvRmvItmBut.Location = new System.Drawing.Point(17, 470);
             this.createInvRmvItmBut.Name = "createInvRmvItmBut";
             this.createInvRmvItmBut.Size = new System.Drawing.Size(91, 23);
-            this.createInvRmvItmBut.TabIndex = 10;
+            this.createInvRmvItmBut.TabIndex = 15;
             this.createInvRmvItmBut.Text = "Remove Items";
             this.createInvRmvItmBut.UseVisualStyleBackColor = true;
             this.createInvRmvItmBut.Click += new System.EventHandler(this.createInvRmvItmBut_Click);
@@ -903,7 +903,7 @@
             this.invclGrandTotalTxtBx.Location = new System.Drawing.Point(259, 36);
             this.invclGrandTotalTxtBx.Name = "invclGrandTotalTxtBx";
             this.invclGrandTotalTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.invclGrandTotalTxtBx.TabIndex = 9;
+            this.invclGrandTotalTxtBx.TabIndex = 22;
             this.invclGrandTotalTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // invclTotalTxtBx
@@ -911,7 +911,7 @@
             this.invclTotalTxtBx.Location = new System.Drawing.Point(7, 36);
             this.invclTotalTxtBx.Name = "invclTotalTxtBx";
             this.invclTotalTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.invclTotalTxtBx.TabIndex = 8;
+            this.invclTotalTxtBx.TabIndex = 19;
             this.invclTotalTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // invclTaxlTxtBx
@@ -919,7 +919,7 @@
             this.invclTaxlTxtBx.Location = new System.Drawing.Point(122, 36);
             this.invclTaxlTxtBx.Name = "invclTaxlTxtBx";
             this.invclTaxlTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.invclTaxlTxtBx.TabIndex = 7;
+            this.invclTaxlTxtBx.TabIndex = 21;
             this.invclTaxlTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // createEstBut
@@ -928,7 +928,7 @@
             this.createEstBut.Location = new System.Drawing.Point(845, 470);
             this.createEstBut.Name = "createEstBut";
             this.createEstBut.Size = new System.Drawing.Size(113, 23);
-            this.createEstBut.TabIndex = 6;
+            this.createEstBut.TabIndex = 17;
             this.createEstBut.Text = "Create Estimate";
             this.createEstBut.UseVisualStyleBackColor = true;
             // 
@@ -950,7 +950,7 @@
             this.invClCustCmbBX.Name = "invClCustCmbBX";
             this.invClCustCmbBX.Size = new System.Drawing.Size(230, 21);
             this.invClCustCmbBX.Sorted = true;
-            this.invClCustCmbBX.TabIndex = 0;
+            this.invClCustCmbBX.TabIndex = 14;
             this.invClCustCmbBX.SelectedIndexChanged += new System.EventHandler(this.invClCustCmbBX_SelectedIndexChanged);
             // 
             // createInvBut
@@ -959,7 +959,7 @@
             this.createInvBut.Location = new System.Drawing.Point(964, 470);
             this.createInvBut.Name = "createInvBut";
             this.createInvBut.Size = new System.Drawing.Size(101, 23);
-            this.createInvBut.TabIndex = 4;
+            this.createInvBut.TabIndex = 18;
             this.createInvBut.Text = "Create Invoice";
             this.createInvBut.UseVisualStyleBackColor = true;
             this.createInvBut.Click += new System.EventHandler(this.createInvBut_Click);
@@ -1049,7 +1049,7 @@
             this.invClDTPicker.Location = new System.Drawing.Point(433, 45);
             this.invClDTPicker.Name = "invClDTPicker";
             this.invClDTPicker.Size = new System.Drawing.Size(200, 20);
-            this.invClDTPicker.TabIndex = 29;
+            this.invClDTPicker.TabIndex = 5;
             this.invClDTPicker.ValueChanged += new System.EventHandler(this.invClDTPicker_ValueChanged);
             // 
             // custnvitmLbl
@@ -1084,7 +1084,7 @@
             this.addInvBut.Location = new System.Drawing.Point(503, 89);
             this.addInvBut.Name = "addInvBut";
             this.addInvBut.Size = new System.Drawing.Size(120, 23);
-            this.addInvBut.TabIndex = 2;
+            this.addInvBut.TabIndex = 13;
             this.addInvBut.Text = "Add to Invoice";
             this.addInvBut.UseVisualStyleBackColor = true;
             this.addInvBut.Click += new System.EventHandler(this.addInvBut_Click);
@@ -1103,7 +1103,7 @@
             this.invCLPriceTxtBx.Location = new System.Drawing.Point(513, 14);
             this.invCLPriceTxtBx.Name = "invCLPriceTxtBx";
             this.invCLPriceTxtBx.Size = new System.Drawing.Size(120, 20);
-            this.invCLPriceTxtBx.TabIndex = 24;
+            this.invCLPriceTxtBx.TabIndex = 3;
             this.invCLPriceTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.invCLPriceTxtBx.TextChanged += new System.EventHandler(this.invCLPriceTxtBx_TextChanged);
             // 
@@ -1113,7 +1113,7 @@
             this.invCQtyCmbBx.Location = new System.Drawing.Point(395, 16);
             this.invCQtyCmbBx.Name = "invCQtyCmbBx";
             this.invCQtyCmbBx.Size = new System.Drawing.Size(44, 21);
-            this.invCQtyCmbBx.TabIndex = 23;
+            this.invCQtyCmbBx.TabIndex = 2;
             this.invCQtyCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCQtyCmbBx_SelectedIndexChanged);
             // 
             // bootUSBChkBx
@@ -1122,7 +1122,7 @@
             this.bootUSBChkBx.Location = new System.Drawing.Point(200, 95);
             this.bootUSBChkBx.Name = "bootUSBChkBx";
             this.bootUSBChkBx.Size = new System.Drawing.Size(87, 17);
-            this.bootUSBChkBx.TabIndex = 22;
+            this.bootUSBChkBx.TabIndex = 11;
             this.bootUSBChkBx.Text = "Botable USB";
             this.bootUSBChkBx.UseVisualStyleBackColor = true;
             this.bootUSBChkBx.CheckedChanged += new System.EventHandler(this.bootUSBChkBx_CheckedChanged);
@@ -1133,7 +1133,7 @@
             this.dataRecChkBx.Location = new System.Drawing.Point(96, 72);
             this.dataRecChkBx.Name = "dataRecChkBx";
             this.dataRecChkBx.Size = new System.Drawing.Size(98, 17);
-            this.dataRecChkBx.TabIndex = 21;
+            this.dataRecChkBx.TabIndex = 7;
             this.dataRecChkBx.Text = "Data Recovery";
             this.dataRecChkBx.UseVisualStyleBackColor = true;
             this.dataRecChkBx.CheckedChanged += new System.EventHandler(this.dataRecChkBx_CheckedChanged);
@@ -1144,7 +1144,7 @@
             this.inslOSChkBx.Location = new System.Drawing.Point(293, 95);
             this.inslOSChkBx.Name = "inslOSChkBx";
             this.inslOSChkBx.Size = new System.Drawing.Size(71, 17);
-            this.inslOSChkBx.TabIndex = 20;
+            this.inslOSChkBx.TabIndex = 12;
             this.inslOSChkBx.Text = "Install OS";
             this.inslOSChkBx.UseVisualStyleBackColor = true;
             this.inslOSChkBx.CheckedChanged += new System.EventHandler(this.inslOSChkBx_CheckedChanged);
@@ -1155,7 +1155,7 @@
             this.routerChkBx.Location = new System.Drawing.Point(96, 95);
             this.routerChkBx.Name = "routerChkBx";
             this.routerChkBx.Size = new System.Drawing.Size(89, 17);
-            this.routerChkBx.TabIndex = 19;
+            this.routerChkBx.TabIndex = 10;
             this.routerChkBx.Text = "Router Setup";
             this.routerChkBx.UseVisualStyleBackColor = true;
             this.routerChkBx.CheckedChanged += new System.EventHandler(this.routerChkBx_CheckedChanged);
@@ -1166,7 +1166,7 @@
             this.cmpclnpChkBx.Location = new System.Drawing.Point(8, 72);
             this.cmpclnpChkBx.Name = "cmpclnpChkBx";
             this.cmpclnpChkBx.Size = new System.Drawing.Size(82, 17);
-            this.cmpclnpChkBx.TabIndex = 18;
+            this.cmpclnpChkBx.TabIndex = 6;
             this.cmpclnpChkBx.Text = "PC Cleanup";
             this.cmpclnpChkBx.UseVisualStyleBackColor = true;
             this.cmpclnpChkBx.CheckedChanged += new System.EventHandler(this.cmpclnpChkBx_CheckedChanged);
@@ -1177,7 +1177,7 @@
             this.printstpChkBx.Location = new System.Drawing.Point(200, 72);
             this.printstpChkBx.Name = "printstpChkBx";
             this.printstpChkBx.Size = new System.Drawing.Size(87, 17);
-            this.printstpChkBx.TabIndex = 12;
+            this.printstpChkBx.TabIndex = 8;
             this.printstpChkBx.Text = "Printer Setup";
             this.printstpChkBx.UseVisualStyleBackColor = true;
             this.printstpChkBx.CheckedChanged += new System.EventHandler(this.printstpChkBx_CheckedChanged);
@@ -1188,7 +1188,7 @@
             this.invCLItemCmbBx.Location = new System.Drawing.Point(59, 16);
             this.invCLItemCmbBx.Name = "invCLItemCmbBx";
             this.invCLItemCmbBx.Size = new System.Drawing.Size(273, 21);
-            this.invCLItemCmbBx.TabIndex = 3;
+            this.invCLItemCmbBx.TabIndex = 1;
             this.invCLItemCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCLItemCmbBx_SelectedIndexChanged);
             // 
             // compstpChkBx
@@ -1197,7 +1197,7 @@
             this.compstpChkBx.Location = new System.Drawing.Point(8, 95);
             this.compstpChkBx.Name = "compstpChkBx";
             this.compstpChkBx.Size = new System.Drawing.Size(71, 17);
-            this.compstpChkBx.TabIndex = 5;
+            this.compstpChkBx.TabIndex = 9;
             this.compstpChkBx.Text = "PC Setup";
             this.compstpChkBx.UseVisualStyleBackColor = true;
             this.compstpChkBx.CheckedChanged += new System.EventHandler(this.compstpChkBx_CheckedChanged);
@@ -1207,7 +1207,7 @@
             this.InvClcustTxtBx.Location = new System.Drawing.Point(59, 45);
             this.InvClcustTxtBx.Name = "InvClcustTxtBx";
             this.InvClcustTxtBx.Size = new System.Drawing.Size(273, 20);
-            this.InvClcustTxtBx.TabIndex = 1;
+            this.InvClcustTxtBx.TabIndex = 4;
             this.InvClcustTxtBx.TextChanged += new System.EventHandler(this.custTxtBx_TextChanged);
             // 
             // invoicesPage
@@ -1248,7 +1248,7 @@
             this.invsEditUpdateBut.Location = new System.Drawing.Point(990, 467);
             this.invsEditUpdateBut.Name = "invsEditUpdateBut";
             this.invsEditUpdateBut.Size = new System.Drawing.Size(75, 23);
-            this.invsEditUpdateBut.TabIndex = 35;
+            this.invsEditUpdateBut.TabIndex = 55;
             this.invsEditUpdateBut.Text = "Update";
             this.invsEditUpdateBut.UseVisualStyleBackColor = true;
             this.invsEditUpdateBut.Click += new System.EventHandler(this.invsEditUpdateBut_Click);
@@ -1259,7 +1259,7 @@
             this.invsClearEditItemsBut.Location = new System.Drawing.Point(909, 467);
             this.invsClearEditItemsBut.Name = "invsClearEditItemsBut";
             this.invsClearEditItemsBut.Size = new System.Drawing.Size(75, 23);
-            this.invsClearEditItemsBut.TabIndex = 34;
+            this.invsClearEditItemsBut.TabIndex = 50;
             this.invsClearEditItemsBut.Text = "Clear";
             this.invsClearEditItemsBut.UseVisualStyleBackColor = true;
             this.invsClearEditItemsBut.Click += new System.EventHandler(this.invsClearEditItemsBut_Click);
@@ -1271,7 +1271,7 @@
             this.invsBillNameCB.Location = new System.Drawing.Point(53, 390);
             this.invsBillNameCB.Name = "invsBillNameCB";
             this.invsBillNameCB.Size = new System.Drawing.Size(121, 21);
-            this.invsBillNameCB.TabIndex = 33;
+            this.invsBillNameCB.TabIndex = 5;
             // 
             // invsDTPicker
             // 
@@ -1280,7 +1280,7 @@
             this.invsDTPicker.Location = new System.Drawing.Point(8, 470);
             this.invsDTPicker.Name = "invsDTPicker";
             this.invsDTPicker.Size = new System.Drawing.Size(200, 20);
-            this.invsDTPicker.TabIndex = 32;
+            this.invsDTPicker.TabIndex = 45;
             // 
             // invsTaxPaidTB
             // 
@@ -1288,7 +1288,7 @@
             this.invsTaxPaidTB.Location = new System.Drawing.Point(409, 440);
             this.invsTaxPaidTB.Name = "invsTaxPaidTB";
             this.invsTaxPaidTB.Size = new System.Drawing.Size(100, 20);
-            this.invsTaxPaidTB.TabIndex = 31;
+            this.invsTaxPaidTB.TabIndex = 40;
             // 
             // taxpaidLbl
             // 
@@ -1306,7 +1306,7 @@
             this.invsCostTB.Location = new System.Drawing.Point(409, 415);
             this.invsCostTB.Name = "invsCostTB";
             this.invsCostTB.Size = new System.Drawing.Size(100, 20);
-            this.invsCostTB.TabIndex = 29;
+            this.invsCostTB.TabIndex = 35;
             // 
             // costLbl
             // 
@@ -1324,7 +1324,7 @@
             this.invsNotesTB.Location = new System.Drawing.Point(53, 441);
             this.invsNotesTB.Name = "invsNotesTB";
             this.invsNotesTB.Size = new System.Drawing.Size(121, 20);
-            this.invsNotesTB.TabIndex = 25;
+            this.invsNotesTB.TabIndex = 15;
             // 
             // notesLbl
             // 
@@ -1342,7 +1342,7 @@
             this.invsQtyTB.Location = new System.Drawing.Point(240, 390);
             this.invsQtyTB.Name = "invsQtyTB";
             this.invsQtyTB.Size = new System.Drawing.Size(100, 20);
-            this.invsQtyTB.TabIndex = 19;
+            this.invsQtyTB.TabIndex = 20;
             this.invsQtyTB.TextChanged += new System.EventHandler(this.invsQtyTB_TextChanged);
             // 
             // QtyIPLbl
@@ -1361,7 +1361,7 @@
             this.invsDetailsTB.Location = new System.Drawing.Point(53, 417);
             this.invsDetailsTB.Name = "invsDetailsTB";
             this.invsDetailsTB.Size = new System.Drawing.Size(121, 20);
-            this.invsDetailsTB.TabIndex = 17;
+            this.invsDetailsTB.TabIndex = 10;
             // 
             // dtlsLbl
             // 
@@ -1379,7 +1379,7 @@
             this.invsSubTotalTB.Location = new System.Drawing.Point(240, 417);
             this.invsSubTotalTB.Name = "invsSubTotalTB";
             this.invsSubTotalTB.Size = new System.Drawing.Size(100, 20);
-            this.invsSubTotalTB.TabIndex = 15;
+            this.invsSubTotalTB.TabIndex = 25;
             this.invsSubTotalTB.TextChanged += new System.EventHandler(this.invsSubTotalTB_TextChanged);
             // 
             // subTotLbl
@@ -1408,7 +1408,7 @@
             this.invsInvNumTB.Location = new System.Drawing.Point(240, 443);
             this.invsInvNumTB.Name = "invsInvNumTB";
             this.invsInvNumTB.Size = new System.Drawing.Size(100, 20);
-            this.invsInvNumTB.TabIndex = 9;
+            this.invsInvNumTB.TabIndex = 30;
             // 
             // invnumLbl
             // 
