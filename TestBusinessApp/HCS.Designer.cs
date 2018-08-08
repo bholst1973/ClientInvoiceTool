@@ -1280,6 +1280,7 @@
             // invsDTPicker
             // 
             this.invsDTPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.invsDTPicker.Checked = false;
             this.invsDTPicker.Location = new System.Drawing.Point(8, 470);
             this.invsDTPicker.Name = "invsDTPicker";
             this.invsDTPicker.Size = new System.Drawing.Size(200, 20);
@@ -1288,6 +1289,7 @@
             // invsTaxPaidTB
             // 
             this.invsTaxPaidTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.invsTaxPaidTB.Enabled = false;
             this.invsTaxPaidTB.Location = new System.Drawing.Point(409, 440);
             this.invsTaxPaidTB.Name = "invsTaxPaidTB";
             this.invsTaxPaidTB.Size = new System.Drawing.Size(100, 20);
@@ -1297,6 +1299,7 @@
             // 
             this.taxpaidLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxpaidLbl.AutoSize = true;
+            this.taxpaidLbl.Enabled = false;
             this.taxpaidLbl.Location = new System.Drawing.Point(354, 443);
             this.taxpaidLbl.Name = "taxpaidLbl";
             this.taxpaidLbl.Size = new System.Drawing.Size(49, 13);
@@ -1342,6 +1345,7 @@
             // invsTaxTB
             // 
             this.invsTaxTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.invsTaxTB.Enabled = false;
             this.invsTaxTB.Location = new System.Drawing.Point(240, 443);
             this.invsTaxTB.Name = "invsTaxTB";
             this.invsTaxTB.Size = new System.Drawing.Size(100, 20);
@@ -1351,6 +1355,7 @@
             // 
             this.taxLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.taxLbl.AutoSize = true;
+            this.taxLbl.Enabled = false;
             this.taxLbl.Location = new System.Drawing.Point(185, 444);
             this.taxLbl.Name = "taxLbl";
             this.taxLbl.Size = new System.Drawing.Size(25, 13);
