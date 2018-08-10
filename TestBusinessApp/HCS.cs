@@ -1941,59 +1941,163 @@ namespace TestBusinessApp
 
         private void invsEditUpdateBut_Click(object sender, EventArgs e)
         {
-            Invoice invEdit = new Invoice();
-            invEdit = workingInvoice;            
-            string bn = this.invsBillNameCB.GetItemText(this.invsBillNameCB.SelectedItem);
-            int invNum = int.Parse(this.invsInvNumTB.Text);
-            DateTime dt = invsDTPicker.Value.Date;
-            string date = dt.ToShortDateString(); 
-            string dtls = invsDetailsTB.Text;
-            string nts = invsNotesTB.Text;
-            int qty = int.Parse(invsQtyTB.Text);
-            decimal subT = decimal.Parse(invsSubTotalTB.Text);
-            decimal tx = qty * subT * taxRate;
-            decimal ttl = (qty * subT) + tx;
-            decimal cst = decimal.Parse(invsCostTB.Text);
-            decimal txpd = decimal.Parse(invsTaxPaidTB.Text);
+            if (MessageBox.Show("Do you want to update this invoice item?", "Update Invoice?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Invoice invEdit = new Invoice();
+                invEdit = workingInvoice;
+                string bn = this.invsBillNameCB.GetItemText(this.invsBillNameCB.SelectedItem);
+                int invNum = int.Parse(this.invsInvNumTB.Text);
+                DateTime dt = invsDTPicker.Value.Date;
+                string date = dt.ToShortDateString();
+                string dtls = invsDetailsTB.Text;
+                //  Escape a single quote for SQL
+                if(dtls.Contains("'"))
+                {
+                    dtls = dtls.Replace("'", "''");
+                }
+                MessageBox.Show(dtls);
+                string nts = invsNotesTB.Text;
+                int qty = int.Parse(invsQtyTB.Text);
+                decimal subT = decimal.Parse(invsSubTotalTB.Text);
+                decimal tx = qty * subT * taxRate;
+                decimal ttl = (qty * subT) + tx;
+                decimal cst = decimal.Parse(invsCostTB.Text);
+                decimal txpd = decimal.Parse(invsTaxPaidTB.Text);
 
-            // Billing Name Check
-            if (bn != invEdit.Billing_Name)
-            {
-                if (MessageBox.Show("Change " + invEdit.Billing_Name + " to " + bn + " for all items in invoice " + invNum.ToString() + "?", "Change Client?",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+
+
+                // Billing Name Check
+                if (bn != invEdit.Billing_Name)
                 {
-                    //Pull the new clients id
-                    Client cl = new Client();
-                    cl = cl.GetClientbyName(bn);
-                    int clientID = cl.ID;
-                    string query = "USE HCS UPDATE Invoice SET INV_Client_ID = " + clientID + ", INV_Billing_Name = '" + bn + "' WHERE INV_NUM = " + invNum;
-                    try
+                    if (MessageBox.Show("Change " + invEdit.Billing_Name + " to " + bn + " for all items in invoice " + invNum.ToString() + "?", "Change Client?",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        executeQuery(query);
-                        //MessageBox.Show(query);
+                        //Pull the new clients id
+                        Client cl = new Client();
+                        cl = cl.GetClientbyName(bn);
+                        int clientID = cl.ID;
+                        string query = "USE HCS UPDATE Invoice SET INV_Client_ID = " + clientID + ", INV_Billing_Name = '" + bn + "' WHERE INV_NUM = " + invNum;
+                        try
+                        {
+                            executeQuery(query);
+                            //MessageBox.Show(query);
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show(exc.ToString());
+                            return;
+                        }
+                        invEdit.ID = clientID;
+                        invEdit.Billing_Name = bn;
                     }
-                    catch(Exception exc)
+                    else
                     {
-                        MessageBox.Show(exc.ToString());
-                        return;
+                        // change billing name back
+                        invsBillNameCB.SelectedIndex = invsBillNameCB.FindString(invEdit.Billing_Name);
                     }
-                    invEdit.ID = clientID;
-                    invEdit.Billing_Name = bn;
                 }
-                else
+                // Date Check
+                if (dt != invEdit.Date)
                 {
-                    // change billing name back
-                    invsBillNameCB.SelectedIndex = invsBillNameCB.FindString(invEdit.Billing_Name);
+                    string shortDate = invEdit.Date.ToShortDateString();
+                    if (MessageBox.Show("Change " + shortDate + " to " + date + " for all items in invoice?", "Change Invoice Number?",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string query = "USE HCS UPDATE Invoice SET INV_Date = '" + date + "' WHERE INV_NUM = " + invEdit.InvNumber;
+                        try
+                        {
+                            executeQuery(query);
+                            //MessageBox.Show(query);
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show(exc.ToString());
+                            return;
+                        }
+                        invEdit.Date = dt;
+                    }
+                    else
+                    {
+                        // Change the date back
+                        invsDTPicker.Value = invEdit.Date;
+                    }
                 }
-            }
-            // Date Check
-            if (dt != invEdit.Date)
-            {
-                string shortDate = invEdit.Date.ToShortDateString();
-                if (MessageBox.Show("Change " + shortDate + " to " + date + " for all items in invoice?", "Change Invoice Number?",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                // Invoice Check
+                if (invNum != invEdit.InvNumber)
                 {
-                    string query = "USE HCS UPDATE Invoice SET INV_Date = '" + date + "' WHERE INV_NUM = " + invEdit.InvNumber;
+                    // Get list of exiting invoice numbers
+                    List<int> invNums = new List<int>();
+                    string query = "USE HCS SELECT distinct INV_NUM FROM Invoice";
+                    using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
+                    {
+                        conn.Open();
+                        using (SqlCommand command = new SqlCommand(query, conn))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    invNums.Add(reader.GetInt32(0));
+                                }
+                            }
+                        }
+                    }
+
+                    if (invNums.Contains(invNum))
+                    {
+                        if (MessageBox.Show("This invoice number already exists. Do you want to add this item to invoice " + invNum.ToString(), "Change Invoice Number?",
+                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_ID = " + invEdit.ID;
+                            //executeQuery(query);
+                            MessageBox.Show(query);
+                        }
+                        else
+                        {
+                            // Change invoice number back
+                            invsInvNumTB.Text = invEdit.InvNumber.ToString();
+                        }
+                    }
+
+                    else
+                    {
+                        if (MessageBox.Show("Change all invoice items from" + invEdit.InvNumber + " to " + invNum + "?", "Change Invoice Number?",
+                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_NUM = " + invEdit.InvNumber;
+                            try
+                            {
+                                //executeQuery(query);
+                                MessageBox.Show(query);
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show(exc.ToString());
+                                return;
+                            }
+                            invEdit.InvNumber = invNum;
+                        }
+                        else
+                        {
+                            // Change invoice number back
+                            invsInvNumTB.Text = invEdit.InvNumber.ToString();
+                        }
+                    }
+                }
+
+                if (dtls != invEdit.Details || nts != invEdit.Notes || qty != invEdit.InvNumber ||
+                    subT != invEdit.Price || cst != invEdit.Cost || txpd != invEdit.TaxPaid)
+                {
+                    string query = "USE HCS UPDATE Invoice SET INV_Details = '" + dtls + "'," +
+                                                               "INV_Notes = '" + nts + "'," +
+                                                               "INV_Qty = " + qty + "," +
+                                                               "INV_Price = " + subT + "," +
+                                                               "INV_Tax = " + tx + "," +
+                                                               "INV_Total = " + ttl + "," +
+                                                               "INV_Cost =" + cst + "," +
+                                                               "INV_TaxPaid = " + txpd +
+                                                               " WHERE INV_ID = " + invEdit.ID;
                     try
                     {
                         executeQuery(query);
@@ -2004,106 +2108,29 @@ namespace TestBusinessApp
                         MessageBox.Show(exc.ToString());
                         return;
                     }
-                    invEdit.Date = dt;
                 }
-                else
+
+                //  Refresh data grids
+                loadInvoices();
+                // Clear Editable fields
+                clearInvoiceItemData();
+                enableInvEditFields(false);
+                // Select Row
+                String searchValue = invEdit.InvNumber.ToString();
+                int rowIndex = -1;
+                foreach (DataGridViewRow row in InvoicesInvsDG.Rows)
                 {
-                    // Change the date back
-                    invsDTPicker.Value = invEdit.Date;
+                    if (row.Cells[0].Value.ToString().Equals(searchValue))
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
                 }
+                //MessageBox.Show("Row Count: " + InvoicesInvsDG.Rows.Count);
+               
+                InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[rowIndex].Cells[0];
+                InvoicesInvsDG.SelectedRows.Equals(rowIndex);
             }
-            // Invoice Check
-            if (invNum != invEdit.InvNumber)
-            {
-                // Get list of exiting invoice numbers
-                List<int> invNums = new List<int>();
-                string query = "USE HCS SELECT distinct INV_NUM FROM Invoice";
-                using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
-                {
-                    conn.Open();
-                    using (SqlCommand command = new SqlCommand(query, conn))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                invNums.Add(reader.GetInt32(0));
-                            }
-                        }
-                    }
-                }
-
-                if (invNums.Contains(invNum))
-                {
-                    if (MessageBox.Show("This invoice number already exists. Do you want to add this item to invoice " + invNum.ToString(), "Change Invoice Number?",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_ID = " + invEdit.ID;
-                        //executeQuery(query);
-                        MessageBox.Show(query);
-                    }
-                    else
-                    {
-                        // Change invoice number back
-                        invsInvNumTB.Text = invEdit.InvNumber.ToString();
-                    }
-                }
-
-                else
-                {
-                    if (MessageBox.Show("Change all invoice items from" + invEdit.InvNumber + " to " + invNum + "?", "Change Invoice Number?",
-                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_NUM = " + invEdit.InvNumber;
-                        try
-                        {
-                            //executeQuery(query);
-                            MessageBox.Show(query);
-                        }
-                        catch (Exception exc)
-                        {
-                            MessageBox.Show(exc.ToString());
-                            return;
-                        }
-                        invEdit.InvNumber = invNum;
-                    }
-                    else
-                    {
-                        // Change invoice number back
-                        invsInvNumTB.Text = invEdit.InvNumber.ToString();
-                    }
-                }
-            }
-
-            if(dtls != invEdit.Details || nts != invEdit.Notes || qty != invEdit.InvNumber ||
-                subT != invEdit.Price || cst != invEdit.Cost || txpd != invEdit.TaxPaid)
-            {
-                string query = "USE HCS UPDATE Invoice SET INV_Details = '" + dtls + "'," +
-                                                           "INV_Notes = '" + nts + "'," +
-                                                           "INV_Qty = " + qty + "," +
-                                                           "INV_Price = " + subT + "," +
-                                                           "INV_Tax = " + tx + "," +
-                                                           "INV_Total = " + ttl + "," +
-                                                           "INV_Cost =" + cst + "," +
-                                                           "INV_TaxPaid = " + txpd +
-                                                           " WHERE INV_ID = " + invEdit.ID;
-                try
-                {
-                    executeQuery(query);
-                    //MessageBox.Show(query);
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.ToString());
-                    return;
-                }
-            }
-
-            //  Refresh data grids
-            loadInvoices();
-            // Clear Editable fields
-            clearInvoiceItemData();
-            enableInvEditFields(false);
         }
 
         private void invsSubTotalTB_TextChanged(object sender, EventArgs e)

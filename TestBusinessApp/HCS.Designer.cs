@@ -1245,6 +1245,7 @@
             // 
             // invsEditUpdateBut
             // 
+            this.invsEditUpdateBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.invsEditUpdateBut.Location = new System.Drawing.Point(990, 467);
             this.invsEditUpdateBut.Name = "invsEditUpdateBut";
             this.invsEditUpdateBut.Size = new System.Drawing.Size(75, 23);

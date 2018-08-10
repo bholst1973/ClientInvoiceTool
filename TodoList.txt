@@ -1,5 +1,8 @@
+Remember tab and window size
+Give option
+Add Tax adjustment to update tax over an invoice to admin tab.
+Focus on active invoice
 Create Estimate
-Tab Order
 Ensure App will run with no data in the Database.
 Pop windows need should pop inside the app window.
 Setup preset Services Values instead of hard code.
@@ -8,8 +11,8 @@ Check if client exists
 Copy paste phone number
 
 Hover info
-B
-etter use of objects
+ boxes
+better use of objects
 
 Sql queries should be using the using block
 
@@ -22,6 +25,7 @@ Ensure Sql statments account for db size
 
 Done:
 
+Tab Order
 Make email addresses all lower case.
 client counter
 
@@ -30,4 +34,4 @@ AutoSize Client Columns
 window size
 
 Save Preset Data
-Edit datagridviewDL Report Writing Team <reportwritingteam@mayo.edu>
+Edit datagridviewDL 
