@@ -36,7 +36,7 @@ namespace TestBusinessApp
         decimal taxRate = 0.06500m;
         int invoicesupdaterow;
         Invoice workingInvoice = new Invoice();
-        bool invoiceEditTaxWarning = false;
+        bool invoiceEditTaxWarning = true;
 
         public HCS()
         {
@@ -1732,7 +1732,7 @@ namespace TestBusinessApp
                 {
                     MessageBox.Show("Error occured: " + ex.ToString());
                 }
-                invsClientCB.SelectedIndex = -1;
+                //invsClientCB.SelectedIndex = -1;
             }
         }
 
@@ -1744,7 +1744,7 @@ namespace TestBusinessApp
 
         private void InvoicesInvsDG_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Checks if one row is highlighted, if so the delete button is activated.
+            //Checks if one row is highlighted, if so the items in that invoice are shown.
             if (InvoicesInvsDG.SelectedRows.Count > 0 && InvoicesInvsDG.SelectedRows.Count < 2)
             {
                 if (invoiceItemsDG.Rows.Count > 0)
@@ -1803,6 +1803,12 @@ namespace TestBusinessApp
             {
                 InvoicesInvsDG.Rows.Clear();
             }
+
+            if (invoiceItemsDG.Rows.Count > 0)
+            {
+                invoiceItemsDG.Rows.Clear();
+            }
+
             var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
             //  Build list of Invoices
             List<Invoice> invs = new List<Invoice>();
@@ -1891,7 +1897,7 @@ namespace TestBusinessApp
             try
             {
                 // Clear text boxes
-                clearInvoiceItemData();
+                clearInvoiceItemData(false);
                 // Get invoice data
                 invItem = invItem.GetInvoiceItemByID(id);
                 // Populate invoice properties
@@ -1917,13 +1923,16 @@ namespace TestBusinessApp
             }
         }
 
-        private void clearInvoiceItemData()
+        private void clearInvoiceItemData(bool cbreset)
         {
             this.invsBillNameCB.DataSource = null;
             invsBillNameCB.Items.Clear();
             invsInvNumTB.Text = "";
             invsDTPicker.Value = DateTime.Today;
-            invsBillNameCB.SelectedIndex = -1;
+            if (cbreset)
+            {
+                invsBillNameCB.SelectedIndex = -1;
+            }
             invsQtyTB.Text = "";
             invsDetailsTB.Text = "";
             invsSubTotalTB.Text = "";
@@ -1936,13 +1945,17 @@ namespace TestBusinessApp
 
         private void invsClearEditItemsBut_Click(object sender, EventArgs e)
         {
-            clearInvoiceItemData();
+            clearInvoiceItemData(true);
         }
 
         private void invsEditUpdateBut_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to update this invoice item?", "Update Invoice?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                // Get Client Combo Box Position
+                int clIndex = invsClientCB.SelectedIndex;
+
+                //MessageBox.Show("Client Index#: " + clIndex);
                 Invoice invEdit = new Invoice();
                 invEdit = workingInvoice;
                 string bn = this.invsBillNameCB.GetItemText(this.invsBillNameCB.SelectedItem);
@@ -1955,7 +1968,7 @@ namespace TestBusinessApp
                 {
                     dtls = dtls.Replace("'", "''");
                 }
-                MessageBox.Show(dtls);
+                //MessageBox.Show(dtls);
                 string nts = invsNotesTB.Text;
                 int qty = int.Parse(invsQtyTB.Text);
                 decimal subT = decimal.Parse(invsSubTotalTB.Text);
@@ -1963,10 +1976,7 @@ namespace TestBusinessApp
                 decimal ttl = (qty * subT) + tx;
                 decimal cst = decimal.Parse(invsCostTB.Text);
                 decimal txpd = decimal.Parse(invsTaxPaidTB.Text);
-
-
-
-
+                
                 // Billing Name Check
                 if (bn != invEdit.Billing_Name)
                 {
@@ -2110,10 +2120,17 @@ namespace TestBusinessApp
                     }
                 }
 
-                //  Refresh data grids
-                loadInvoices();
+                //  Refresh invoice data grid
+                if (clIndex == -1)
+                {
+                    loadInvoices();
+                }
+                else
+                {
+                    loadInvoicesByClient(bn);
+                }
                 // Clear Editable fields
-                clearInvoiceItemData();
+                clearInvoiceItemData(false);
                 enableInvEditFields(false);
                 // Select Row
                 String searchValue = invEdit.InvNumber.ToString();
@@ -2123,13 +2140,15 @@ namespace TestBusinessApp
                     if (row.Cells[0].Value.ToString().Equals(searchValue))
                     {
                         rowIndex = row.Index;
+                        row.Selected = true;
                         break;
                     }
                 }
+                //ListDataGridView_CellDoubleClick(this.ListDataGridView, new DataGridViewCellEventArgs(this.ListDataGridView.CurrentCell.ColumnIndex, this.ListDataGridView.CurrentRow.Index));
+                InvoicesInvsDG_CellClick(this.InvoicesInvsDG, new DataGridViewCellEventArgs(InvoicesInvsDG.CurrentCell.ColumnIndex, InvoicesInvsDG.CurrentRow.Index));
                 //MessageBox.Show("Row Count: " + InvoicesInvsDG.Rows.Count);
-               
-                InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[rowIndex].Cells[0];
-                InvoicesInvsDG.SelectedRows.Equals(rowIndex);
+                //InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[rowIndex].Cells[0];
+                //InvoicesInvsDG.SelectedRows.Equals(rowIndex);
             }
         }
 
