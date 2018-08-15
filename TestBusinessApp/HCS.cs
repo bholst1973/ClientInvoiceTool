@@ -1547,6 +1547,7 @@ namespace TestBusinessApp
                 decimal Price = 0.00m;
                 decimal Tax = 0.00m;
                 decimal Total = 0.0000m;
+                decimal Profit = 0.0000m;
                 string notes = "";
 
                 foreach (DataGridViewRow dr in createInvoiceDataGridView.Rows)
@@ -1559,10 +1560,10 @@ namespace TestBusinessApp
                     
                     Total = Qty * Price * (1 + taxRate);
 
-                    string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, " +
-                                   "INV_Qty, INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid, Inv_Cost, Inv_TaxPaid)" +
+                    string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, INV_Qty, " +
+                                   "INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid, Inv_Cost, Inv_GrossProfit, Inv_TaxPaid)" +
                                    "VALUES (" + cid + "," + invNum + ",'" + invClDTPicker.Value.ToString("yyyy-MM-dd") + "','" + bname + "'," +
-                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + 0 + ',' + 0 + ")";
+                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + 0 + ',' + 0 + ',' + 0 + ")";
 
                     executeQuery(query);                    
                 }
