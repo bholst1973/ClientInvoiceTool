@@ -16,5 +16,6 @@ INV_Total Decimal (19,4),
 INV_Notes VARCHAR (250),
 INV_Paid Bit,
 INV_Cost Decimal(19,4),
-INV_TaxPaid Decimal(19,4)
+INV_TaxPaid Decimal(19,4),
+INV_GrossProfit Decimal(19,4)
 );

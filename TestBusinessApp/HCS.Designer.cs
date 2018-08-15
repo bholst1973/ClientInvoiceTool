@@ -147,30 +147,7 @@
             this.invnumLbl = new System.Windows.Forms.Label();
             this.invsRefreshBut = new System.Windows.Forms.Button();
             this.invoiceItemsDG = new System.Windows.Forms.DataGridView();
-            this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Client_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_NM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Dt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_BillName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Tx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Nts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Pd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_Cst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INV_TaxPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicesInvsDG = new System.Windows.Forms.DataGridView();
-            this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Tax_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inv_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invsGpBx = new System.Windows.Forms.GroupBox();
             this.invsClientLbl = new System.Windows.Forms.Label();
             this.invsClientCB = new System.Windows.Forms.ComboBox();
@@ -203,6 +180,31 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
+            this.Inv_Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Billing_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Tax_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inv_Paid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Client_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_NM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Dt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_BillName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Tx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Ttl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Nts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Cst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_TaxPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvItemProfit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INV_Pd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -1452,98 +1454,15 @@
             this.INV_Tx,
             this.INV_Ttl,
             this.INV_Nts,
-            this.INV_Pd,
             this.INV_Cst,
-            this.INV_TaxPaid});
+            this.INV_TaxPaid,
+            this.InvItemProfit,
+            this.INV_Pd});
             this.invoiceItemsDG.Location = new System.Drawing.Point(8, 240);
             this.invoiceItemsDG.Name = "invoiceItemsDG";
             this.invoiceItemsDG.Size = new System.Drawing.Size(1057, 139);
             this.invoiceItemsDG.TabIndex = 2;
             this.invoiceItemsDG.DoubleClick += new System.EventHandler(this.invoiceItemsDG_DoubleClick);
-            // 
-            // INV_ID
-            // 
-            this.INV_ID.HeaderText = "Inv ID";
-            this.INV_ID.Name = "INV_ID";
-            this.INV_ID.Width = 61;
-            // 
-            // INV_Client_ID
-            // 
-            this.INV_Client_ID.HeaderText = "Client ID";
-            this.INV_Client_ID.Name = "INV_Client_ID";
-            this.INV_Client_ID.Width = 72;
-            // 
-            // INV_NM
-            // 
-            this.INV_NM.HeaderText = "Inv #";
-            this.INV_NM.Name = "INV_NM";
-            this.INV_NM.Width = 57;
-            // 
-            // INV_Dt
-            // 
-            this.INV_Dt.HeaderText = "Date";
-            this.INV_Dt.Name = "INV_Dt";
-            this.INV_Dt.Width = 55;
-            // 
-            // INV_BillName
-            // 
-            this.INV_BillName.HeaderText = "Billing Name";
-            this.INV_BillName.Name = "INV_BillName";
-            this.INV_BillName.Width = 90;
-            // 
-            // INV_Qty
-            // 
-            this.INV_Qty.HeaderText = "Qty";
-            this.INV_Qty.Name = "INV_Qty";
-            this.INV_Qty.Width = 48;
-            // 
-            // INV_Details
-            // 
-            this.INV_Details.HeaderText = "Details";
-            this.INV_Details.Name = "INV_Details";
-            this.INV_Details.Width = 64;
-            // 
-            // INV_Price
-            // 
-            this.INV_Price.HeaderText = "Sub Total";
-            this.INV_Price.Name = "INV_Price";
-            this.INV_Price.Width = 78;
-            // 
-            // INV_Tx
-            // 
-            this.INV_Tx.HeaderText = "Tax";
-            this.INV_Tx.Name = "INV_Tx";
-            this.INV_Tx.Width = 50;
-            // 
-            // INV_Ttl
-            // 
-            this.INV_Ttl.HeaderText = "Total";
-            this.INV_Ttl.Name = "INV_Ttl";
-            this.INV_Ttl.Width = 56;
-            // 
-            // INV_Nts
-            // 
-            this.INV_Nts.HeaderText = "Notes";
-            this.INV_Nts.Name = "INV_Nts";
-            this.INV_Nts.Width = 60;
-            // 
-            // INV_Pd
-            // 
-            this.INV_Pd.HeaderText = "Paid";
-            this.INV_Pd.Name = "INV_Pd";
-            this.INV_Pd.Width = 53;
-            // 
-            // INV_Cst
-            // 
-            this.INV_Cst.HeaderText = "Cost";
-            this.INV_Cst.Name = "INV_Cst";
-            this.INV_Cst.Width = 53;
-            // 
-            // INV_TaxPaid
-            // 
-            this.INV_TaxPaid.HeaderText = "Tax Paid";
-            this.INV_TaxPaid.Name = "INV_TaxPaid";
-            this.INV_TaxPaid.Width = 74;
             // 
             // InvoicesInvsDG
             // 
@@ -1564,66 +1483,13 @@
             this.Inv_Total,
             this.Inv_Cost,
             this.Inv_Tax_Paid,
+            this.Profit,
             this.Inv_Paid});
             this.InvoicesInvsDG.Location = new System.Drawing.Point(8, 87);
             this.InvoicesInvsDG.Name = "InvoicesInvsDG";
             this.InvoicesInvsDG.Size = new System.Drawing.Size(1057, 147);
             this.InvoicesInvsDG.TabIndex = 1;
             this.InvoicesInvsDG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.InvoicesInvsDG_CellClick);
-            // 
-            // Inv_Num
-            // 
-            this.Inv_Num.HeaderText = "Inv Number";
-            this.Inv_Num.Name = "Inv_Num";
-            this.Inv_Num.Width = 87;
-            // 
-            // Inv_Date
-            // 
-            this.Inv_Date.HeaderText = "Inv Date";
-            this.Inv_Date.Name = "Inv_Date";
-            this.Inv_Date.Width = 73;
-            // 
-            // Inv_Billing_Name
-            // 
-            this.Inv_Billing_Name.HeaderText = "Billing Name";
-            this.Inv_Billing_Name.Name = "Inv_Billing_Name";
-            this.Inv_Billing_Name.Width = 90;
-            // 
-            // Inv_Sub_Total
-            // 
-            this.Inv_Sub_Total.HeaderText = "Sub Total";
-            this.Inv_Sub_Total.Name = "Inv_Sub_Total";
-            this.Inv_Sub_Total.Width = 78;
-            // 
-            // Inv_Tax
-            // 
-            this.Inv_Tax.HeaderText = "Tax";
-            this.Inv_Tax.Name = "Inv_Tax";
-            this.Inv_Tax.Width = 50;
-            // 
-            // Inv_Total
-            // 
-            this.Inv_Total.HeaderText = "Total";
-            this.Inv_Total.Name = "Inv_Total";
-            this.Inv_Total.Width = 56;
-            // 
-            // Inv_Cost
-            // 
-            this.Inv_Cost.HeaderText = "Cost";
-            this.Inv_Cost.Name = "Inv_Cost";
-            this.Inv_Cost.Width = 53;
-            // 
-            // Inv_Tax_Paid
-            // 
-            this.Inv_Tax_Paid.HeaderText = "Tax Paid";
-            this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
-            this.Inv_Tax_Paid.Width = 74;
-            // 
-            // Inv_Paid
-            // 
-            this.Inv_Paid.HeaderText = "Paid";
-            this.Inv_Paid.Name = "Inv_Paid";
-            this.Inv_Paid.Width = 53;
             // 
             // invsGpBx
             // 
@@ -1941,6 +1807,156 @@
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // Inv_Num
+            // 
+            this.Inv_Num.HeaderText = "Inv Number";
+            this.Inv_Num.Name = "Inv_Num";
+            this.Inv_Num.Width = 87;
+            // 
+            // Inv_Date
+            // 
+            this.Inv_Date.HeaderText = "Inv Date";
+            this.Inv_Date.Name = "Inv_Date";
+            this.Inv_Date.Width = 73;
+            // 
+            // Inv_Billing_Name
+            // 
+            this.Inv_Billing_Name.HeaderText = "Billing Name";
+            this.Inv_Billing_Name.Name = "Inv_Billing_Name";
+            this.Inv_Billing_Name.Width = 90;
+            // 
+            // Inv_Sub_Total
+            // 
+            this.Inv_Sub_Total.HeaderText = "Sub Total";
+            this.Inv_Sub_Total.Name = "Inv_Sub_Total";
+            this.Inv_Sub_Total.Width = 78;
+            // 
+            // Inv_Tax
+            // 
+            this.Inv_Tax.HeaderText = "Tax";
+            this.Inv_Tax.Name = "Inv_Tax";
+            this.Inv_Tax.Width = 50;
+            // 
+            // Inv_Total
+            // 
+            this.Inv_Total.HeaderText = "Total";
+            this.Inv_Total.Name = "Inv_Total";
+            this.Inv_Total.Width = 56;
+            // 
+            // Inv_Cost
+            // 
+            this.Inv_Cost.HeaderText = "Cost";
+            this.Inv_Cost.Name = "Inv_Cost";
+            this.Inv_Cost.Width = 53;
+            // 
+            // Inv_Tax_Paid
+            // 
+            this.Inv_Tax_Paid.HeaderText = "Tax Paid";
+            this.Inv_Tax_Paid.Name = "Inv_Tax_Paid";
+            this.Inv_Tax_Paid.Width = 74;
+            // 
+            // Profit
+            // 
+            this.Profit.HeaderText = "Profit";
+            this.Profit.Name = "Profit";
+            this.Profit.Width = 56;
+            // 
+            // Inv_Paid
+            // 
+            this.Inv_Paid.HeaderText = "Paid";
+            this.Inv_Paid.Name = "Inv_Paid";
+            this.Inv_Paid.Width = 53;
+            // 
+            // INV_ID
+            // 
+            this.INV_ID.HeaderText = "Inv ID";
+            this.INV_ID.Name = "INV_ID";
+            this.INV_ID.Width = 61;
+            // 
+            // INV_Client_ID
+            // 
+            this.INV_Client_ID.HeaderText = "Client ID";
+            this.INV_Client_ID.Name = "INV_Client_ID";
+            this.INV_Client_ID.Width = 72;
+            // 
+            // INV_NM
+            // 
+            this.INV_NM.HeaderText = "Inv #";
+            this.INV_NM.Name = "INV_NM";
+            this.INV_NM.Width = 57;
+            // 
+            // INV_Dt
+            // 
+            this.INV_Dt.HeaderText = "Date";
+            this.INV_Dt.Name = "INV_Dt";
+            this.INV_Dt.Width = 55;
+            // 
+            // INV_BillName
+            // 
+            this.INV_BillName.HeaderText = "Billing Name";
+            this.INV_BillName.Name = "INV_BillName";
+            this.INV_BillName.Width = 90;
+            // 
+            // INV_Qty
+            // 
+            this.INV_Qty.HeaderText = "Qty";
+            this.INV_Qty.Name = "INV_Qty";
+            this.INV_Qty.Width = 48;
+            // 
+            // INV_Details
+            // 
+            this.INV_Details.HeaderText = "Details";
+            this.INV_Details.Name = "INV_Details";
+            this.INV_Details.Width = 64;
+            // 
+            // INV_Price
+            // 
+            this.INV_Price.HeaderText = "Sub Total";
+            this.INV_Price.Name = "INV_Price";
+            this.INV_Price.Width = 78;
+            // 
+            // INV_Tx
+            // 
+            this.INV_Tx.HeaderText = "Tax";
+            this.INV_Tx.Name = "INV_Tx";
+            this.INV_Tx.Width = 50;
+            // 
+            // INV_Ttl
+            // 
+            this.INV_Ttl.HeaderText = "Total";
+            this.INV_Ttl.Name = "INV_Ttl";
+            this.INV_Ttl.Width = 56;
+            // 
+            // INV_Nts
+            // 
+            this.INV_Nts.HeaderText = "Notes";
+            this.INV_Nts.Name = "INV_Nts";
+            this.INV_Nts.Width = 60;
+            // 
+            // INV_Cst
+            // 
+            this.INV_Cst.HeaderText = "Cost";
+            this.INV_Cst.Name = "INV_Cst";
+            this.INV_Cst.Width = 53;
+            // 
+            // INV_TaxPaid
+            // 
+            this.INV_TaxPaid.HeaderText = "Tax Paid";
+            this.INV_TaxPaid.Name = "INV_TaxPaid";
+            this.INV_TaxPaid.Width = 74;
+            // 
+            // InvItemProfit
+            // 
+            this.InvItemProfit.HeaderText = "Profit";
+            this.InvItemProfit.Name = "InvItemProfit";
+            this.InvItemProfit.Width = 56;
+            // 
+            // INV_Pd
+            // 
+            this.INV_Pd.HeaderText = "Paid";
+            this.INV_Pd.Name = "INV_Pd";
+            this.INV_Pd.Width = 53;
+            // 
             // HCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2121,15 +2137,6 @@
         private System.Windows.Forms.Button resetDefaultTaxRate;
         private System.Windows.Forms.Button setEffTxRateBut;
         private System.Windows.Forms.DateTimePicker invClDTPicker;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Billing_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Sub_Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Cost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
         private System.Windows.Forms.Button invsRefreshBut;
         private System.Windows.Forms.TextBox invsNotesTB;
         private System.Windows.Forms.Label notesLbl;
@@ -2139,20 +2146,6 @@
         private System.Windows.Forms.Label dtlsLbl;
         private System.Windows.Forms.TextBox invsSubTotalTB;
         private System.Windows.Forms.Label subTotLbl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Client_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_NM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Dt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_BillName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Details;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Tx;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Ttl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Nts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Pd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Cst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INV_TaxPaid;
         private System.Windows.Forms.TextBox invsTaxPaidTB;
         private System.Windows.Forms.Label taxpaidLbl;
         private System.Windows.Forms.TextBox invsCostTB;
@@ -2164,6 +2157,31 @@
         private System.Windows.Forms.Label invnumLbl;
         private System.Windows.Forms.Button invsClearEditItemsBut;
         private System.Windows.Forms.Button invsEditUpdateBut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Client_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_NM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Dt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_BillName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Details;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Tx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Ttl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Nts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Cst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_TaxPaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvItemProfit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INV_Pd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Billing_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Sub_Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
     }
 }
 

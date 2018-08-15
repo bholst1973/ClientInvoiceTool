@@ -38,6 +38,9 @@ namespace TestBusinessApp
         Invoice workingInvoice = new Invoice();
         bool invoiceEditTaxWarning = true;
 
+        //Invoice column and row for InvoicesInvsDG
+        int invsDGRow = -1;
+        int invsDGColumn = -1;
         public HCS()
         {
             InitializeComponent();
@@ -1633,6 +1636,7 @@ namespace TestBusinessApp
                                         ROUND(SUM(INV_Total),2) AS 'Total', 
                                         ROUND(SUM(INV_Cost),2) AS 'Cost',  
                                         ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid',
+                                        ROUND(SUM(INV_GrossProfit),2) AS 'Gross_Profit',
                                         INV_Paid
                                         FROM INVOICE
                                         GROUP BY INV_NUM, INV_Billing_Name, INV_Date, INV_Paid
@@ -1654,6 +1658,7 @@ namespace TestBusinessApp
                         inv.Total = (decimal)reader["Total"];
                         inv.Cost = (decimal)reader["Cost"];
                         inv.TaxPaid = (decimal)reader["Tax_Paid"];
+                        inv.InvProfit = (decimal)reader["Gross_Profit"];
                         if((bool)reader["Inv_Paid"])
                         {
                             inv.Paid = "Paid";
@@ -1670,12 +1675,12 @@ namespace TestBusinessApp
 
             foreach(Invoice inv in invs)
             {
-                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price,2), Math.Round(inv.Tax,2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), inv.Paid);
+                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price,2), Math.Round(inv.Tax,2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), Math.Round(inv.InvProfit, 2), inv.Paid);
             }
 
             foreach(DataGridViewRow row in InvoicesInvsDG.Rows)
             {
-                if(row.Cells[8].Value.ToString() != "Paid")
+                if(row.Cells[9].Value.ToString() != "Paid")
                 {
                     row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Red;
                     row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Red;
@@ -1752,21 +1757,32 @@ namespace TestBusinessApp
                     invoiceItemsDG.Rows.Clear();
                 }
                 int row = InvoicesInvsDG.CurrentRow.Index;
+                //  This is a hack
+                //  Can't figure out why the Datagrid current row gets changed here when updating an invoice...
+                if(invsDGRow > -1)
+                {
+                    row = invsDGRow;
+                }
                 Invoice inv = new Invoice();
                 List<Invoice> invItems = new List<Invoice>();
                 int invNum = Convert.ToInt32(InvoicesInvsDG.CurrentRow.Cells[0].Value.ToString());
+                if(invsDGRow > -1)
+                {
+                    invNum = Convert.ToInt32(InvoicesInvsDG.Rows[invsDGRow].Cells[0].Value.ToString());
+                }
+
                 invItems = inv.GetInvoicebyInvNum(invNum);
                 foreach (Invoice invItem in invItems)
                 {
 
                     this.invoiceItemsDG.Rows.Add(invItem.ID, invItem.ClientID, invItem.InvNumber, invItem.Date, invItem.Billing_Name, 
                         invItem.Qty, invItem.Details, Math.Round(invItem.Price, 2), Math.Round(invItem.Tax, 2), Math.Round(invItem.Total, 2),
-                        invItem.Notes, invItem.Paid, Math.Round(invItem.Cost, 2),  Math.Round(invItem.TaxPaid, 2));
+                        invItem.Notes, Math.Round(invItem.Cost, 2), Math.Round(invItem.TaxPaid, 2), Math.Round(invItem.InvProfit, 2), invItem.Paid);
                 }
 
                 foreach (DataGridViewRow rw in invoiceItemsDG.Rows)
                 {
-                    if (rw.Cells[11].Value.ToString() != "Paid")
+                    if (rw.Cells[14].Value.ToString() != "Paid")
                     {
                         rw.Cells["Inv_Pd"].Style.ForeColor = System.Drawing.Color.Red;
                     }
@@ -1823,6 +1839,7 @@ namespace TestBusinessApp
                                     "ROUND(SUM(INV_Total),2) AS 'Total', " +
                                     "ROUND(SUM(INV_Cost),2) AS 'Cost', " +
                                     "ROUND(SUM(INV_TaxPaid),2) AS 'Tax_Paid', " +
+                                    "ROUND(SUM(INV_GrossProfit), 2) AS 'Gross_Profit', " +
                                     "INV_Paid " +
                                     "FROM INVOICE " +
                                     "WHERE INV_Billing_Name = '" + cl + "' " +
@@ -1845,6 +1862,7 @@ namespace TestBusinessApp
                         inv.Total = (decimal)reader["Total"];
                         inv.Cost = (decimal)reader["Cost"];
                         inv.TaxPaid = (decimal)reader["Tax_Paid"];
+                        inv.InvProfit = (decimal)reader["Gross_Profit"];
                         if ((bool)reader["Inv_Paid"])
                         {
                             inv.Paid = "Paid";
@@ -1861,12 +1879,12 @@ namespace TestBusinessApp
             }
             foreach (Invoice inv in invs)
             {
-                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price, 2), Math.Round(inv.Tax, 2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), inv.Paid);
+                this.InvoicesInvsDG.Rows.Add(inv.InvNumber, inv.Date, inv.Billing_Name, Math.Round(inv.Price, 2), Math.Round(inv.Tax, 2), Math.Round(inv.Total, 2), Math.Round(inv.Cost, 2), Math.Round(inv.TaxPaid, 2), Math.Round(inv.InvProfit, 2), inv.Paid);
             }
 
             foreach (DataGridViewRow row in InvoicesInvsDG.Rows)
             {
-                if (row.Cells[8].Value.ToString() != "Paid")
+                if (row.Cells[9].Value.ToString() != "Paid")
                 {
                     row.Cells["Inv_Total"].Style.ForeColor = System.Drawing.Color.Red;
                     row.Cells["Inv_Paid"].Style.ForeColor = System.Drawing.Color.Red;
@@ -1889,6 +1907,11 @@ namespace TestBusinessApp
             int invid = Convert.ToInt32(invoiceItemsDG.CurrentRow.Cells[0].Value.ToString());
             LoadInvoiceItemEdit(invid);
             enableInvEditFields(true);
+
+            //  Set the invsDG row and column.
+            //  Column is probably not needed here.
+            invsDGRow = InvoicesInvsDG.CurrentRow.Index;
+            invsDGColumn = InvoicesInvsDG.CurrentCell.ColumnIndex;
         }
 
         private void LoadInvoiceItemEdit(int id)
@@ -2095,17 +2118,11 @@ namespace TestBusinessApp
                         }
                     }
                 }
-
-                if (dtls != invEdit.Details || nts != invEdit.Notes || qty != invEdit.InvNumber ||
-                    subT != invEdit.Price || cst != invEdit.Cost || txpd != invEdit.TaxPaid)
+                // Details Notes and Tax Paid Check
+                if (dtls != invEdit.Details || nts != invEdit.Notes || txpd != invEdit.TaxPaid)
                 {
                     string query = "USE HCS UPDATE Invoice SET INV_Details = '" + dtls + "'," +
                                                                "INV_Notes = '" + nts + "'," +
-                                                               "INV_Qty = " + qty + "," +
-                                                               "INV_Price = " + subT + "," +
-                                                               "INV_Tax = " + tx + "," +
-                                                               "INV_Total = " + ttl + "," +
-                                                               "INV_Cost =" + cst + "," +
                                                                "INV_TaxPaid = " + txpd +
                                                                " WHERE INV_ID = " + invEdit.ID;
                     try
@@ -2119,9 +2136,30 @@ namespace TestBusinessApp
                         return;
                     }
                 }
+                // Qty Price and Cost Check
+                if(qty != invEdit.Qty || subT != invEdit.Price || cst != invEdit.Cost)
+                {
+                    string query = "USE HCS UPDATE Invoice SET INV_Qty = " + qty + "," +
+                                                              "INV_Price = " + subT + "," +
+                                                              "INV_Tax = " + tx + "," +
+                                                              "INV_Total = " + ttl + "," +
+                                                              "INV_Cost =" + cst +
+                                                              " WHERE INV_ID = " + invEdit.ID;
+                    try
+                    {
+                        executeQuery(query);
+                        executeProfit_SP();
+                        //MessageBox.Show(query);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.ToString());
+                        return;
+                    }
+                }
 
-                //  Refresh invoice data grid
-                if (clIndex == -1)
+                    //  Refresh invoice data grid
+                    if (clIndex == -1)
                 {
                     loadInvoices();
                 }
@@ -2131,24 +2169,15 @@ namespace TestBusinessApp
                 }
                 // Clear Editable fields
                 clearInvoiceItemData(false);
-                enableInvEditFields(false);
-                // Select Row
-                String searchValue = invEdit.InvNumber.ToString();
-                int rowIndex = -1;
-                foreach (DataGridViewRow row in InvoicesInvsDG.Rows)
-                {
-                    if (row.Cells[0].Value.ToString().Equals(searchValue))
-                    {
-                        rowIndex = row.Index;
-                        row.Selected = true;
-                        break;
-                    }
-                }
-                //ListDataGridView_CellDoubleClick(this.ListDataGridView, new DataGridViewCellEventArgs(this.ListDataGridView.CurrentCell.ColumnIndex, this.ListDataGridView.CurrentRow.Index));
-                InvoicesInvsDG_CellClick(this.InvoicesInvsDG, new DataGridViewCellEventArgs(InvoicesInvsDG.CurrentCell.ColumnIndex, InvoicesInvsDG.CurrentRow.Index));
-                //MessageBox.Show("Row Count: " + InvoicesInvsDG.Rows.Count);
-                //InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[rowIndex].Cells[0];
-                //InvoicesInvsDG.SelectedRows.Equals(rowIndex);
+
+                InvoicesInvsDG.Rows[invsDGRow].Selected = true;
+                InvoicesInvsDG_CellClick(this.InvoicesInvsDG, new DataGridViewCellEventArgs(invsDGColumn, invsDGRow));
+                InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[invsDGRow].Cells[0];
+                InvoicesInvsDG.SelectedRows.Equals(invsDGRow);
+                // Reset these checks 
+                invsDGRow = -1;                
+                invsDGColumn = -1;
+                workingInvoice = null;
             }
         }
 
@@ -2191,6 +2220,19 @@ namespace TestBusinessApp
             invsTaxPaidTB.Enabled = e;
             invsClearEditItemsBut.Enabled = e;
             invsEditUpdateBut.Enabled = e;
+        }
+
+        private void executeProfit_SP()
+        {
+            using (var conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
+            using (var command = new SqlCommand("Profit_Calc", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            })
+            {
+                conn.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         #endregion

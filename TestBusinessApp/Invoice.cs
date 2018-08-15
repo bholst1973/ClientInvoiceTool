@@ -24,6 +24,7 @@ namespace TestBusinessApp
         public string Paid { get; set; }
         public decimal Cost { get; set; }
         public decimal TaxPaid { get; set; }
+        public decimal InvProfit { get; set; }
 
         public List<Invoice> GetInvoicebyInvNum(int invn)
         {
@@ -62,6 +63,7 @@ namespace TestBusinessApp
                         }
                         invs.Cost = (decimal)reader["INV_Cost"];
                         invs.TaxPaid = (decimal)reader["INV_TaxPaid"];
+                        invs.InvProfit = (decimal)reader["INV_GrossProfit"];
                         Invoices.Add(invs);
                     }
                 }
@@ -97,6 +99,7 @@ namespace TestBusinessApp
                         invoiceItemByID.Paid = reader["INV_Paid"].ToString();
                         invoiceItemByID.Cost = (decimal)reader["INV_Cost"];
                         invoiceItemByID.TaxPaid = (decimal)reader["INV_TaxPaid"];
+                        invoiceItemByID.InvProfit = (decimal)reader["INV_GrossProfit"];
                     }
                 }
             }
