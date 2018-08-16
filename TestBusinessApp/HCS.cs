@@ -1547,7 +1547,6 @@ namespace TestBusinessApp
                 decimal Price = 0.00m;
                 decimal Tax = 0.00m;
                 decimal Total = 0.0000m;
-                decimal Profit = 0.0000m;
                 string notes = "";
 
                 foreach (DataGridViewRow dr in createInvoiceDataGridView.Rows)
