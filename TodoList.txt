@@ -1,3 +1,4 @@
+Handle Invoice paid when client is selected.
 Update Tax Warning
 Remember tab and window size
 Give option
@@ -26,6 +27,7 @@ Ensure Sql statments account for db size
 
 Done:
 
+Set invoice paid with right click
 Tab Order
 Make email addresses all lower case.
 client counter

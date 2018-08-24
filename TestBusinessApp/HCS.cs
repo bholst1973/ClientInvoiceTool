@@ -26,6 +26,7 @@ namespace TestBusinessApp
             .ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ConnectionString);
         ContextMenuStrip client_Column_Chooser = new System.Windows.Forms.ContextMenuStrip();
         ContextMenuStrip cell_content_Menu = new System.Windows.Forms.ContextMenuStrip();
+        ContextMenuStrip invoice_Paid_Chooser = new System.Windows.Forms.ContextMenuStrip();
 
         string clientheaderfile;
         // Client object that holds the current client data to be updated.
@@ -37,6 +38,8 @@ namespace TestBusinessApp
         int invoicesupdaterow;
         Invoice workingInvoice = new Invoice();
         bool invoiceEditTaxWarning = true;
+        int workingInvoiceNumber = -1;
+        int workingInoviceRow = -1;
 
         //Invoice column and row for InvoicesInvsDG
         int invsDGRow = -1;
@@ -88,6 +91,7 @@ namespace TestBusinessApp
             this.InvoicesInvsDG.Columns["Inv_Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
             this.invoiceItemsDG.Columns["Inv_Dt"].DefaultCellStyle.Format = "yyyy-MM-dd";
             enableInvEditFields(false);
+            setPaidChooserMenu();
 
             // Admin
             adminAddHSBut.Enabled = false;
@@ -670,7 +674,7 @@ namespace TestBusinessApp
             }
         }
 
-        void client_Column_Chooser_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void client_Column_Chooser_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Name.ToString())
             {
@@ -1792,11 +1796,6 @@ namespace TestBusinessApp
                     }
                 }
             }
-
-            else
-            {
-                
-            }
         }
 
         private void invsClientCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -2235,10 +2234,76 @@ namespace TestBusinessApp
             }
         }
 
+        private void setPaidChooserMenu()
+        {
+            invoice_Paid_Chooser.Items.Add("Paid").Name = "Paid";
+            invoice_Paid_Chooser.Items.Add("-");
+            invoice_Paid_Chooser.Items.Add("Done").Name = "Done";
+            invoice_Paid_Chooser.ItemClicked += new ToolStripItemClickedEventHandler(invoice_Paid_Chooser_ItemClicked);
+            invoice_Paid_Chooser.AutoClose = false;
+        }
+        private void InvoicesInvsDG_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                // Get the datagridview row that was clicked
+                DataGridViewCell clickedCell = (sender as DataGridView).Rows[e.RowIndex].Cells[e.ColumnIndex];
+                InvoicesInvsDG.CurrentCell = clickedCell;
+                workingInoviceRow = clickedCell.RowIndex;
+                workingInvoiceNumber = Convert.ToInt32(InvoicesInvsDG.Rows[workingInoviceRow].Cells[0].Value);
+
+                if (InvoicesInvsDG.Rows[workingInoviceRow].Cells[9].Value.ToString() == "Paid")
+                {
+                    ((ToolStripMenuItem)invoice_Paid_Chooser.Items[0]).Checked = true;
+                }
+                else
+                {
+                    ((ToolStripMenuItem)invoice_Paid_Chooser.Items[0]).Checked = false;
+                }
+                invoice_Paid_Chooser.Show(this, InvoicesInvsDG.PointToClient(Cursor.Position));
+            }
+        }
+
+        private void invoice_Paid_Chooser_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Name.ToString())
+            {
+                case "Paid":
+                    if (workingInvoiceNumber > -1)
+                    {
+                        int cPaid = 1;
+                        if (((ToolStripMenuItem)invoice_Paid_Chooser.Items[0]).Checked)
+                        {
+                            cPaid = 0;
+                            ((ToolStripMenuItem)invoice_Paid_Chooser.Items[0]).Checked = false;
+                        }
+                        else
+                        {
+                            ((ToolStripMenuItem)invoice_Paid_Chooser.Items[0]).Checked = true;
+                        }
+
+                        string query = "USE HCS UPDATE INVOICE SET INV_Paid = " + cPaid + " WHERE INV_NUM = " + workingInvoiceNumber;
+                        executeQuery(query);
+                        loadInvoices();
+                        InvoicesInvsDG.FirstDisplayedScrollingRowIndex = workingInoviceRow;
+                        InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[workingInoviceRow].Cells[9];
+                        workingInvoiceNumber = -1;
+                        workingInoviceRow = -1;
+                    }
+
+                    invoice_Paid_Chooser.Close();
+                    break;
+
+                case "Done":
+                    invoice_Paid_Chooser.Close();
+                    break;
+            }
+        }
+
         #endregion
 
-        #region        <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
-        private void loadAdminCatDrpDwn()
+                #region        <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
+            private void loadAdminCatDrpDwn()
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
             {
@@ -2502,6 +2567,7 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
+
 
 
 
