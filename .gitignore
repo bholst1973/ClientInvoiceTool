@@ -28,3 +28,7 @@ Data/\.vs/Data/v15/
 Data/\.vs/
 
 Data/
+
+TestBusinessApp/obj/Release/
+
+TestBusinessApp/bin/Release/

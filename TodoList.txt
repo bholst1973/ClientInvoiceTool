@@ -1,4 +1,6 @@
-Handle Invoice paid when client is selected.
+Creating an invoice, editing the desciption in the data grid causes an error. Possibly because of the symbol "-".
+Handle invoices client drop down when no invoices exist.
+Update/Enter Client Name with an apostrophe.
 Update Tax Warning
 Remember tab and window size
 Give option
@@ -8,33 +10,26 @@ Create Estimate
 Ensure App will run with no data in the Database.
 Pop windows need should pop inside the app window.
 Setup preset Services Values instead of hard code.
-
 Check if client exists
 Copy paste phone number
-
 Hover info
  boxes
 better use of objects
-
 Sql queries should be using the using block
-
 Invoice items should be able to move up and down the list
 Add table for prefill city and zip 
-
 Ensure Sql statments account for db size
 
 
 
 Done:
-
+Handle Invoice paid when client is selected.
+Update client Combo drop downs when adding or updating.
 Set invoice paid with right click
 Tab Order
 Make email addresses all lower case.
 client counter
-
 AutoSize Client Columns
-
 window size
-
 Save Preset Data
 Edit datagridviewDL 

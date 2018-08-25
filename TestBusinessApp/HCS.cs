@@ -33,8 +33,8 @@ namespace TestBusinessApp
         Client workingClient = new Client();
         //  Holds the current Client Data Grid row that is being updated.
         int clientupdaterow;
-        //decimal taxRate = 0.06875m;
-        decimal taxRate = 0.06500m;
+        decimal taxRate = 0.06875m;
+        //decimal taxRate = 0.06500m;
         int invoicesupdaterow;
         Invoice workingInvoice = new Invoice();
         bool invoiceEditTaxWarning = true;
@@ -1069,6 +1069,8 @@ namespace TestBusinessApp
             clientDataGridView.CurrentCell = clientDataGridView.Rows[clientupdaterow].Cells[0];
             clientDataGridView.Rows[clientupdaterow].Selected = true;
             clearClientData();
+            loadInvClClientCB();
+            loadInvsClientCB();
             getClientCount();
         }
         #endregion
@@ -1131,11 +1133,11 @@ namespace TestBusinessApp
                     DataSet ds = new DataSet();
                     da.Fill(ds, "Client");
                     invClCustCmbBX.DataSource = ds.Tables["Client"];
-                    invsClientCB.DataSource = ds.Tables["Client"];
+                    //invsClientCB.DataSource = ds.Tables["Client"];
                     invClCustCmbBX.DisplayMember = "Billing_Name";
-                    invsClientCB.DisplayMember = "Billing_Name";
+                    //invsClientCB.DisplayMember = "Billing_Name";
                     invClCustCmbBX.ValueMember = "Billing_Name";
-                    invsClientCB.ValueMember = "Billing_Name";
+                    //invsClientCB.ValueMember = "Billing_Name";
                 }
                 catch (Exception ex)
                 {
@@ -1801,7 +1803,7 @@ namespace TestBusinessApp
 
         private void invsClientCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (invsClientCB.SelectedIndex > 0)
+            if (invsClientCB.SelectedIndex > -1)
             {
                 loadInvoicesByClient(this.invsClientCB.GetItemText(this.invsClientCB.SelectedItem));
                 invoiceItemsDG.Rows.Clear();
