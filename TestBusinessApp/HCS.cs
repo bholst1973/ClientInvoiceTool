@@ -40,6 +40,7 @@ namespace TestBusinessApp
         bool invoiceEditTaxWarning = true;
         int workingInvoiceNumber = -1;
         int workingInoviceRow = -1;
+        string workingInvoiceClient = "";
 
         //Invoice column and row for InvoicesInvsDG
         int invsDGRow = -1;
@@ -2157,8 +2158,8 @@ namespace TestBusinessApp
                     }
                 }
 
-                    //  Refresh invoice data grid
-                    if (clIndex == -1)
+                //  Refresh invoice data grid
+                if (clIndex == -1)
                 {
                     loadInvoices();
                 }
@@ -2251,6 +2252,7 @@ namespace TestBusinessApp
                 InvoicesInvsDG.CurrentCell = clickedCell;
                 workingInoviceRow = clickedCell.RowIndex;
                 workingInvoiceNumber = Convert.ToInt32(InvoicesInvsDG.Rows[workingInoviceRow].Cells[0].Value);
+                workingInvoiceClient = InvoicesInvsDG.Rows[workingInoviceRow].Cells[2].Value.ToString();
 
                 if (InvoicesInvsDG.Rows[workingInoviceRow].Cells[9].Value.ToString() == "Paid")
                 {
@@ -2284,11 +2286,22 @@ namespace TestBusinessApp
 
                         string query = "USE HCS UPDATE INVOICE SET INV_Paid = " + cPaid + " WHERE INV_NUM = " + workingInvoiceNumber;
                         executeQuery(query);
-                        loadInvoices();
+                        // Get Client Combo Box Position
+                        int clIndex = invsClientCB.SelectedIndex;
+
+                        if (clIndex == -1)
+                        {
+                            loadInvoices();
+                        }
+                        else
+                        {
+                            loadInvoicesByClient(workingInvoiceClient);
+                        }
                         InvoicesInvsDG.FirstDisplayedScrollingRowIndex = workingInoviceRow;
                         InvoicesInvsDG.CurrentCell = InvoicesInvsDG.Rows[workingInoviceRow].Cells[9];
                         workingInvoiceNumber = -1;
                         workingInoviceRow = -1;
+                        workingInvoiceClient = "";
                     }
 
                     invoice_Paid_Chooser.Close();
