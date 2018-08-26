@@ -1,7 +1,9 @@
 USE HCS
 
+-- Insert blank row for combo boxes
 INSERT INTO Client (First_Name,Last_Name,Business_Name,Billing_Name,Address1,Address2,Address3,City,[State],Zip,Phone,Email)
-VALUES ('Jeff','Rahman','','Jeff Rahman','','','','Elgin','MN','55932','(507) - 876 - 3016',''),
+VALUES ('','','','','','','','','','','',''),
+('Jeff','Rahman','','Jeff Rahman','','','','Elgin','MN','55932','(507) - 876 - 3016',''),
 ('Connie','Bennett','','Connie Bennett','','','','Rochester','MN','55964','(507) - 281 - 1025',''),
 ('Bob','NA','','Bob NA','','','','Elgin','MN','55932','(507) - 261 - 6124',''),
 ('Scott and Patty','Richter','','Scott and Patty Richter','240 5th St SE','','','Plainview','MN','55964','(507) - 534 - 3548',''),

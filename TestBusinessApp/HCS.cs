@@ -1563,15 +1563,25 @@ namespace TestBusinessApp
                     Det = Det.Replace("'", "''");
                     Price = Convert.ToDecimal(dr.Cells[2].Value);
                     Tax = Convert.ToDecimal(dr.Cells[4].Value);
-                    
+
                     Total = Qty * Price * (1 + taxRate);
 
-                    string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, INV_Qty, " +
+                    try
+                    {
+                                   string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, INV_Qty, " +
                                    "INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid, Inv_Cost, Inv_GrossProfit, Inv_TaxPaid)" +
                                    "VALUES (" + cid + "," + invNum + ",'" + invClDTPicker.Value.ToString("yyyy-MM-dd") + "','" + bname + "'," +
                                    Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + 0 + ',' + 0 + ',' + 0 + ")";
 
-                    executeQuery(query);                    
+                        executeQuery(query);
+
+                    }
+                    catch(Exception excp)
+                    {
+                        MessageBox.Show("Invoice couldn't be created.  Possible syntax Error." + Environment.NewLine +
+                                         "Details: " + Environment.NewLine + excp);
+                    }
+                
                 }
 
                 createInvoiceDataGridView.Rows.Clear();
@@ -1798,12 +1808,21 @@ namespace TestBusinessApp
                         rw.Cells["Inv_Pd"].Style.ForeColor = System.Drawing.Color.Green;
                     }
                 }
+
+                invsDeleteBut.Enabled = true;
+            }
+
+            else
+            {
+                invsDeleteBut.Enabled = false;
+                invoiceItemsDG.Rows.Clear();
             }
         }
 
         private void invsClientCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (invsClientCB.SelectedIndex > -1)
+            // check if no client or empty indexes are choosen
+            if (invsClientCB.SelectedIndex > 0)
             {
                 loadInvoicesByClient(this.invsClientCB.GetItemText(this.invsClientCB.SelectedItem));
                 invoiceItemsDG.Rows.Clear();
@@ -2222,6 +2241,7 @@ namespace TestBusinessApp
             invsTaxPaidTB.Enabled = e;
             invsClearEditItemsBut.Enabled = e;
             invsEditUpdateBut.Enabled = e;
+            invsDeleteBut.Enabled = e;
         }
 
         private void executeProfit_SP()
@@ -2245,6 +2265,7 @@ namespace TestBusinessApp
             invoice_Paid_Chooser.ItemClicked += new ToolStripItemClickedEventHandler(invoice_Paid_Chooser_ItemClicked);
             invoice_Paid_Chooser.AutoClose = false;
         }
+
         private void InvoicesInvsDG_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -2315,10 +2336,46 @@ namespace TestBusinessApp
             }
         }
 
+        private void invsDeleteBut_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = InvoicesInvsDG.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = InvoicesInvsDG.Rows[selectedrowindex];
+            string invNum = Convert.ToString(selectedRow.Cells["Inv_Num"].Value);
+            MessageBox.Show("Delete invoice " + invNum + " ?");
+
+            if (MessageBox.Show("Delete invoice " + invNum + " ?", "Delete Invoice",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string query = "USE HCS DELETE FROM Invoice WHERE INV_NUM = " + invNum;
+                try
+                {
+                    executeQuery(query);
+                    if (invsClientCB.SelectedIndex > -1)
+                    {
+                        loadInvoicesByClient(this.invsClientCB.GetItemText(this.invsClientCB.SelectedItem));
+                        invoiceItemsDG.Rows.Clear();
+                    }
+                    else
+                    {
+                        loadInvoices();
+                        invoiceItemsDG.Rows.Clear();
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting invoice number: " + invNum +
+                        Environment.NewLine + "Details: " +
+                        Environment.NewLine + ex);
+                }
+            }
+        }
+
         #endregion
 
-                #region        <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
-            private void loadAdminCatDrpDwn()
+        #region        <<<<<<<<<<<<<<<<<<<----------  Admin Tab  ---------->>>>>>>>>>>>>>>>>>>
+
+        private void loadAdminCatDrpDwn()
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
             {
@@ -2582,16 +2639,9 @@ namespace TestBusinessApp
             MessageBox.Show("The effective tax rate is: " + taxRate.ToString());
             setEffTxRateBut.Enabled = false;
         }
-
-
-
-
-
-
-
+        
         #endregion
-
-
+        
     }
 
 }

@@ -205,6 +205,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
+            this.invsDeleteBut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -1190,6 +1191,7 @@
             this.invCLItemCmbBx.Location = new System.Drawing.Point(59, 16);
             this.invCLItemCmbBx.Name = "invCLItemCmbBx";
             this.invCLItemCmbBx.Size = new System.Drawing.Size(273, 21);
+            this.invCLItemCmbBx.Sorted = true;
             this.invCLItemCmbBx.TabIndex = 1;
             this.invCLItemCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCLItemCmbBx_SelectedIndexChanged);
             // 
@@ -1214,6 +1216,7 @@
             // 
             // invoicesPage
             // 
+            this.invoicesPage.Controls.Add(this.invsDeleteBut);
             this.invoicesPage.Controls.Add(this.invsEditUpdateBut);
             this.invoicesPage.Controls.Add(this.invsClearEditItemsBut);
             this.invoicesPage.Controls.Add(this.invsBillNameCB);
@@ -1837,6 +1840,7 @@
             this.actInvItemCmBx.Location = new System.Drawing.Point(66, 20);
             this.actInvItemCmBx.Name = "actInvItemCmBx";
             this.actInvItemCmBx.Size = new System.Drawing.Size(228, 21);
+            this.actInvItemCmBx.Sorted = true;
             this.actInvItemCmBx.TabIndex = 28;
             this.actInvItemCmBx.SelectedIndexChanged += new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
             // 
@@ -1935,6 +1939,7 @@
             this.adminCategoryCmbBx.Location = new System.Drawing.Point(97, 43);
             this.adminCategoryCmbBx.Name = "adminCategoryCmbBx";
             this.adminCategoryCmbBx.Size = new System.Drawing.Size(175, 21);
+            this.adminCategoryCmbBx.Sorted = true;
             this.adminCategoryCmbBx.TabIndex = 31;
             this.adminCategoryCmbBx.SelectedIndexChanged += new System.EventHandler(this.adminCategoryCmbBx_SelectedIndexChanged);
             // 
@@ -1957,6 +1962,17 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // invsDeleteBut
+            // 
+            this.invsDeleteBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.invsDeleteBut.Location = new System.Drawing.Point(828, 467);
+            this.invsDeleteBut.Name = "invsDeleteBut";
+            this.invsDeleteBut.Size = new System.Drawing.Size(75, 23);
+            this.invsDeleteBut.TabIndex = 56;
+            this.invsDeleteBut.Text = "Delete";
+            this.invsDeleteBut.UseVisualStyleBackColor = true;
+            this.invsDeleteBut.Click += new System.EventHandler(this.invsDeleteBut_Click);
             // 
             // HCS
             // 
@@ -2183,6 +2199,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Tax_Paid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inv_Paid;
+        private System.Windows.Forms.Button invsDeleteBut;
     }
 }
 

@@ -27,7 +27,7 @@ namespace TestBusinessApp
         public decimal InvProfit { get; set; }
 
         public List<Invoice> GetInvoicebyInvNum(int invn)
-        {
+        { 
             var con = ConfigurationManager.ConnectionStrings["TestBusinessApp.Properties.Settings.HCSConnectionString"].ToString();
             using (SqlConnection myCon = new SqlConnection(con))
             {
