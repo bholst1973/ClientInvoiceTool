@@ -100,6 +100,7 @@ namespace TestBusinessApp
             deactivateComItBut.Enabled = false;
             adminActDelComItBut.Enabled = false;
             loadAdminCatDrpDwn();
+            loadActiveInvItemDrpDwn();
             defaultTaxRateTB.Text = taxRate.ToString();
             setEffTxRateBut.Enabled = false;
             effectiveTaxRateTB.Text = taxRate.ToString();
@@ -1088,7 +1089,7 @@ namespace TestBusinessApp
         public void loadInvDetails()
         {
             this.invCLItemCmbBx.SelectedIndexChanged -= new System.EventHandler(this.invCLItemCmbBx_SelectedIndexChanged);
-            this.actInvItemCmBx.SelectedIndexChanged -= new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
+            //this.actInvItemCmBx.SelectedIndexChanged -= new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
             {
                 try
@@ -1098,26 +1099,16 @@ namespace TestBusinessApp
                     conn.Open();
                     DataSet ds1 = new DataSet();
                     da1.Fill(ds1, "GoodsServices");
+                    invCLItemCmbBx.DataSource = ds1.Tables["GoodsServices"];
                     invCLItemCmbBx.DisplayMember = "GS_Details";
                     invCLItemCmbBx.ValueMember = "GS_Details";
-                    invCLItemCmbBx.DataSource = ds1.Tables["GoodsServices"];
-
-                    query = "SELECT GS_Details FROM GoodsServices";
-                    SqlDataAdapter da2 = new SqlDataAdapter(query, conn);
-                    DataSet ds2 = new DataSet();
-                    da2.Fill(ds2, "GoodsServices");
-                    actInvItemCmBx.DisplayMember = "GS_Details";
-                    actInvItemCmBx.ValueMember = "GS_Details";
-                    actInvItemCmBx.DataSource = ds2.Tables["GoodsServices"];
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error occured: " + ex.ToString());
                 }
                 invCLItemCmbBx.SelectedIndex = -1;
-                actInvItemCmBx.SelectedIndex = -1;
                 this.invCLItemCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCLItemCmbBx_SelectedIndexChanged);
-                this.actInvItemCmBx.SelectedIndexChanged += new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
             }
         }
 
@@ -2341,7 +2332,6 @@ namespace TestBusinessApp
             int selectedrowindex = InvoicesInvsDG.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = InvoicesInvsDG.Rows[selectedrowindex];
             string invNum = Convert.ToString(selectedRow.Cells["Inv_Num"].Value);
-            MessageBox.Show("Delete invoice " + invNum + " ?");
 
             if (MessageBox.Show("Delete invoice " + invNum + " ?", "Delete Invoice",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -2386,15 +2376,39 @@ namespace TestBusinessApp
                     conn.Open();
                     DataSet ds = new DataSet();
                     da.Fill(ds, "Category");
+                    adminCategoryCmbBx.DataSource = ds.Tables["Category"];
                     adminCategoryCmbBx.DisplayMember = "GS_Category";
                     adminCategoryCmbBx.ValueMember = "GS_Category";
-                    adminCategoryCmbBx.DataSource = ds.Tables["Category"];
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error occured: " + ex.ToString());
                 }
                 adminCategoryCmbBx.SelectedIndex = -1;
+            }
+        }
+
+        public void loadActiveInvItemDrpDwn()
+        {
+            this.actInvItemCmBx.SelectedIndexChanged -= new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HCS;Integrated Security=True"))
+            {
+                try
+                {
+                    string query = "SELECT GS_Details FROM GoodsServices";
+                    SqlDataAdapter da2 = new SqlDataAdapter(query, conn);
+                    DataSet ds2 = new DataSet();
+                    da2.Fill(ds2, "GoodsServices");
+                    actInvItemCmBx.DataSource = ds2.Tables["GoodsServices"];
+                    actInvItemCmBx.DisplayMember = "GS_Details";
+                    actInvItemCmBx.ValueMember = "GS_Details";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured: " + ex.ToString());
+                }
+                this.actInvItemCmBx.SelectedIndexChanged += new System.EventHandler(this.actInvItemCmBx_SelectedIndexChanged);
+                actInvItemCmBx.SelectedIndex = -1;
             }
         }
 
@@ -2489,6 +2503,7 @@ namespace TestBusinessApp
 
                 loadInvDetails();
                 loadAdminCatDrpDwn();
+                loadActiveInvItemDrpDwn();
                 adminPriceTxtBx.Text = "";
                 adminItemTxtBx.Text = "";
                 adminCategoryCmbBx.SelectedIndex = -1;
@@ -2508,6 +2523,7 @@ namespace TestBusinessApp
                 executeQuery(query);
             }
             loadInvDetails();
+            loadActiveInvItemDrpDwn();
             activateComItBut.Enabled = false;
             adminActDelComItBut.Enabled = false;
         }
@@ -2523,6 +2539,7 @@ namespace TestBusinessApp
                 executeQuery(query);
             }
             loadInvDetails();
+            loadActiveInvItemDrpDwn();
             deactivateComItBut.Enabled = false;
             adminActDelComItBut.Enabled = false;
         }
@@ -2539,6 +2556,7 @@ namespace TestBusinessApp
             }
             loadInvDetails();
             loadAdminCatDrpDwn();
+            loadActiveInvItemDrpDwn();
             activateComItBut.Enabled = false;
             deactivateComItBut.Enabled = false;
             adminActDelComItBut.Enabled = false;
