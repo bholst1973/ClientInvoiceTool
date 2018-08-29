@@ -1,4 +1,7 @@
-
+After adding to invoice, Inv item index should reset to -1.
+Client Search Feature.
+Add Cost input to Invoice client tab.
+Add Custom test to Inv Item
 Retain Scroll position in Datagrid after update.
 Update/Enter Client Name with an apostrophe.
 Update Tax Warning
@@ -19,10 +22,14 @@ Add table for prefill city and zip
 Ensure Sql statments account for db size
 
 Can't Reproduce:
+
 After adding an invoice highlighting that row shows the wrong invoice.
 Creating an invoice, editing the desciption in the data grid causes an error. Possibly because of the symbol "-".  Can't reproduce but try catch has been added if it happens again.
 
 Done:
+Add blank Item for drop downs.
+Client Name Order.
+Billing Name update issue.
 Adding categorty from admin tab does not repopulate drop downs properly.
 Delete Invoice option.
 Handle invoices client drop down when no invoices exist.  This was a side effect of checking for indexes greater than 0 instead of -1.

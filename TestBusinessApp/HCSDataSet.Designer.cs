@@ -1281,7 +1281,7 @@ namespace TestBusinessApp.HCSDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Client] ([First_Name], [Last_Name], [Business_Name], [Billing_Name], [Address1], [Address2], [Address3], [City], [State], [Zip], [Phone], [Email]) VALUES (@First_Name, @Last_Name, @Business_Name, @Billing_Name, @Address1, @Address2, @Address3, @City, @State, @Zip, @Phone, @Email);
-SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, Address2, Address3, City, State, Zip, Phone, Email FROM Client WHERE (Client_ID = SCOPE_IDENTITY())";
+SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, Address2, Address3, City, State, Zip, Phone, Email FROM Client WHERE (Client_ID = SCOPE_IDENTITY()) ORDER BY Billing_Name";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@First_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Last_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1316,7 +1316,7 @@ SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, 
                 " ([Phone] = @Original_Phone)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([" +
                 "Email] = @Original_Email)));\r\nSELECT Client_ID, First_Name, Last_Name, Business_" +
                 "Name, Billing_Name, Address1, Address2, Address3, City, State, Zip, Phone, Email" +
-                " FROM Client WHERE (Client_ID = @Client_ID)";
+                " FROM Client WHERE (Client_ID = @Client_ID) ORDER BY Billing_Name";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@First_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Last_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1372,8 +1372,8 @@ SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, 
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Client_ID, First_Name, Last_Name, Business_Name, Billing_Name, Address1, A" +
-                "ddress2, Address3, City, State, Zip, Phone, Email FROM dbo.Client WHERE Billing_" +
-                "Name != \'--\'";
+                "ddress2, Address3, City, State, Zip, Phone, Email FROM dbo.Client WHERE Client_I" +
+                "D != 0 ORDER BY Billing_NAME";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -1055,7 +1055,7 @@ namespace TestBusinessApp
             string query = "USE HCS UPDATE Client SET First_Name = '" + fn + "'," +
                                                       "Last_Name = '" + ln + "'," +
                                                       "Business_Name = '" + cn + "'," +
-                                                      "Billing_Name = '" + cn + "'," +
+                                                      "Billing_Name = '" + bn + "'," +
                                                       "Address1 = '" + ad1 + "'," +
                                                       "Address2 = '" + ad2 + "'," +
                                                       "Address3 = '" + ad3 + "'," +
@@ -1396,7 +1396,7 @@ namespace TestBusinessApp
                 Tax = Total * taxRate;
                 this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
             }
-
+            invCLItemCmbBx.SelectedIndex = -1;
             clearCreateInvItems();
             calculateSummaryofCost();
             createInvClrItmsBut.Enabled = true;
@@ -1581,6 +1581,7 @@ namespace TestBusinessApp
                 invclTotalTxtBx.Text = "";
                 invclTaxlTxtBx.Text = "";
                 invclGrandTotalTxtBx.Text = "";
+                executeProfit_SP();
                 loadInvoices();
             }
 
@@ -2095,8 +2096,8 @@ namespace TestBusinessApp
                                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_ID = " + invEdit.ID;
-                            //executeQuery(query);
-                            MessageBox.Show(query);
+                            executeQuery(query);
+                            //MessageBox.Show(query);
                         }
                         else
                         {
@@ -2113,8 +2114,8 @@ namespace TestBusinessApp
                             query = "USE HCS UPDATE Invoice SET INV_NUM = " + invNum + " WHERE INV_NUM = " + invEdit.InvNumber;
                             try
                             {
-                                //executeQuery(query);
-                                MessageBox.Show(query);
+                                executeQuery(query);
+                                //MessageBox.Show(query);
                             }
                             catch (Exception exc)
                             {

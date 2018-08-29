@@ -126,6 +126,7 @@
             this.compstpChkBx = new System.Windows.Forms.CheckBox();
             this.InvClcustTxtBx = new System.Windows.Forms.TextBox();
             this.invoicesPage = new System.Windows.Forms.TabPage();
+            this.invsDeleteBut = new System.Windows.Forms.Button();
             this.invsEditUpdateBut = new System.Windows.Forms.Button();
             this.invsClearEditItemsBut = new System.Windows.Forms.Button();
             this.invsBillNameCB = new System.Windows.Forms.ComboBox();
@@ -205,7 +206,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
-            this.invsDeleteBut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -1187,6 +1187,7 @@
             // 
             // invCLItemCmbBx
             // 
+            this.invCLItemCmbBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.invCLItemCmbBx.FormattingEnabled = true;
             this.invCLItemCmbBx.Location = new System.Drawing.Point(59, 16);
             this.invCLItemCmbBx.Name = "invCLItemCmbBx";
@@ -1248,6 +1249,17 @@
             this.invoicesPage.Text = "Invoices";
             this.invoicesPage.UseVisualStyleBackColor = true;
             // 
+            // invsDeleteBut
+            // 
+            this.invsDeleteBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.invsDeleteBut.Location = new System.Drawing.Point(828, 467);
+            this.invsDeleteBut.Name = "invsDeleteBut";
+            this.invsDeleteBut.Size = new System.Drawing.Size(75, 23);
+            this.invsDeleteBut.TabIndex = 56;
+            this.invsDeleteBut.Text = "Delete";
+            this.invsDeleteBut.UseVisualStyleBackColor = true;
+            this.invsDeleteBut.Click += new System.EventHandler(this.invsDeleteBut_Click);
+            // 
             // invsEditUpdateBut
             // 
             this.invsEditUpdateBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1277,6 +1289,7 @@
             this.invsBillNameCB.Location = new System.Drawing.Point(53, 390);
             this.invsBillNameCB.Name = "invsBillNameCB";
             this.invsBillNameCB.Size = new System.Drawing.Size(121, 21);
+            this.invsBillNameCB.Sorted = true;
             this.invsBillNameCB.TabIndex = 5;
             // 
             // invsDTPicker
@@ -1962,17 +1975,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // invsDeleteBut
-            // 
-            this.invsDeleteBut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.invsDeleteBut.Location = new System.Drawing.Point(828, 467);
-            this.invsDeleteBut.Name = "invsDeleteBut";
-            this.invsDeleteBut.Size = new System.Drawing.Size(75, 23);
-            this.invsDeleteBut.TabIndex = 56;
-            this.invsDeleteBut.Text = "Delete";
-            this.invsDeleteBut.UseVisualStyleBackColor = true;
-            this.invsDeleteBut.Click += new System.EventHandler(this.invsDeleteBut_Click);
             // 
             // HCS
             // 
