@@ -79,6 +79,7 @@ namespace TestBusinessApp
             this.createInvoiceDataGridView.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.createInvoiceDataGridView.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.createInvoiceDataGridView.Columns["Tax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.createInvoiceDataGridView.Columns["Cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //Invoices
             loadInvoices();
@@ -1164,15 +1165,15 @@ namespace TestBusinessApp
 
         private void custTxtBx_TextChanged(object sender, EventArgs e)
         {
-            if (invCLItemCmbBx.SelectedIndex != -1)
-            {
-                invCLItemCmbBx.SelectedIndex = -1;
-            }
-            if (invCLPriceTxtBx.Text != "")
-            {
-                invCLPriceTxtBx.Text = "";
-            }
-            verifyAddToInvoice();
+            //if (invCLItemCmbBx.SelectedIndex != -1)
+            //{
+            //    invCLItemCmbBx.SelectedIndex = -1;
+            //}
+            //if (invCLPriceTxtBx.Text != "")
+            //{
+            //    invCLPriceTxtBx.Text = "";
+            //}
+            //verifyAddToInvoice();
         }
 
         private void invCQtyCmbBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -1230,7 +1231,7 @@ namespace TestBusinessApp
             decimal Prc = 0.00m;
             string textPrice = invCLPriceTxtBx.Text.ToString();
 
-            if (invCLItemCmbBx.SelectedIndex != -1 || InvClcustTxtBx.Text.Length > 0)
+            if (invCLItemCmbBx.SelectedIndex != -1)
             {
                 InvItem = true;
             }
@@ -1284,6 +1285,8 @@ namespace TestBusinessApp
             decimal Total = 0.00m;
             // Tax
             decimal Tax = 0.00m;
+            // Cost
+            decimal Cost = 0.0m;
 
             if (invCLItemCmbBx.SelectedIndex != -1)
             {
@@ -1292,7 +1295,7 @@ namespace TestBusinessApp
 
             if (InvClcustTxtBx.Text.Length > 0)
             {
-                Details = InvClcustTxtBx.Text;
+                Details = Details + " - " + InvClcustTxtBx.Text;
             }
 
             if (invCQtyCmbBx.SelectedIndex != -1)
@@ -1312,12 +1315,23 @@ namespace TestBusinessApp
                 Price = decimal.Parse(price);
             }
 
+            if(invCLCostTxtBx.Text.Length > 0)
+            {
+                string cost = invCLCostTxtBx.Text;
+                if(cost.Contains("$"))
+                {
+                    cost = cost.Trim('$');
+                }
+                cost.Trim();
+                Cost = decimal.Parse(cost);
+            }
+
             Total = Qty * Price;
             //Tax = decimal.Round(Total * taxRate,2);
             Tax = Total * taxRate;
             if (Total >= 0 && Details.Length > 0)
             {
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (cmpclnpChkBx.Checked)
@@ -1328,7 +1342,7 @@ namespace TestBusinessApp
                 Total = 75.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (dataRecChkBx.Checked)
@@ -1339,7 +1353,7 @@ namespace TestBusinessApp
                 Total = 25.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (printstpChkBx.Checked)
@@ -1350,7 +1364,7 @@ namespace TestBusinessApp
                 Total = 65.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (compstpChkBx.Checked)
@@ -1361,7 +1375,7 @@ namespace TestBusinessApp
                 Total = 75.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (routerChkBx.Checked)
@@ -1372,7 +1386,7 @@ namespace TestBusinessApp
                 Total = 65.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (bootUSBChkBx.Checked)
@@ -1383,7 +1397,7 @@ namespace TestBusinessApp
                 Total = 35.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
 
             if (inslOSChkBx.Checked)
@@ -1394,13 +1408,14 @@ namespace TestBusinessApp
                 Total = 125.00m;
                 //Tax = decimal.Round(Total * taxRate, 2);
                 Tax = Total * taxRate;
-                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax);
+                this.createInvoiceDataGridView.Rows.Add(Qty, Details, Price, Total, Tax, Cost);
             }
             invCLItemCmbBx.SelectedIndex = -1;
             clearCreateInvItems();
             calculateSummaryofCost();
             createInvClrItmsBut.Enabled = true;
             InvClcustTxtBx.Text = "";
+            invCLCostTxtBx.Text = "";
         }
 
         public void clearCreateInvItems()
@@ -1423,13 +1438,16 @@ namespace TestBusinessApp
             decimal price = 0.00m;
             decimal total = 0.00m;
             decimal tax = 0.00m;
+            decimal cost = 0 - .00m;
             decimal pretaxtotal = 0.00m;
+            decimal totalcost = 0.00m;
             decimal grandTotal = 0m;
 
             foreach (DataGridViewRow dr in createInvoiceDataGridView.Rows)
             {
                 qty = Convert.ToDecimal(dr.Cells[0].Value);
                 price = Convert.ToDecimal(dr.Cells[2].Value);
+                cost = Convert.ToDecimal(dr.Cells[5].Value);
                 total = qty * price;
                 tax = total * taxRate;
                 dr.Cells[2].Value = price.ToString("0.00##");
@@ -1437,6 +1455,7 @@ namespace TestBusinessApp
                 dr.Cells[4].Value = tax.ToString("0.0000");
                 total = Convert.ToDecimal(dr.Cells[3].Value);
                 pretaxtotal += total;
+                totalcost += cost;
             }
 
             tax = decimal.Round(pretaxtotal * taxRate, 2);
@@ -1444,8 +1463,9 @@ namespace TestBusinessApp
             invclTotalTxtBx.Text = "$ " + pretaxtotal.ToString();
             invclTaxlTxtBx.Text = "$ " + tax.ToString();
             invclGrandTotalTxtBx.Text = "$ " + grandTotal.ToString();
+            invclTCostTxtBx.Text = "$ " + totalcost.ToString();
 
-            if(grandTotal > 0 && invClCustCmbBX.SelectedIndex > -1)
+            if (grandTotal > 0 && invClCustCmbBX.SelectedIndex > -1)
             {
                 createInvBut.Enabled = true;
                 createEstBut.Enabled = true;
@@ -1492,6 +1512,11 @@ namespace TestBusinessApp
                 createInvoiceDataGridView.Rows.Clear();
                 createInvClrItmsBut.Enabled = false;
                 calculateSummaryofCost();
+                invCLItemCmbBx.SelectedIndex = -1;
+                InvClcustTxtBx.Text = "";
+                invCQtyCmbBx.SelectedIndex = -1;
+                invCLPriceTxtBx.Text = "";
+                invCLCostTxtBx.Text = "";
             }
         }
 
@@ -1545,6 +1570,7 @@ namespace TestBusinessApp
                 decimal Price = 0.00m;
                 decimal Tax = 0.00m;
                 decimal Total = 0.0000m;
+                decimal Cost = 0.0000m;
                 string notes = "";
 
                 foreach (DataGridViewRow dr in createInvoiceDataGridView.Rows)
@@ -1554,6 +1580,7 @@ namespace TestBusinessApp
                     Det = Det.Replace("'", "''");
                     Price = Convert.ToDecimal(dr.Cells[2].Value);
                     Tax = Convert.ToDecimal(dr.Cells[4].Value);
+                    Cost = Convert.ToDecimal(dr.Cells[5].Value);
 
                     Total = Qty * Price * (1 + taxRate);
 
@@ -1562,9 +1589,10 @@ namespace TestBusinessApp
                                    string query = "USE HCS INSERT INTO Invoice (INV_Client_ID, INV_NUM, INV_Date, INV_Billing_Name, INV_Qty, " +
                                    "INV_Details, INV_Price, INV_Tax, INV_Total, INV_Notes, INV_Paid, Inv_Cost, Inv_GrossProfit, Inv_TaxPaid)" +
                                    "VALUES (" + cid + "," + invNum + ",'" + invClDTPicker.Value.ToString("yyyy-MM-dd") + "','" + bname + "'," +
-                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + 0 + ',' + 0 + ',' + 0 + ")";
+                                   Qty + ",'" + Det + "'," + Price + "," + Tax + "," + Total + ",'" + notes + "'," + 0 + ',' + Cost + ',' + 0 + ',' + 0 + ")";
 
                         executeQuery(query);
+                        //MessageBox.Show(query);
 
                     }
                     catch(Exception excp)
@@ -1581,6 +1609,7 @@ namespace TestBusinessApp
                 invclTotalTxtBx.Text = "";
                 invclTaxlTxtBx.Text = "";
                 invclGrandTotalTxtBx.Text = "";
+                invclTCostTxtBx.Text = "";
                 executeProfit_SP();
                 loadInvoices();
             }
