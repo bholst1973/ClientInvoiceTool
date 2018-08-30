@@ -143,6 +143,8 @@ namespace TestBusinessApp
                 cmd.Connection = sqlConnection1;
                 sqlConnection1.Open();
                 Int32 count = (Int32)cmd.ExecuteScalar();
+                // Account for blank account.
+                count = count - 1;
                 sqlConnection1.Close();
                 clientCountLabel.Text = "Client Count: -> " + count.ToString();
             }
