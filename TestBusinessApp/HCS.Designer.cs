@@ -92,6 +92,8 @@
             this.createInvClrItmsBut = new System.Windows.Forms.Button();
             this.createInvRmvItmBut = new System.Windows.Forms.Button();
             this.invClTotalGB = new System.Windows.Forms.GroupBox();
+            this.invclTCostTxtBx = new System.Windows.Forms.TextBox();
+            this.socCostLbl = new System.Windows.Forms.Label();
             this.invclGrandTotalLbl = new System.Windows.Forms.Label();
             this.invclTaxlLbl = new System.Windows.Forms.Label();
             this.invclTotalLbl = new System.Windows.Forms.Label();
@@ -103,20 +105,28 @@
             this.invClCustCmbBX = new System.Windows.Forms.ComboBox();
             this.createInvBut = new System.Windows.Forms.Button();
             this.createInvoiceDataGridView = new System.Windows.Forms.DataGridView();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComServGB = new System.Windows.Forms.GroupBox();
+            this.invCLCostTxtBx = new System.Windows.Forms.TextBox();
+            this.createinvcostLBL = new System.Windows.Forms.Label();
             this.invClDTPicker = new System.Windows.Forms.DateTimePicker();
             this.custnvitmLbl = new System.Windows.Forms.Label();
             this.lineItemLbl = new System.Windows.Forms.Label();
             this.prcLbl = new System.Windows.Forms.Label();
             this.addInvBut = new System.Windows.Forms.Button();
-            this.qtyLbl = new System.Windows.Forms.Label();
-            this.invCLPriceTxtBx = new System.Windows.Forms.TextBox();
-            this.invCQtyCmbBx = new System.Windows.Forms.ComboBox();
             this.bootUSBChkBx = new System.Windows.Forms.CheckBox();
+            this.invCLPriceTxtBx = new System.Windows.Forms.TextBox();
             this.dataRecChkBx = new System.Windows.Forms.CheckBox();
+            this.qtyLbl = new System.Windows.Forms.Label();
             this.inslOSChkBx = new System.Windows.Forms.CheckBox();
             this.routerChkBx = new System.Windows.Forms.CheckBox();
             this.cmpclnpChkBx = new System.Windows.Forms.CheckBox();
+            this.invCQtyCmbBx = new System.Windows.Forms.ComboBox();
             this.printstpChkBx = new System.Windows.Forms.CheckBox();
             this.invCLItemCmbBx = new System.Windows.Forms.ComboBox();
             this.compstpChkBx = new System.Windows.Forms.CheckBox();
@@ -202,16 +212,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.clientTableAdapter = new TestBusinessApp.HCSDataSetTableAdapters.ClientTableAdapter();
             this.tableAdapterManager = new TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager();
-            this.createinvcostLBL = new System.Windows.Forms.Label();
-            this.invCLCostTxtBx = new System.Windows.Forms.TextBox();
-            this.socCostLbl = new System.Windows.Forms.Label();
-            this.invclTCostTxtBx = new System.Windows.Forms.TextBox();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ClientPage.SuspendLayout();
@@ -882,6 +882,23 @@
             this.invClTotalGB.TabStop = false;
             this.invClTotalGB.Text = "Summary of Cost";
             // 
+            // invclTCostTxtBx
+            // 
+            this.invclTCostTxtBx.Location = new System.Drawing.Point(160, 36);
+            this.invclTCostTxtBx.Name = "invclTCostTxtBx";
+            this.invclTCostTxtBx.Size = new System.Drawing.Size(81, 20);
+            this.invclTCostTxtBx.TabIndex = 24;
+            this.invclTCostTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // socCostLbl
+            // 
+            this.socCostLbl.AutoSize = true;
+            this.socCostLbl.Location = new System.Drawing.Point(157, 21);
+            this.socCostLbl.Name = "socCostLbl";
+            this.socCostLbl.Size = new System.Drawing.Size(58, 13);
+            this.socCostLbl.TabIndex = 23;
+            this.socCostLbl.Text = "Total Cost:";
+            // 
             // invclGrandTotalLbl
             // 
             this.invclGrandTotalLbl.AutoSize = true;
@@ -997,6 +1014,44 @@
             this.createInvoiceDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.createInvoiceDataGridView_CellClick);
             this.createInvoiceDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.createInvoiceDataGridView_CellValueChanged);
             // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "QTY";
+            this.Quantity.MaxInputLength = 2;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 40;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.MaxInputLength = 500;
+            this.Description.Name = "Description";
+            this.Description.Width = 460;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MaxInputLength = 6;
+            this.Price.Name = "Price";
+            this.Price.Width = 60;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MaxInputLength = 7;
+            this.Total.Name = "Total";
+            this.Total.Width = 60;
+            // 
+            // Tax
+            // 
+            this.Tax.HeaderText = "Tax";
+            this.Tax.Name = "Tax";
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Cost";
+            this.Cost.Name = "Cost";
+            // 
             // ComServGB
             // 
             this.ComServGB.Controls.Add(this.invCLCostTxtBx);
@@ -1024,6 +1079,23 @@
             this.ComServGB.TabIndex = 0;
             this.ComServGB.TabStop = false;
             this.ComServGB.Text = "Hardware and Services";
+            // 
+            // invCLCostTxtBx
+            // 
+            this.invCLCostTxtBx.Location = new System.Drawing.Point(523, 45);
+            this.invCLCostTxtBx.Name = "invCLCostTxtBx";
+            this.invCLCostTxtBx.Size = new System.Drawing.Size(100, 20);
+            this.invCLCostTxtBx.TabIndex = 30;
+            this.invCLCostTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // createinvcostLBL
+            // 
+            this.createinvcostLBL.AutoSize = true;
+            this.createinvcostLBL.Location = new System.Drawing.Point(489, 48);
+            this.createinvcostLBL.Name = "createinvcostLBL";
+            this.createinvcostLBL.Size = new System.Drawing.Size(28, 13);
+            this.createinvcostLBL.TabIndex = 29;
+            this.createinvcostLBL.Text = "Cost";
             // 
             // invClDTPicker
             // 
@@ -1070,33 +1142,6 @@
             this.addInvBut.UseVisualStyleBackColor = true;
             this.addInvBut.Click += new System.EventHandler(this.addInvBut_Click);
             // 
-            // qtyLbl
-            // 
-            this.qtyLbl.AutoSize = true;
-            this.qtyLbl.Location = new System.Drawing.Point(348, 21);
-            this.qtyLbl.Name = "qtyLbl";
-            this.qtyLbl.Size = new System.Drawing.Size(26, 13);
-            this.qtyLbl.TabIndex = 25;
-            this.qtyLbl.Text = "Qty.";
-            // 
-            // invCLPriceTxtBx
-            // 
-            this.invCLPriceTxtBx.Location = new System.Drawing.Point(380, 45);
-            this.invCLPriceTxtBx.Name = "invCLPriceTxtBx";
-            this.invCLPriceTxtBx.Size = new System.Drawing.Size(89, 20);
-            this.invCLPriceTxtBx.TabIndex = 3;
-            this.invCLPriceTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.invCLPriceTxtBx.TextChanged += new System.EventHandler(this.invCLPriceTxtBx_TextChanged);
-            // 
-            // invCQtyCmbBx
-            // 
-            this.invCQtyCmbBx.FormattingEnabled = true;
-            this.invCQtyCmbBx.Location = new System.Drawing.Point(380, 18);
-            this.invCQtyCmbBx.Name = "invCQtyCmbBx";
-            this.invCQtyCmbBx.Size = new System.Drawing.Size(29, 21);
-            this.invCQtyCmbBx.TabIndex = 2;
-            this.invCQtyCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCQtyCmbBx_SelectedIndexChanged);
-            // 
             // bootUSBChkBx
             // 
             this.bootUSBChkBx.AutoSize = true;
@@ -1108,6 +1153,15 @@
             this.bootUSBChkBx.UseVisualStyleBackColor = true;
             this.bootUSBChkBx.CheckedChanged += new System.EventHandler(this.bootUSBChkBx_CheckedChanged);
             // 
+            // invCLPriceTxtBx
+            // 
+            this.invCLPriceTxtBx.Location = new System.Drawing.Point(380, 45);
+            this.invCLPriceTxtBx.Name = "invCLPriceTxtBx";
+            this.invCLPriceTxtBx.Size = new System.Drawing.Size(89, 20);
+            this.invCLPriceTxtBx.TabIndex = 3;
+            this.invCLPriceTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.invCLPriceTxtBx.TextChanged += new System.EventHandler(this.invCLPriceTxtBx_TextChanged);
+            // 
             // dataRecChkBx
             // 
             this.dataRecChkBx.AutoSize = true;
@@ -1118,6 +1172,15 @@
             this.dataRecChkBx.Text = "Data Recovery";
             this.dataRecChkBx.UseVisualStyleBackColor = true;
             this.dataRecChkBx.CheckedChanged += new System.EventHandler(this.dataRecChkBx_CheckedChanged);
+            // 
+            // qtyLbl
+            // 
+            this.qtyLbl.AutoSize = true;
+            this.qtyLbl.Location = new System.Drawing.Point(348, 21);
+            this.qtyLbl.Name = "qtyLbl";
+            this.qtyLbl.Size = new System.Drawing.Size(26, 13);
+            this.qtyLbl.TabIndex = 25;
+            this.qtyLbl.Text = "Qty.";
             // 
             // inslOSChkBx
             // 
@@ -1151,6 +1214,15 @@
             this.cmpclnpChkBx.Text = "PC Cleanup";
             this.cmpclnpChkBx.UseVisualStyleBackColor = true;
             this.cmpclnpChkBx.CheckedChanged += new System.EventHandler(this.cmpclnpChkBx_CheckedChanged);
+            // 
+            // invCQtyCmbBx
+            // 
+            this.invCQtyCmbBx.FormattingEnabled = true;
+            this.invCQtyCmbBx.Location = new System.Drawing.Point(380, 18);
+            this.invCQtyCmbBx.Name = "invCQtyCmbBx";
+            this.invCQtyCmbBx.Size = new System.Drawing.Size(29, 21);
+            this.invCQtyCmbBx.TabIndex = 2;
+            this.invCQtyCmbBx.SelectedIndexChanged += new System.EventHandler(this.invCQtyCmbBx_SelectedIndexChanged);
             // 
             // printstpChkBx
             // 
@@ -1954,78 +2026,6 @@
             this.tableAdapterManager.ClientTableAdapter = this.clientTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestBusinessApp.HCSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // createinvcostLBL
-            // 
-            this.createinvcostLBL.AutoSize = true;
-            this.createinvcostLBL.Location = new System.Drawing.Point(489, 48);
-            this.createinvcostLBL.Name = "createinvcostLBL";
-            this.createinvcostLBL.Size = new System.Drawing.Size(28, 13);
-            this.createinvcostLBL.TabIndex = 29;
-            this.createinvcostLBL.Text = "Cost";
-            // 
-            // invCLCostTxtBx
-            // 
-            this.invCLCostTxtBx.Location = new System.Drawing.Point(523, 45);
-            this.invCLCostTxtBx.Name = "invCLCostTxtBx";
-            this.invCLCostTxtBx.Size = new System.Drawing.Size(100, 20);
-            this.invCLCostTxtBx.TabIndex = 30;
-            this.invCLCostTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // socCostLbl
-            // 
-            this.socCostLbl.AutoSize = true;
-            this.socCostLbl.Location = new System.Drawing.Point(157, 21);
-            this.socCostLbl.Name = "socCostLbl";
-            this.socCostLbl.Size = new System.Drawing.Size(58, 13);
-            this.socCostLbl.TabIndex = 23;
-            this.socCostLbl.Text = "Total Cost:";
-            // 
-            // invclTCostTxtBx
-            // 
-            this.invclTCostTxtBx.Location = new System.Drawing.Point(160, 36);
-            this.invclTCostTxtBx.Name = "invclTCostTxtBx";
-            this.invclTCostTxtBx.Size = new System.Drawing.Size(81, 20);
-            this.invclTCostTxtBx.TabIndex = 24;
-            this.invclTCostTxtBx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "QTY";
-            this.Quantity.MaxInputLength = 2;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 40;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.MaxInputLength = 500;
-            this.Description.Name = "Description";
-            this.Description.Width = 460;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MaxInputLength = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 60;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.MaxInputLength = 7;
-            this.Total.Name = "Total";
-            this.Total.Width = 60;
-            // 
-            // Tax
-            // 
-            this.Tax.HeaderText = "Tax";
-            this.Tax.Name = "Tax";
-            // 
-            // Cost
-            // 
-            this.Cost.HeaderText = "Cost";
-            this.Cost.Name = "Cost";
-            // 
             // HCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2037,7 +2037,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1097, 593);
             this.Name = "HCS";
-            this.Text = "HCS";
+            this.Text = "HCS - Client Tool";
             this.Load += new System.EventHandler(this.HCS_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

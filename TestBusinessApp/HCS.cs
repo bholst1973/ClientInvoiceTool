@@ -1144,6 +1144,10 @@ namespace TestBusinessApp
 
         private void invCLItemCmbBx_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(InvClcustTxtBx.Text.Length > 0)
+            {
+                InvClcustTxtBx.Text = "";
+            }
             invCQtyCmbBx.SelectedIndex = 0;
             string gs_detail = invCLItemCmbBx.Text;
             decimal price = 0.00m;
@@ -1167,15 +1171,15 @@ namespace TestBusinessApp
 
         private void custTxtBx_TextChanged(object sender, EventArgs e)
         {
-            //if (invCLItemCmbBx.SelectedIndex != -1)
-            //{
-            //    invCLItemCmbBx.SelectedIndex = -1;
-            //}
-            //if (invCLPriceTxtBx.Text != "")
-            //{
-            //    invCLPriceTxtBx.Text = "";
-            //}
-            //verifyAddToInvoice();
+            if (invCLItemCmbBx.SelectedIndex != -1)
+            {
+                invCLItemCmbBx.SelectedIndex = -1;
+            }
+            if (invCLPriceTxtBx.Text != "")
+            {
+                invCLPriceTxtBx.Text = "";
+            }
+            verifyAddToInvoice();
         }
 
         private void invCQtyCmbBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -1234,6 +1238,11 @@ namespace TestBusinessApp
             string textPrice = invCLPriceTxtBx.Text.ToString();
 
             if (invCLItemCmbBx.SelectedIndex != -1)
+            {
+                InvItem = true;
+            }
+
+            if (InvClcustTxtBx.Text.Length > 0)
             {
                 InvItem = true;
             }
