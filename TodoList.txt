@@ -1,4 +1,4 @@
-
+Auto Tab Phone Number to next cell as number is entered.
 Update Tax Warning
 Remember tab and window size
 Add Tax adjustment to update tax over an invoice to admin tab.
