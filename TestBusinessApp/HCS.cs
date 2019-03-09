@@ -111,7 +111,7 @@ namespace TestBusinessApp
 
         public void loadTestData()
         {
-            //invClDTPicker.Value = new DateTime(2009, 06, 01);
+            invClDTPicker.Value = new DateTime(2010, 03, 01);
         }
 
         #region         <<<<<<<<<<<<<<<<<<<----------  Client Tab  ---------->>>>>>>>>>>>>>>>>>>
@@ -615,11 +615,21 @@ namespace TestBusinessApp
         private void phone1TxtBx_TextChanged(object sender, EventArgs e)
         {
             verifyClientData();
+            if(phone1TxtBx.Text.Length == 3)
+            {
+                int x = this.phone1TxtBx.TabIndex;
+                SendKeys.Send("{TAB}");
+            }
         }
 
         private void phone2TxtBx_TextChanged(object sender, EventArgs e)
         {
             verifyClientData();
+            if (phone2TxtBx.Text.Length == 3)
+            {
+                int x = this.phone2TxtBx.TabIndex;
+                SendKeys.Send("{TAB}");
+            }
         }
 
         private void phone3TxtBx_TextChanged(object sender, EventArgs e)
@@ -1180,6 +1190,15 @@ namespace TestBusinessApp
                 invCLPriceTxtBx.Text = "";
             }
             verifyAddToInvoice();
+
+        }
+
+        private void custTxtBx_Leave(object sender, EventArgs e)
+        {
+            if (InvClcustTxtBx.Text.Length > 0 && invCQtyCmbBx.SelectedIndex == -1)
+            {
+                invCQtyCmbBx.SelectedIndex = 0;
+            }
         }
 
         private void invCQtyCmbBx_SelectedIndexChanged(object sender, EventArgs e)

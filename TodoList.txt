@@ -1,4 +1,5 @@
-Auto Tab Phone Number to next cell as number is entered.
+Right click Inoice Header Crashs the application.
+Client select on invoice doesn't activate create invoice if you search for the client and don't click that client to select them.
 Update Tax Warning
 Remember tab and window size
 Add Tax adjustment to update tax over an invoice to admin tab.
@@ -21,6 +22,10 @@ After adding an invoice highlighting that row shows the wrong invoice.
 Creating an invoice, editing the desciption in the data grid causes an error. Possibly because of the symbol "-".  Can't reproduce but try catch has been added if it happens again.
 
 Done:
+Auto Tab Phone Number to next cell as number is entered.
+Auto Fill a 1 in qty field when a value is entered in the custom item field.
+Tabbing on Invoice Client Page
+
 Ability to add cost at invoice creation.
 After adding to invoice, Inv item index should reset to -1.
 Add blank Item for drop downs.
